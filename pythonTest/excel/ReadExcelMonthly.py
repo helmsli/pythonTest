@@ -80,7 +80,7 @@ while(colRows<nrows):
 	#get the merge information
 	if(isMergeRow[0]):
 		mergeStartRow=isMergeRow[1];
-		mergeEndRow=isMergeRow[2]-1;
+		mergeEndRow=isMergeRow[2];
 	else:
 		colRows=colRows+1
 		continue
@@ -93,6 +93,7 @@ while(colRows<nrows):
 		print "ismergeRow:",colRows,colIndex,isMergeRow
 		if(isMergeRow[0]):
 			row_data.append(getSingleCellValue(colRows,colIndex));
+			colIndex=colIndex+1
 		#no row merge ,only column merge
 		else:
 			#if the col is the merge column
@@ -102,11 +103,13 @@ while(colRows<nrows):
 			mergeEndCol = colIndex
 			if(isMergeCol[0]):
 				mergeStartCol=isMergeCol[3];
-				mergeEndCol=isMergeCol[4]-1
+				mergeEndCol=isMergeCol[4]
 				print "mergeEndCol:",mergeStartRow,mergeEndRow,mergeStartCol,mergeEndCol
 			row_data.append(getMergeCellValue(mergeStartRow,mergeEndRow,mergeStartCol,mergeEndCol));
 			colIndex = mergeEndCol
 		print "colindex:",colIndex
-		colIndex=colIndex+1
-	colRows=mergeEndRow+1
+		
+	colRows=mergeEndRow
 	print row_data
+	sheet_data["data"].append(row_data)
+print sheet_data
