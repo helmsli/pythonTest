@@ -1,0 +1,13 @@
+1.keras
+  网址：https://keras.io
+  我真的很喜欢keras，因为他的句法相当明确。他的文档很好。而且支持python。
+  keras是一个非常高层的库。可以工作在theano和tensorFlow之上。另外，keras强调极简主义--你只需几行代码就能构建一个神经网络。
+  keras目前支持两种后端框架TensorFlow 和 theano
+2.TensorFlow 理所当然的在教程，资源，开发者和社区贡献者的数量上遥遥领先
+  2.1 CNN建模能力(Convalutional Neural Networks)
+		卷积神经网络经常被用于图像识别、推荐引擎和自然语音识别等方向的应用。
+  2.2 RNN神经网络常用于语音识别、时间序列预测。图像字母和其他需要处理顺序信息的任务。
+  
+3.语音识别(Speech Recognition)
+  在语音识别和话者识别方面，最常用到的语音特征就是梅尔倒谱系统(MFCC Mel-scale Frequency Cepstral Coefficients)
+    Mel(f) = 2595 * lg(1+f/700)    f--频率 单位为Hz 

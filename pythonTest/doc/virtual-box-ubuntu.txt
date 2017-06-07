@@ -1,0 +1,40 @@
+﻿1.安装gcc
+sudo apt-get  install  build-essential
+2.挂接光驱
+mount /dev/sr0 /media/cdrom
+3.安装mysql
+apt-get install mysql-server
+ apt-get isntall mysql-client
+ apt-get install libmysqlclient-dev
+4.设置共享文件夹
+mount -t vboxsf gongxiang /mnt/shared/
+设置自启动自动mount共享文件夹
+
+gongxiang /mnt/shared vboxsf rw,gid=100,uid=1000,auto 0 0
+
+5.安装扩展功能
+运行
+
+6.安装redis 
+ apt-get update
+apt-get install redis-server
+启动redis，执行redis-server &
+
+7.安装 git
+apt-get install git
+
+ifconfig -a 发现所有的网卡，然后进行配置
+8.解决乱码问题，修改Securt支持UTF-8格式的编码。
+9.安装python开发环境
+sudo apt-get install python-dev  # for python2.x installs
+sudo apt-get install python3-dev  # for python3.x installs
+
+apt-get install python-tk
+10.install x windows
+apt-get install xserver-xorg x11-xserver-utils(xhost +)
+安装完成后设置DISPLAY export DISPLAY=机器IP:0.0
+运行StartX
+
+启动 activemq
+cd [activemq_install_dir]/bin
+./activemq start
