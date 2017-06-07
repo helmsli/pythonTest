@@ -21,12 +21,22 @@ class MqttConnection(MqttReConnection):
 		connListener.registerReconnection(self)
 		self.myConn= None
 	def connection(self):
-		print("connection +++++++++++++++++++++++++++++")
+		print("time:%s connection  +++++++++++++++++++++++++++++" % datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
 		self.myConn = stomp.Connection([('localhost', 61613)], heartbeats=(4000, 4000),reconnect_attempts_max=3000)
+		print self.myConn
 		self.myConn.set_listener('', self.connListener)
 		print("connection ------------")
 		
 		self.reConnection()
+	def reConnection(self):
+		#check the old connection,if old is ok,close the old connection
+		try:
+			if self.myConn is not None:
+				print("disconnction is not None")
+				self.myConn.disconnect()
+		except Exception:
+			print Exception 
+		
 	def reConnection(self):
 		try:
 			if self.myConn is not None:
@@ -78,7 +88,8 @@ class MyListener(stomp.ConnectionListener):
 	def on_error(self, headers, message):
 		try:
 			print("on_error")
-			self.mqttReconnection.reConnection()
+			timer = threading.Timer(5, self.connection)
+			timer.start()
 			print('time:%s on_error_disconnected *********************************************'%datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))			
 		except Exception:
 			time.sleep(3)
