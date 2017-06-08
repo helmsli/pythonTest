@@ -8,7 +8,7 @@ import stomp
 import stomp.exception as exception
 import threading
 
-
+import MqttCon as MqttConfig;
 
 class MqttReConnection:
 	def on_reConnection(self):
@@ -17,13 +17,16 @@ class MqttReConnection:
 		pass
 
 class MqttConnection(MqttReConnection):
-	def __init__(self,connListener):
+	def __init__(self,connListener,destination="/quene/test",subscriberId=1):
 		self.connListener = connListener
 		connListener.registerReconnection(self)
 		self.myConn= None
-		self.myConn = stomp.Connection([('localhost', 61613)], heartbeats=(4000, 4000))
+		self.myConn = stomp.Connection(MqttConfig.SERVER_HOST, heartbeats=MqttConfig.HEARTBEATS)
 		self.myConn.set_listener('', self.connListener)
 		self.timer=None
+		self.subscriberId = subscriberId
+		self.destination= destination
+		
 		'''
 	def Connection(self):
 		print("time:%s connection  +++++++++++++++++++++++++++++" % datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
@@ -54,20 +57,20 @@ class MqttConnection(MqttReConnection):
 			self.timer.cancel()
 			print("timer is cancel")
 		print("timer is start")
-		self.timer = threading.Timer(3, self._ReConnection)
+		self.timer = threading.Timer(MqttConfig.CONNECTION_INTERVAL, self._ReConnection)
 		self.timer.start()
 		print("timer start end")
 		
 	def _ReConnection(self):
 		
 		try:
-			self.timer = threading.Timer(15, self._ReConnection)
+			self.timer = threading.Timer(MqttConfig.RETRY_CONNECTION_INTERVAL, self._ReConnection)
 			self.timer.start()		
 			print("time:%s reconnection "%datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
 			
 			self.myConn.start()
 			self.myConn.connect('guest', 'guest', wait=True)
-			self.myConn.subscribe(destination='/queue/test', id=1, ack='auto')
+			self.myConn.subscribe(self.destination, self.subscriberId, ack='auto')
 			print("time:%s reconnection end"%datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
 			
 			#break
@@ -100,8 +103,7 @@ class MyListener(stomp.ConnectionListener):
 	def on_error(self, headers, message):
 		try:
 			print("on_error")
-			timer = threading.Timer(5, self.connection)
-			timer.start()
+			self.mqttReconnection.on_connected()
 			print('time:%s on_error_disconnected *********************************************'%datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))			
 		except Exception:
 			time.sleep(3)
@@ -133,7 +135,7 @@ while(True):
 		try:
 			if(len(command)>0):
 				print('time:%s send a message "%s"' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'),command))
-				myMqttConnection.myConn.send('/queue/test', command)
+				myMqttConnection.myConn.send(myMqttConnection.destination, command)
 				#print 
 		except Exception as e:
 			print("time:%s send exception"% datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
