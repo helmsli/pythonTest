@@ -3,7 +3,12 @@
 
 
 #define  ARRAY_LENGTH_FOR_UNITE_BTS_RECORD 1024
-   
+
+FunBtsCdrparseEnd funBtsCdrparseEnd = 0;
+
+void setFunBtsCdrparseEnd(FunBtsCdrparseEnd c) {
+  funBtsCdrparseEnd = c;
+} 
 
 XS32 Fun(XS32 nSum, XS32 j)
 {
@@ -438,6 +443,7 @@ int BtsCDRmanager::ParseBtsCDR( char *FileName, char *sourceDir, char *desDir)
 		//sFinalRec = UniteRecord(record);
 		sFinalRec = UniteRecord(record, arrayForUnite, arrayLen);
 		//bstRecodrList.push_back(record);
+		if (funBtsCdrparseEnd) (*funBtsCdrparseEnd)();
 		fwrite(sFinalRec.c_str(), sFinalRec.length(), 1, wfp);
 	}
 	if (NULL != wfp)
@@ -452,4 +458,24 @@ int BtsCDRmanager::ParseBtsCDR( char *FileName, char *sourceDir, char *desDir)
 	}
 	return 0;
 }
+/*
+PyObject *BtsCDRmanager::setPyCallback(PyObject *dummy, PyObject *args)
+{
+    PyObject *result = NULL;
+    PyObject *temp;
 
+    if (PyArg_ParseTuple(args, "O:set_callback", &temp)) {
+        if (!PyCallable_Check(temp)) {
+            PyErr_SetString(PyExc_TypeError, "parameter must be callable");
+            return NULL;
+        }
+        Py_XINCREF(temp);         
+        Py_XDECREF(my_callback);  
+        my_callback = temp;       
+        // Boilerplate to return "None" 
+        Py_INCREF(Py_None);
+        result = Py_None;
+    }
+    return result;
+}
+*/

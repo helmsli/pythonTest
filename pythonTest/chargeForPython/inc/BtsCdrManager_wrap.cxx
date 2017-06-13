@@ -3012,8 +3012,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_XU32 swig_types[6]
 #define SWIGTYPE_p_XU8 swig_types[7]
 #define SWIGTYPE_p_char swig_types[8]
-static swig_type_info *swig_types[10];
-static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
+#define SWIGTYPE_p_f_void__void swig_types[9]
+static swig_type_info *swig_types[11];
+static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3119,6 +3120,11 @@ namespace swig {
 
 
 #include "BtsCDRmanager.h"
+typedef void (*FunBtsCdrparseEnd)(void);
+extern FunBtsCdrparseEnd funBtsCdrparseEnd;
+
+extern void setFunBtsCdrparseEnd(FunBtsCdrparseEnd c);
+extern void py_setFunBtsCdrparseEnd(PyObject *PyFunc);
 
 
 SWIGINTERN swig_type_info*
@@ -3255,6 +3261,30 @@ SWIGINTERNINLINE PyObject*
 {
   return PyInt_FromLong((long) value);
 }
+
+
+static PyObject *my_pycallback = NULL;
+static void PythonCallBack(void)
+{
+   PyObject *func, *arglist;
+   PyObject *result;
+
+   func = my_pycallback;     /* This is the function .... */
+   arglist = Py_BuildValue("()");  /* No arguments needed */
+   result =  PyEval_CallObject(func, arglist);
+   Py_DECREF(arglist);
+   Py_XDECREF(result);
+   return /*void*/;
+}
+
+void py_setFunBtsCdrparseEnd(PyObject *PyFunc)
+{
+    Py_XDECREF(my_pycallback);          /* Dispose of previous callback */
+    Py_XINCREF(PyFunc);         /* Add a reference to new callback */
+    my_pycallback = PyFunc;         /* Remember new callback */
+    setFunBtsCdrparseEnd(PythonCallBack);
+}
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -4178,6 +4208,47 @@ SWIGINTERN PyObject *SBtsChdFld_swigregister(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Py_Void();
 }
 
+SWIGINTERN int Swig_var_funBtsCdrparseEnd_set(PyObject *_val) {
+  {
+    int res = SWIG_ConvertFunctionPtr(_val, (void**)(&funBtsCdrparseEnd), SWIGTYPE_p_f_void__void);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""funBtsCdrparseEnd""' of type '""FunBtsCdrparseEnd""'"); 
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_funBtsCdrparseEnd_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewFunctionPtrObj((void *)(funBtsCdrparseEnd), SWIGTYPE_p_f_void__void);
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_setFunBtsCdrparseEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FunBtsCdrparseEnd arg1 = (FunBtsCdrparseEnd) 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:setFunBtsCdrparseEnd",&obj0)) SWIG_fail;
+  {
+    int res = SWIG_ConvertFunctionPtr(obj0, (void**)(&arg1), SWIGTYPE_p_f_void__void);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "setFunBtsCdrparseEnd" "', argument " "1"" of type '" "FunBtsCdrparseEnd""'"); 
+    }
+  }
+  setFunBtsCdrparseEnd(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_BtsCDRmanager(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   BtsCDRmanager *result = 0 ;
@@ -4277,6 +4348,21 @@ SWIGINTERN PyObject *BtsCDRmanager_swigregister(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_py_setFunBtsCdrparseEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:py_setFunBtsCdrparseEnd",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  py_setFunBtsCdrparseEnd(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"SBtsHead_uiLen_set", _wrap_SBtsHead_uiLen_set, METH_VARARGS, NULL},
@@ -4313,10 +4399,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_SBtsChdFld", _wrap_new_SBtsChdFld, METH_VARARGS, NULL},
 	 { (char *)"delete_SBtsChdFld", _wrap_delete_SBtsChdFld, METH_VARARGS, NULL},
 	 { (char *)"SBtsChdFld_swigregister", SBtsChdFld_swigregister, METH_VARARGS, NULL},
+	 { (char *)"setFunBtsCdrparseEnd", _wrap_setFunBtsCdrparseEnd, METH_VARARGS, NULL},
 	 { (char *)"new_BtsCDRmanager", _wrap_new_BtsCDRmanager, METH_VARARGS, NULL},
 	 { (char *)"delete_BtsCDRmanager", _wrap_delete_BtsCDRmanager, METH_VARARGS, NULL},
 	 { (char *)"BtsCDRmanager_ParseBtsCDR", _wrap_BtsCDRmanager_ParseBtsCDR, METH_VARARGS, NULL},
 	 { (char *)"BtsCDRmanager_swigregister", BtsCDRmanager_swigregister, METH_VARARGS, NULL},
+	 { (char *)"py_setFunBtsCdrparseEnd", _wrap_py_setFunBtsCdrparseEnd, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -4332,6 +4420,7 @@ static swig_type_info _swigt__p_XU16 = {"_p_XU16", "XU16 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_XU32 = {"_p_XU32", "XU32 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_XU8 = {"_p_XU8", "XU8 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_f_void__void = {"_p_f_void__void", "FunBtsCdrparseEnd|void (*)(void)", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_BtsCDRmanager,
@@ -4343,6 +4432,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_XU32,
   &_swigt__p_XU8,
   &_swigt__p_char,
+  &_swigt__p_f_void__void,
 };
 
 static swig_cast_info _swigc__p_BtsCDRmanager[] = {  {&_swigt__p_BtsCDRmanager, 0, 0, 0},{0, 0, 0, 0}};
@@ -4354,6 +4444,7 @@ static swig_cast_info _swigc__p_XU16[] = {  {&_swigt__p_XU16, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_XU32[] = {  {&_swigt__p_XU32, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_XU8[] = {  {&_swigt__p_XU8, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_f_void__void[] = {  {&_swigt__p_f_void__void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_BtsCDRmanager,
@@ -4365,6 +4456,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_XU32,
   _swigc__p_XU8,
   _swigc__p_char,
+  _swigc__p_f_void__void,
 };
 
 
@@ -5055,6 +5147,8 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
+  PyDict_SetItemString(md,(char *)"cvar", SWIG_globals());
+  SWIG_addvarlink(SWIG_globals(),(char *)"funBtsCdrparseEnd",Swig_var_funBtsCdrparseEnd_get, Swig_var_funBtsCdrparseEnd_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

@@ -1,3 +1,7 @@
+#ifndef BTSCDRMANAGER_H
+#define BTSCDRMANAGER_H
+
+
 #pragma once
 #include <stdio.h>  
 #include <string.h>
@@ -41,9 +45,15 @@ typedef struct SBtsChdFld
 
 #pragma pack(pop)
 
+typedef void (*FunBtsCdrparseEnd)(void);
+extern FunBtsCdrparseEnd funBtsCdrparseEnd;
+
+void setFunBtsCdrparseEnd(FunBtsCdrparseEnd c);
 
 class BtsCDRmanager
 {
+private:
+	
 protected:
 	
 	XVOID AdjustHead(SBtsHead &sHead);
@@ -66,4 +76,7 @@ public:
 	BtsCDRmanager();
 	~BtsCDRmanager();
 	int ParseBtsCDR(char *FileName, char *sourceDir, char *desDir);
+	//PyObject *setPyCallback(PyObject *dummy, PyObject *args);
+
 };
+#endif

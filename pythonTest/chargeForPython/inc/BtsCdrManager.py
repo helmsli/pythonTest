@@ -187,6 +187,10 @@ class SBtsChdFld(_object):
 SBtsChdFld_swigregister = _BtsCDRManager.SBtsChdFld_swigregister
 SBtsChdFld_swigregister(SBtsChdFld)
 
+
+def setFunBtsCdrparseEnd(c):
+    return _BtsCDRManager.setFunBtsCdrparseEnd(c)
+setFunBtsCdrparseEnd = _BtsCDRManager.setFunBtsCdrparseEnd
 class BtsCDRmanager(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, BtsCDRmanager, name, value)
@@ -207,7 +211,12 @@ class BtsCDRmanager(_object):
         return _BtsCDRManager.BtsCDRmanager_ParseBtsCDR(self, FileName, sourceDir, desDir)
 BtsCDRmanager_swigregister = _BtsCDRManager.BtsCDRmanager_swigregister
 BtsCDRmanager_swigregister(BtsCDRmanager)
+cvar = _BtsCDRManager.cvar
 
+
+def py_setFunBtsCdrparseEnd(PyFunc):
+    return _BtsCDRManager.py_setFunBtsCdrparseEnd(PyFunc)
+py_setFunBtsCdrparseEnd = _BtsCDRManager.py_setFunBtsCdrparseEnd
 # This file is compatible with both classic and new-style classes.
 
 
