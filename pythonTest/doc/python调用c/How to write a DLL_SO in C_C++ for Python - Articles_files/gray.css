@@ -1,0 +1,388 @@
+html {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #000000;
+	background-color: #CCCCCC;
+	background-image: url(../img/wolf3.gif);
+	background-attachment: fixed;
+	background-position: 100% 100%;
+	background-repeat: no-repeat;
+/*cursor: url(addon.gif), pointer;*/
+}
+
+
+div#menu {
+	text-align: center;
+	top: 10px;
+	margin: 0;
+	width: 146px;
+	position: absolute;
+	right: 5px;
+	padding: 0;
+	border: 1px solid #333333;
+}
+
+
+body > div#menu { position: fixed; }
+
+div#menu ul {
+	text-align: left;
+	width: 144px;
+	padding: 0;
+	margin: 4px 0px 4px 1px;
+	list-style-type: none;
+}
+
+
+div#menu ul li {
+	font-size: .9em;
+	padding: 0px 2px;
+	margin: 2px 3px;
+	color: #000000;
+	background-color: #BBBBBB;
+	border: 1px outset #000000;
+}
+div#menu ul li:hover {
+	border: 1px inset #000000;
+}
+
+
+div#menu ul li ul { width: 134px; }
+
+
+div#menu ul li ul li {
+	padding: 0px 2px;
+	margin: 1px 3px;
+	color: #000000;
+	background-color: #B9B9B9;
+	border: 1px outset #000000;
+}
+
+div#menu ul li ul li:hover {
+	color: #000000;
+	background-color: #B9B9B9;
+	border: 1px inset #000000;
+}
+div#menu ul li#css {
+	padding-bottom: 4px;
+	color: #000000;
+	background-color: #B9B9B9;
+}
+
+div#menu ul li#css ul {
+	display: none;
+}
+div#menu ul li#css ul li {
+	padding-bottom: 4px;
+}
+div#menu ul li#css ul li:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+div#menu ul li#css img {
+	float: left;
+	margin: 1px 5px;
+}
+div#menu ul li#css noscript {
+	display: none;
+}
+div#menu ul li#css noscript div {
+	padding: 3px;
+}
+div#menu ul li#css:hover noscript {
+	display: inline;
+}
+
+
+div#menu a:link, div#menu a:visited {
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	outline: none;
+	color: #000000;
+	background-color: inherit;
+	padding-bottom: 4px;
+}
+div#menu a:hover {
+	color: #000000;
+	background-color: inherit;
+	text-decoration: underline;
+}
+
+
+
+body#home {
+	max-width: 1050px;
+	margin: 0 auto;
+}
+
+
+div#page {
+	text-align: center;
+	margin-right: 160px;
+}
+
+div#page div#header {
+	display: none;
+}
+
+
+body#home div#page div.box {
+	height: 180px;
+}
+
+div#page div.box {
+	text-align: left;
+	color: inherit;
+	background-color: #BBBBBB;
+	border: 1px solid #000000;
+	padding: 5px;
+	margin: 2em 0 2.5em;
+}
+
+div#page div.warning {
+	text-align: left;
+	color: inherit;
+	background-color: #CCBBBB;
+	border: 1px solid red;
+	padding: .5em;
+	margin: 0 0 2.5em;
+	overflow: auto;
+}
+
+div#page div.box:hover {
+	color: inherit;
+	background-color: #C0C0C0;
+}
+
+div#page div.box img.homeicon {
+	float:left;
+	margin: 1em 2em;
+}
+body#notfound img {
+	float:left;
+	margin: 1em 2em;
+}
+body#notfound h1 {
+	background-color: #FFCC33;
+}
+
+div#page div.box ul {
+	list-style-type: square;
+}
+body#home div#page div.box ul {
+	margin-left: 12em;
+}
+
+
+strong.err {
+	color: #FF0000;
+	background-color: inherit;
+}
+
+strong.warn {
+	color: #FF6600;
+	background-color: inherit;
+}
+
+div#page a:link, div#page a:visited {
+	color: #000000;
+	background-color: inherit;
+	text-decoration: none;
+	border-bottom: 1px dotted #000;
+}
+
+div#page a:hover, div#page a:focus {
+	color: #0000FF;
+	background-color: inherit;
+	border-bottom: 1px dashed #0000FF;
+}
+
+div#page a:active {
+	color: #0000FF;
+	background-color: #CCCCCC;
+	border-bottom: 1px solid #0000FF;
+}
+
+
+
+div#page h1 {
+	font-weight: bold;
+	font-size: 18px;
+	color: inherit;
+	background-color: #00FF66;
+	padding: 5px;
+	border: 1px solid #333333;
+}
+
+
+div#page h2 {
+	font-size: 100%;
+	font-weight: bold;
+	text-align: left;
+	width: 180px;
+	color: inherit;
+	background-color: #00AAFF;
+	border: 1px solid #000000;
+	border-bottom: 1px dotted black;
+	margin: -34px 0 0 -6px;
+	margin-bottom: -1px;
+	position: relative;
+	padding: 4px;
+}
+
+div#page div.box h2 a:link,
+div#page div.box h2 a:visited {
+	display: block;
+	padding: 4px;
+	margin: -4px -4px -5px;
+}
+
+
+div#page div.box h2 a:hover,
+div#page div.box h2 a:focus,
+div#page div.box h2 a:active {
+	color: #000000;
+	background-color: #00CCFF;
+	border-bottom: 1px solid #000000;
+	outline: none;
+}
+
+
+body#articles div#page h2,
+body#talks div#page h2 {
+    width: 22em;
+}
+
+body#flickr object {
+    display: block;
+    margin: 1em auto;
+}
+
+p#licence {
+	padding: .3em .3em .45em;
+	margin-bottom: .1em;
+	text-align:center;
+	background-color: #ACACAC;
+	border: 1px solid black;
+}
+
+
+body#addons > div#page div.box {
+	position: relative;
+}
+body#addons > div#page div.box ul.addon {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	list-style-type: none;
+	margin: 0;
+	margin-right: 21px;
+}
+body#addons > div#page div.box ul.addon li {
+	float: left;
+	margin-right: -21px;
+}
+body#addons > div#page div.box ul.addon li a:link,
+body#addons > div#page div.box ul.addon li a:visited {
+	display:block;
+	height: 19px;
+	width: 85px;
+	margin:0;
+	padding-left: 25px;
+	padding-top: 3px;
+	color: #000000;
+	background-color: inherit;
+	background-image: url(../img/addon-bg.gif);
+	text-decoration: none;
+}
+
+body#addons > div#page div.box ul.addon li a:hover,
+body#addons > div#page div.box ul.addon li a:active,
+body#addons > div#page div.box ul.addon li a:focus {
+	border: none;
+	color: blue;
+	text-decoration: underline;
+	background-color: inherit;
+	background-position: -112px;
+
+}
+
+div#footer {
+	text-align: center;
+	margin-right: 160px;
+	margin-top: 20px;
+}
+div#footer a {
+	text-decoration: none;
+	outline: none;
+}
+div#footer a:active {
+	text-decoration: none;
+	border: none;
+}
+
+
+img {
+	border: none;
+	overflow: scroll;
+}
+
+code {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 1.15em;
+}
+
+dfn {
+	font-style: normal;
+	border-bottom: 1px dashed #777777;
+	cursor: help;
+}
+abbr, acronym {
+	cursor: help;
+}
+q, blockquote {
+	font-style: italic;
+}
+cite {
+	font-size: 0.9em;
+	font-style: normal;
+	text-transform: uppercase;
+}
+
+hr {
+	border-style: solid;
+	border-color: #333333;
+	border-width: 1px 0 0;
+	margin: 15px 0;
+	height: 1px;
+}
+
+
+
+
+fieldset {
+	text-align: left;
+	color: inherit;
+	background-color: #222222;
+	border: 1px solid #0033FF;
+}
+legend {
+	color: #00CC00;
+	background-color: #222222;
+	border: 1px solid #0033FF;
+	padding: 2px 6px;
+	margin-left: 4px;
+}
+input.button {
+	color: #00CC00;
+	background-color: #444444;
+	cursor: pointer;
+	margin: 10px 6px;
+	padding: 2px;
+	border: 1px solid;
+	border-color: #0000FF #000099 #000099 #0000FF;
+}
+input.radio {
+	margin-top: 10px;
+}

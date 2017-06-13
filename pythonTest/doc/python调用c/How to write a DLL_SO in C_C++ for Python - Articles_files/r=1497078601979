@@ -1,0 +1,317 @@
+
+// *** Base
+
+var avadv = window.avadv || {
+	num: 0,
+	list: [],
+	ord: Math.floor(Math.random()*10000000000),
+	weights: {'728x90':10,'120x600':10,'300x250':10,'980x50':10,'468x60':3,'125x125':1,'120x120':1},
+	noMobile: {'728x90':1,'120x600':1,'468x60':1,'125x125':1,'160x600':1,'0x0':1,'980x50':1,'6x6':1,'2x2':1},
+	alias: {'980x50':'728x90'},
+	keys: ['google_color_border','google_color_bg','google_color_link','google_color_url','google_color_text','google_color_features'],
+	crtg: [
+		{ n: "crtg", nid: "281", cn: "bnz_rtt", vn: "crtg_content", v: null },
+		{ n: "crtg_bnzm", nid: "2972", cn: "crtg_rta_bnzm", vn: "crtg_content_bnzm", v: null },
+	],
+	unique: (new Date()).valueOf(),
+	sz: {}, ts: {}, ads: {}, ads_c: 0,
+	krux: null, expert: null,
+	krux_r: function(n) {
+		var m, k = 'kx'+n;
+		if (window.localStorage) return window.localStorage[k] || "";
+		if (navigator.cookieEnabled) {m = document.cookie.match(k+'=([^;]*)'); return (m && unescape(m[1])) || ""; }
+		return '';
+	},
+	call: function(n) {
+		var d = avadv.list[n-1];
+		if (d.error) return;
+
+		avadv.expert = window.ADX_label || "ADX_E_default";
+
+		var foo;
+		for (var i = 0; i < avadv.crtg.length; i++) {
+			if (window[avadv.crtg[i].vn]) {
+				avadv.crtg[i].v = window[avadv.crtg[i].vn];
+				sessionStorage.setItem(avadv.crtg[i].n, (new Date().valueOf())+":"+avadv.crtg[i].v);
+			} else if (foo = sessionStorage.getItem(avadv.crtg[i].n)) {
+				avadv.crtg[i].v = foo.split(/:/)[1];
+			} else {
+				avadv.crtg[i].v = "";
+			}
+		}
+
+		d.dart_z = (window.av_dart_z || "circuiti");
+		d.size_alt = (window.av_size_alt || "");
+		d.rich_arg = (window.av_rich_arg || "");
+		d.ad_query = (window.av_ad_query || "");
+
+		if (avadv.deviceDetect() == "smartphone" && avadv.noMobile[d.size]) {
+			d.mode = -1;
+			return;
+		} else if (!d.uberTrusted) {
+			if (avadv.expert.search(/BrandProtection(Soft|Hard)/) > -1 && d.group != 88) {
+				d.mode = -1;
+				return;
+			}
+		}
+
+		if (d.mode == 0) {
+			if (d.callback) d.callback(d);
+		} else if (d.mode == 2) {
+
+			var sizes = [[d.w, d.h]];
+			if (d.size_alt) {
+				if (d.size_alt[0] instanceof Array) {
+					for (var j = 0; j < d.size_alt.length; j++) sizes.push(d.size_alt[j]);
+				} else {
+					sizes.push(d.size_alt);
+				}
+			}
+
+			var slot;
+			if (d.oop) {
+				slot = googletag.defineOutOfPageSlot('/4758/altervista/'+d.dart_z, 'avadv-gpt-'+n).addService(googletag.pubads());
+			} else {
+				slot = googletag.defineSlot('/4758/altervista/'+d.dart_z, sizes, 'avadv-gpt-'+n).addService(googletag.pubads());
+			}
+
+			slot
+			.set("page_url", window.location.href)
+			.setTargeting("av_group", d.group)
+			.setTargeting("av_adsense_flag", d.adsense_flag)
+			.setTargeting("avadv_pushdown", window.avadv_pushdown?1:0)
+			.setTargeting("sz", d.size+d.size_alt)
+			.setTargeting("pos", "top")
+			.setTargeting("tile", i)
+			.setTargeting("ADX", avadv.expert)
+			.setTargeting("kuid", avadv.krux.u)
+			.setTargeting("ksg", avadv.krux.s.join(','))
+			.setTargeting("ord", avadv.ord)
+			.setTargeting("altervistauser", d.user);
+
+			for (var i = 0; i < avadv.crtg.length; i++) {
+				foo = avadv.crtg[i].v.split(/[;=]/);
+				for (var j = 0; j < foo.length; j+=2) if (foo[j]) {
+					slot.setTargeting(foo[j], foo[j+1]);
+				}
+			}
+
+			if (d.rich_arg) {
+				var m = d.rich_arg.split(/=/);
+				slot.setTargeting(m[0], m[1]);
+			}
+
+			if (d.ppc) slot.setTargeting("click", "http://"+d.dom+"/click.pl/"+d.ad_query);
+
+			googletag.pubads().enableSyncRendering();
+			googletag.enableServices();
+
+		} else {
+
+			window.ord = avadv.ord;
+			window.av_dart_z = d.dart_z;
+			window.tilenum = d.i;
+			window.av_size = d.size;
+			window.av_size_alt = d.size_alt;
+			window.av_rich_arg = d.rich_arg;
+			window.av_remote_addr = d.dom;
+			window.av_extra = window.av_click+window.av_ref_call+';av_group='+d.group+';av_adsense_flag='+d.adsense_flag+";avadv_pushdown="+(window.avadv_pushdown?1:0)+";"+avadv.krux.q;
+
+			if (d.mode == 11 || d.mode == 12) {
+				document.write('<s'+'cript type="text/javascript" src="http://ad.it.doubleclick.net/N4758/adj/altervista/'+d.dart_z+';tile='+d.i+av_extra+';'+avadv.crtg[0].v+';sz='+d.size+d.size_alt+';pos=top;'+d.rich_arg+'adx='+avadv.expert+';ord='+avadv.ord+'"><\/scr'+'ipt>');
+			}
+		}
+
+		// Track
+		var f = document.getElementById("avadv-"+i);
+		var p = f;
+		while (p) {
+			d.x += p.offsetLeft;
+			d.y += p.offsetTop;
+			p = p.offsetParent;
+		}
+		if (console) console.info("av-adv#%d: %s %s %dx%d", i, d.size, d.mode, d.x, d.y);
+
+		d.args = [
+			"av_u="+d.user,
+			"avadv=1",
+			"expert="+avadv.expert,
+			"crtg="+avadv.crtg[0].v,
+			"avadv_cnt="+d.i,
+			"ac="+d.dart_z,
+			"sz="+screen.width+"x"+screen.height,
+		];
+		for (var k in avadv.keys) if (window[avadv.keys[k]]) d.args.push(avadv.keys[k]+'='+window[avadv.keys[k]]);
+		for (var k in window) if (k.search(/^avadv_\w+$/) == 0) d.args.push(k+'='+window[k]);
+
+		if ((typeof window.av_confirm == "undefined") || window.av_confirm === null || window.av_confirm) avadv.track(d);
+		window.av_confirm = null;
+	},
+	track: function(d) {
+		if (typeof d == "number") d = avadv.list[d-1];
+		if (!d.tracked) {
+			var f = document.getElementById("avadv-"+d.i);
+			f.src = "//"+d.dom+"/iframe.ad/"+d.ipc+"/x="+d.x+"/y="+d.y+"/f="+(window.parent == window.self ? 0 : 1)+"/pe=0/"+d.args.join("/");
+			if (d.mode == 1) {
+				f.setAttribute("width", d.w);
+				f.setAttribute("height", d.h);
+				f.style.width = d.w+"px";
+				f.style.height = d.h+"px";
+				f.style.display = "";
+			}
+			d.tracked = true;
+		}
+	},
+	load: function(d) {
+		// *** Krux
+		var v = [], s;
+		var u = avadv.krux_r('user');
+		var segments = avadv.krux_r('segs') ? avadv.krux_r('segs').split(',') : [];
+		for (var i = 0; i < segments.length; i++) v.push('ksg=' + segments[i]);
+		avadv.krux = { q: "kuid="+u+";"+(v.length ? v.slice(0, 224).join(';') + ';' : ''), s: segments, u: u};
+
+		// *** Expert
+		var ADX_key = "69abaf6b2f7ca5773c43d4f4659194c6e187d375e984ac967929bcd50f0670bc";
+		var ADX_urlpage = document.location;
+		var ADX_tag = d.group+"_"+d.size;
+		var ADX_urlcall = "http://admantx-cluster-nlb-eu-2071973585.eu-west-1.elb.amazonaws.com/admantx/service?request=";
+		var ADX_query = encodeURIComponent('{ tag:"'+ADX_tag+'", key:"'+ADX_key+'",method:"descriptor",filter:"default",decorator:"template.altervista",type:"URL",mode:"async",body:"'+ADX_urlpage+'",custom1:"'+avadv.krux.u+'"}');
+		document.write('<script src="'+ADX_urlcall+ADX_query+'"></script>');
+
+		// *** Criteo
+		if (typeof sessionStorage == "undefined") window.sessionStorage = {getItem: function() {return null}, setItem: function() {}};
+		var foo;
+		for (var i = 0; i < avadv.crtg.length; i++) {
+			var crtg = avadv.crtg[i];
+			if (foo = sessionStorage.getItem(crtg.n)) if (new Date().valueOf() - foo.split(/:/)[0] > 15000) sessionStorage.removeItem(crtg.n);
+			var crtg_url = location.protocol+'//rtax.criteo.com/delivery/rta/rta.js?netId='+escape(crtg.nid)
+				+ '&cookieName='+escape(crtg.cn)
+				+ '&rnd='+Math.floor(Math.random()*99999999999)
+				+ '&varName=' + escape(crtg.vn);
+			try { sessionStorage.setItem(crtg.n, (new Date().valueOf())+':'); } catch (e) { /* nothing */ }
+			document.write('<script type="text/javascript" src="'+crtg_url+'"></script>');
+		}
+	},
+	iframe: function(d, u) {
+		if (u) {
+			document.writeln('<'+'iframe id="avadv-'+d.i+'" src="'+u+'" width='+d.w+' height='+d.h+' marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="width:'+d.w+'px;height:'+d.h+'px;border:0px"><'+'/iframe>');
+		} else {
+			document.writeln('<'+'iframe id="avadv-'+d.i+'" width=0 height=0 marginwidth=0 marginheight=0 frameborder=0 scrolling="no" style="width:0px;height:0px;border:0px;display:block"><'+'/iframe>');
+		}
+	},
+	push: function(w,h,u,o,d,i,g,m,p,a) {
+		var d = {
+			i: ++avadv.num,
+			error: false,
+			w: w,
+			h: h,
+			x: 0,
+			y: 0,
+			user: u,
+			ostr: o,
+			dom: d,
+			ipc: i,
+			size: w+"x"+h,
+			group: g,
+			mode: m,
+			adsense_flag: a,
+			tracked: false,
+			ppc: (p?true:false),
+			oop: false,
+			trusted: false,
+			uberTrusted: false
+		};
+		d.real = (avadv.alias[d.size] || d.size);
+
+		window.av_post = null;
+
+		avadv.list.push(d);
+
+		if (d.mode == 3) {
+			if (!avadv.ads[d.size]) {
+				avadv.ads[d.size] = 1;
+				++avadv.ads_c;
+			}
+			if (avadv.ads_c > 3) {
+				d.error = true;
+				avadv.iframe(d, '//it.altervista.org/adv/banner-error.html?m=016&s='+d.size.toUpperCase());
+				console.info("av-adv#%d: %s %s E016", d.i, d.size, d.mode);
+			}
+		} else {
+			var sz = d.real+'_'+d.ostr;
+			avadv.sz[sz] = avadv.sz[sz] || 0;
+			++avadv.sz[sz];
+
+			var ts = d.ostr;
+			if (avadv.sz[sz] == 1) {
+				avadv.ts[ts] = avadv.ts[ts] || 0;
+				avadv.ts[ts] += (avadv.weights[d.real] || 0);
+			}
+
+			if (avadv.sz[sz] > 2) {
+				d.error = true;
+				avadv.iframe(d, '//it.altervista.org/adv/banner-error.html?m=012&s='+d.size.toUpperCase());
+				console.info("av-adv#%d: %s %s E012", d.i, d.size, d.mode);
+			} else if (avadv.ts[ts] > 24) {
+				d.error = true;
+				avadv.ts[ts] -= avadv.weights[d.real];
+				avadv.sz[sz] = undefined;
+				avadv.iframe(d, '//it.altervista.org/adv/banner-error.html?m=013&s='+d.size.toUpperCase());
+				console.info("av-adv#%d: %s %s E013", d.i, d.size, d.mode);
+			}
+		}
+
+		if (!d.error) {
+			avadv.iframe(d);
+			if (avadv.list.length == 1) avadv.load(d);
+		}
+	},
+	setCallback: function(f) {
+		avadv.list[avadv.num-1].callback = f;
+	},
+	merge: function(v) {
+		var l = avadv.list[avadv.list.length-1];
+		for (var i in v) l[i] = v[i];
+	},
+	deviceDetect: function() {
+		var w = screen.width, h = screen.height, a = navigator.userAgent;
+
+		var m = a.match(/\S+ \((.+?)\)/);
+		var s = m[1].split(';');
+
+		var t;
+		if (s[0].search(/WindowsNT|Macintosh|X11|FreeBSD/) > -1) {
+			t = 'desktop';
+		} else if (s[0].search(/iPhone|iPod|Symbian|Tizen|BlackBerry|Bada|Maemo|MeeGo|S60|Series40|Series60|J2ME\/MIDP|Nintendo|WindowsMobile/) > -1) {
+			t = 'smartphone';
+		} else if (s[0].search(/iPad/) > -1) {
+			t = 'tablet';
+		} else if (s[0].search(/Android|Mobile|WindowsPhone/) > -1 || (s[0].search(/Linux/) > -1 && s[1].search(/Android/) > -1)) {
+			if (s[1].search(/Table/) > -1) {
+				t = 'tablet';
+			} else if (s[1].search(/Mobile/) > -1) {
+				t = 'smartphone';
+			} else if (w < 550) {
+				t = 'smartphone';
+			} else if (w > 1024) {
+				t = 'desktop';
+			} else {
+				t = 'tablet';
+			}
+		} else {
+			t = 'desktop';
+		}
+
+		return t;
+	}
+}
+
+window.av_dfp = window.av_size_alt = null;
+
+// *** Push
+
+avadv.push(728, 90, "wolfprojects", "4194303", "st25.altervista.org", 974941145, 93, 1, 0, 0);
+
+// *** iFrame
+
+document.write('<script>\navadv.call('+avadv.num+');\n</script>');

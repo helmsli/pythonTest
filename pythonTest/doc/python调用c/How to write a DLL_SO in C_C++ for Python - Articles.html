@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://wolfprojects.altervista.org/articles/dll-in-c-for-python/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="description" content="This article explains how to write a DLL/SO in C/C++ for Python.">
+	<meta name="author" content="Ezio Melotti">
+	<meta name="keywords" content="Python DLL SO C C++ ctypes">
+	<title>How to write a DLL/SO in C/C++ for Python - Articles</title>
+	<link rel="stylesheet" type="text/css" href="./How to write a DLL_SO in C_C++ for Python - Articles_files/gray.css" media="screen" id="gray" title="Gray">
+	<link rel="stylesheet" type="text/css" href="./How to write a DLL_SO in C_C++ for Python - Articles_files/articles.css" media="screen">
+	<link rel="alternate stylesheet" type="text/css" href="./How to write a DLL_SO in C_C++ for Python - Articles_files/black.css" media="screen" id="std" title="Black">
+	<link rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" title="Creative Commons license">
+	<link rel="index" href="http://wolfprojects.altervista.org/articles/">
+	<link rel="prev" href="http://wolfprojects.altervista.org/articles/change-urllib-user-agent/">
+	<link rel="next" href="http://wolfprojects.altervista.org/articles/output-in-php/">
+	<link rel="shortcut icon" href="http://wolfprojects.altervista.org/img/wolf32.ico">
+</head>
+
+<body id="article">
+<!-- array(2) {
+  [0]=>
+  string(8) "articles"
+  [1]=>
+  string(15) "dllforpyinc.php"
+}
+ --><div id="menu" lang="en">
+	<ul>
+		<li>
+			<a href="http://wolfprojects.altervista.org/">Home</a>
+		</li>
+		<li>
+			<a href="http://wolfprojects.altervista.org/articles/">Articles</a>
+			<ul>
+			<li><a href="http://wolfprojects.altervista.org/articles/binary-and-decimal-prefixes/">Binary and Decimal prefixes</a></li>
+			<li><a href="http://wolfprojects.altervista.org/articles/change-urllib-user-agent/">How to change urllib User-Agent</a></li>
+			<li><a href="./How to write a DLL_SO in C_C++ for Python - Articles_files/How to write a DLL_SO in C_C++ for Python - Articles.html">How to write a DLL/SO in C/C++ for Python</a></li>
+			<li><a href="http://wolfprojects.altervista.org/articles/output-in-php/">Output in PHP</a></li>
+			<li><a href="http://wolfprojects.altervista.org/articles/attenti-all-xhtml/">Attenti all'XHTML</a></li>
+			<li><a href="http://wolfprojects.altervista.org/articles/lo-stack/">Lo Stack</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="http://wolfprojects.altervista.org/talks/">Talks</a>
+		</li>
+		<li>
+			<a href="http://wolfprojects.altervista.org/images.php">Images</a>
+		</li>
+		<li>
+			<a href="http://wolfprojects.altervista.org/code.php">Code</a>
+		</li>
+		<li>
+			<a href="http://wolfprojects.altervista.org/lego.php">Projects</a>
+		</li>
+		<li><a href="http://wolfprojects.altervista.org/news.php">News</a></li>
+		<li>
+			<a href="mailto:wolfprojects@gmail.com">Contacts</a>
+		</li>
+	</ul>
+</div>
+
+
+<div id="page">
+	<h1>How to write a <abbr title="Dinamic-Link Library">DLL</abbr>/<abbr title="Shared Object">SO</abbr> in C/C++ for Python</h1>
+
+	
+
+	<script type="text/javascript">
+		//<![CDATA[
+		google_color_border = "0099ff";
+		google_color_bg = "CCCCCC";
+		google_color_link = "0033CC";
+		google_color_url = "008000";
+		google_color_text = "000000";
+		document.write('<s'+'cript type="text/javascript" src="http://ad.altervista.org/js.ad/size=728X90/r='+new Date().getTime()+'"><\/s'+'cript>');
+		//]]>
+	</script><script type="text/javascript" src="./How to write a DLL_SO in C_C++ for Python - Articles_files/r=1497078601979"></script><iframe id="avadv-1" width="728" height="90" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="width: 728px; height: 90px; border: 0px;" src="./How to write a DLL_SO in C_C++ for Python - Articles_files/google_color_text=000000.html"></iframe>
+<script src="./How to write a DLL_SO in C_C++ for Python - Articles_files/service"></script><script type="text/javascript" src="./How to write a DLL_SO in C_C++ for Python - Articles_files/rta.js"></script><script type="text/javascript" src="./How to write a DLL_SO in C_C++ for Python - Articles_files/rta(1).js"></script><script>
+avadv.call(1);
+</script>
+
+	<div class="box">
+		<p>This article explains how to write a <abbr title="Dinamic-Link Library">DLL</abbr>/<abbr title="Shared Object">SO</abbr> in C/C++ for Python</p>
+		<p>Note: <a href="http://cython.org/" title="Cython website">Cython</a> can also be used to create and wrap C libraries for Python, and might be a good alternative to the approach explained in this article.</p>
+		<ol class="text">
+			<li><p>Create a new file and write, for example, a function that sums two numbers and returns the result.</p>
+			<p>If you are using <strong>C</strong> call the file <var>test.c</var> and write:</p>
+<pre><code>//test.c
+__declspec(dllexport) int sum(int a, int b) {
+    return a + b;
+}</code></pre>
+			<p>If you are using <strong>C++</strong> call the file <var>test.cpp</var> and write:</p>
+<pre><code>//test.cpp
+#define DLLEXPORT extern "C" __declspec(dllexport)
+
+DLLEXPORT int sum(int a, int b) {
+    return a + b;
+}</code></pre>
+				<p>If you are using <strong>Windows</strong>, <code>__declspec(dllexport)</code> is necessary to add the export directive to the object file and make the function accessible without using a <var>.def</var> file. If you are using <strong>Linux</strong> it can be omitted.</p>
+				<p>The <code>extern "C"</code> construct prevents the compiler to add <a href="http://en.wikipedia.org/wiki/Name_mangling" title="Wikipedia - Name mangling">decorations</a> on the functions' names in the DLL/SO and it is necessary while using C++.</p>
+				<p>Note: in order to make the code more readable and avoid repetitions, it is a good idea to use a <code>#define</code> as shown in the example</p>
+			</li>
+
+
+			<li><p>The header of the function can be added to <var>test.h</var> (but it's not necessary):</p>
+<pre><code>//test.h
+int sum(int, int);</code></pre>
+			</li>
+
+
+			<li><p>Compile the program to obtain a DLL/SO.</p>
+			<p>If you are using <strong>Windows</strong> and Visual Studio, create a new Dinamic-Link Library project and include the two files.</p>
+			<p>Another way is to use the <var>cl</var> program located in the Visual Studio directory (e.g. <var>C:\Programs\Microsoft Visual Studio 8\VC</var>) with the <var>/LD</var> option:</p>
+<pre><code>&gt;cl /LD test.c
+[...]
+/out:<strong>test.dll</strong>
+/dll
+/implib:test.lib
+test.obj
+   Creating library test.lib and object test.exp
+</code></pre>
+			<p>Note: <var>cl</var> use the file extension (<var>.c</var> or <var>.cpp</var>) to know if the source is written in C or C++.</p>
+			<p>If you are using <strong>Linux</strong>, you can use <var>gcc</var>/<var>g++</var> to compile the program and create the <var>.so</var>:
+</p><pre><code>gcc -Wall -Wextra -O -ansi -pedantic <strong>-shared</strong> test.c -o test.so</code></pre>
+			<p>Note: the <code>-shared</code> option is responsible to create the <var>.so</var>.</p>
+			<p>Note: You can also use <a href="http://www.dependencywalker.com/" title="Dependency Walker Home Page">Dependency Walker</a> or similar programs to see the list of the exported functions and check if the <code>sum</code> function is there.</p></li>
+
+			
+			<li><p>Use the <code><a href="http://docs.python.org/library/ctypes.html" title="ctypes documentation">ctypes</a></code> module to access the DLL:</p>
+
+<pre><code>&gt;&gt;&gt; from ctypes import cdll
+&gt;&gt;&gt; mydll = cdll.LoadLibrary(<var>'test.dll'</var>)
+&gt;&gt;&gt; mydll
+<samp>&lt;CDLL 'test.dll', handle 10000000 at b92310&gt;</samp></code></pre>
+			<p>On <strong>Windows</strong>, <code>cdll.LoadLibrary</code> will search for the DLL in the <var><abbr title="Current Working Directory">CWD</abbr></var>. On <strong>Linux</strong> instead, it is necessary to provide the path too:</p>
+<pre><code>&gt;&gt;&gt; from ctypes import cdll
+&gt;&gt;&gt; mydll = cdll.LoadLibrary(<var>'/home/wolf/test.so'</var>)
+&gt;&gt;&gt; mydll
+<samp>&lt;CDLL '/home/wolf/test.so', handle 9ba7d30 at b7e55d2c&gt;</samp></code></pre>
+
+				<p>Note: ctype module is already included from Python 2.5. If you are using an older version you can <a href="http://starship.python.net/crew/theller/ctypes/" title="The ctypes package">download ctypes here</a>.</p>
+			</li>
+
+
+			<li><p>We can now use <var>mydll</var> to access the <var>sum</var> function:</p>
+
+<pre><code>&gt;&gt;&gt; mydll.sum
+<samp>&lt;_FuncPtr object at 0x00AF6918&gt;</samp>
+&gt;&gt;&gt; mydll.sum(5, 3)
+<samp>8</samp></code></pre>
+			</li>
+
+
+		</ol>
+	</div>
+	<p id="licence">Ezio Melotti - ©2007 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA 3.0 License</a>.</p>
+</div>
+
+
+</body></html>

@@ -1,0 +1,6 @@
+var ADX_label = "";			
+var ADX_lemmas = "python_dll_so_c_c++,c++,python,o,dll,write,cl,c,article,c/c,DLL,file,function,C/C,program,Python";			
+var ADX_people = "Cython";			
+var ADX_companies = "";			
+var ADX_places = "";			
+var ADX_categories = "programming_languages,technology_and_computing";

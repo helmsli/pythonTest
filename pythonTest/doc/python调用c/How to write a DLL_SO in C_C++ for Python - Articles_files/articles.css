@@ -1,0 +1,63 @@
+body#article h2 {
+	width: auto;
+	border: none;
+	border-bottom: 1px dashed black;
+	color: inherit;
+	background-color: inherit;
+	font-size: 140%;
+	float: none;
+	margin: 1.5em .5em 0;
+	padding: 0 0 .1em;
+}
+body#article p {
+	margin: 1em .5em;
+}
+div#page pre, div#page div.math {
+	color: #000000;
+	background-color: #AAAAAA;
+	padding: .5em;
+	border: 1px dashed #000000;
+	margin: 1em;
+	overflow: auto;
+}
+div#page ul pre, div#page ol pre {
+	margin-left: 0;
+}
+div#page ul.text li, div#page ol.text li {
+	margin-bottom: 1.5em;
+}
+div#page pre code {
+	font-size: 1em;
+}
+div#page pre code samp {
+	color: #006633;
+	background-color: inherit;
+}
+div#page code var, div#page div.math var {
+	font-style: italic;
+	color: #0000CC;
+	background-color: inherit;
+}
+div#page div.math var {
+	font-style: normal;
+}
+
+div#page div.math p {
+	margin: 0;
+}
+div#page div.math p+p {
+	margin-top: 1em;
+}
+/* outupinphp.php */
+div#page span.php {
+	color: #CC0000;
+	background-color: inherit;
+}
+
+/* stack.php */
+div.img {
+	font-weight: bold;
+	text-align: center;
+	overflow: auto;
+	margin-top: 1em;
+}
