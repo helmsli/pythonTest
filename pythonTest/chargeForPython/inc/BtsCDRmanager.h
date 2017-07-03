@@ -10,7 +10,7 @@
 #include "btsChargeCommon.h"
 #include <list>
 #pragma pack(push, 1)
-
+using namespace std;
 // 消息头结构
 typedef struct SBtsHead
 {
@@ -44,6 +44,12 @@ typedef struct SBtsChdFld
 
 
 #pragma pack(pop)
+
+//定义基站文件处理记录回调函数
+typedef void (*FunBtsProcessCallback)(char *);
+extern FunBtsProcessCallback funBtsProcessCallback;
+void setFunBtsProcessCallback(FunBtsProcessCallback c);
+
 
 typedef void (*FunBtsCdrparseEnd)(void);
 extern FunBtsCdrparseEnd funBtsCdrparseEnd;

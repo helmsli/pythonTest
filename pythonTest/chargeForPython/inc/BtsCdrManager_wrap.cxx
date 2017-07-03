@@ -3012,9 +3012,10 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_XU32 swig_types[6]
 #define SWIGTYPE_p_XU8 swig_types[7]
 #define SWIGTYPE_p_char swig_types[8]
-#define SWIGTYPE_p_f_void__void swig_types[9]
-static swig_type_info *swig_types[11];
-static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
+#define SWIGTYPE_p_f_p_char__void swig_types[9]
+#define SWIGTYPE_p_f_void__void swig_types[10]
+static swig_type_info *swig_types[12];
+static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3120,6 +3121,14 @@ namespace swig {
 
 
 #include "BtsCDRmanager.h"
+#include <iostream>
+/*define the callback function*/
+typedef void (*FunBtsProcessCallback)(char *);
+extern FunBtsProcessCallback funBtsProcessCallback;
+extern void setFunBtsProcessCallback(FunBtsProcessCallback c);
+extern void py_setFunBtsProcessCallback(PyObject *PyFunc);
+
+/*define the callback function for end*/
 typedef void (*FunBtsCdrparseEnd)(void);
 extern FunBtsCdrparseEnd funBtsCdrparseEnd;
 
@@ -3263,13 +3272,81 @@ SWIGINTERNINLINE PyObject*
 }
 
 
-static PyObject *my_pycallback = NULL;
-static void PythonCallBack(void)
+/* for callback of record*/
+static PyObject *pyFunBtsProcessCallbackPtr = NULL;
+
+/*
+static void pyFunBtsProcessCallback(char * record)
+{
+   PyObject *func, *arglist;
+   PyObject *result;
+   cout<< "call pyFunBtsProcessCallback:" <<record<<endl;
+   func = pyFunBtsProcessCallbackPtr;    
+   arglist = Py_BuildValue("s",record);  
+   result =  PyEval_CallObject(func, arglist);
+   Py_DECREF(arglist);
+   Py_XDECREF(result);
+   return ;
+}
+*/
+
+static void pyFunBtsProcessCallback(char *record)
+{
+PyObject* pArgs = NULL;
+PyObject* pRetVal = NULL;
+int    nRetVal = 0;
+
+pArgs = Py_BuildValue("(s)", record);
+pRetVal = PyEval_CallObject(pyFunBtsProcessCallbackPtr, pArgs);
+if (pRetVal)
+{
+   fprintf(stderr, "PyEval_CallObject : ok \r\n");
+   nRetVal = PyInt_AsLong(pRetVal);
+   fprintf(stderr, "PyEval_CallObject : return : %d \r\n", nRetVal);
+}
+Py_DECREF(pArgs);
+Py_DECREF(pRetVal);
+return;
+}
+
+/*
+void py_setFunBtsProcessCallback(PyObject *PyFunc)
+{
+    Py_XDECREF(pyFunBtsProcessCallbackPtr);   
+    Py_XINCREF(PyFunc);         
+    pyFunBtsProcessCallbackPtr = PyFunc;  
+	cout<< "call pyFunBtsProcessCallback:" <<record<<endl;
+    setFunBtsProcessCallback(pyFunBtsProcessCallback);
+}
+*/
+void
+py_setFunBtsProcessCallback(PyObject *dummy, PyObject *args)
+{
+	PyObject *temp = NULL;
+
+	if (PyArg_ParseTuple(args, "O:set_callback", &temp)) {
+		if (!PyCallable_Check(temp)) {
+			PyErr_SetString(PyExc_TypeError, "parameter must be callable");
+		}
+		Py_XINCREF(temp);         /* Add a reference to new callback */
+		Py_XDECREF(pyFunBtsProcessCallbackPtr); /* Dispose of previous callback */
+		pyFunBtsProcessCallbackPtr = temp;       /* Remember new callback */
+		setFunBtsProcessCallback(pyFunBtsProcessCallback);
+	}
+
+	//return Py_BuildValue("l", (pyFunBtsProcessCallbackPtr == NULL) ? 0 : 1);
+}
+
+
+
+/* for end*/
+static PyObject *my_pycallbackend = NULL;
+static void PythonCallBackEnd(void)
 {
    PyObject *func, *arglist;
    PyObject *result;
 
-   func = my_pycallback;     /* This is the function .... */
+   func = my_pycallbackend;     /* This is the function .... */
    arglist = Py_BuildValue("()");  /* No arguments needed */
    result =  PyEval_CallObject(func, arglist);
    Py_DECREF(arglist);
@@ -3279,10 +3356,10 @@ static void PythonCallBack(void)
 
 void py_setFunBtsCdrparseEnd(PyObject *PyFunc)
 {
-    Py_XDECREF(my_pycallback);          /* Dispose of previous callback */
+    Py_XDECREF(my_pycallbackend);          /* Dispose of previous callback */
     Py_XINCREF(PyFunc);         /* Add a reference to new callback */
-    my_pycallback = PyFunc;         /* Remember new callback */
-    setFunBtsCdrparseEnd(PythonCallBack);
+    my_pycallbackend = PyFunc;         /* Remember new callback */
+    setFunBtsCdrparseEnd(PythonCallBackEnd);
 }
 
 
@@ -4208,6 +4285,47 @@ SWIGINTERN PyObject *SBtsChdFld_swigregister(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Py_Void();
 }
 
+SWIGINTERN int Swig_var_funBtsProcessCallback_set(PyObject *_val) {
+  {
+    int res = SWIG_ConvertFunctionPtr(_val, (void**)(&funBtsProcessCallback), SWIGTYPE_p_f_p_char__void);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""funBtsProcessCallback""' of type '""FunBtsProcessCallback""'"); 
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_funBtsProcessCallback_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewFunctionPtrObj((void *)(funBtsProcessCallback), SWIGTYPE_p_f_p_char__void);
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_setFunBtsProcessCallback(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FunBtsProcessCallback arg1 = (FunBtsProcessCallback) 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:setFunBtsProcessCallback",&obj0)) SWIG_fail;
+  {
+    int res = SWIG_ConvertFunctionPtr(obj0, (void**)(&arg1), SWIGTYPE_p_f_p_char__void);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "setFunBtsProcessCallback" "', argument " "1"" of type '" "FunBtsProcessCallback""'"); 
+    }
+  }
+  setFunBtsProcessCallback(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN int Swig_var_funBtsCdrparseEnd_set(PyObject *_val) {
   {
     int res = SWIG_ConvertFunctionPtr(_val, (void**)(&funBtsCdrparseEnd), SWIGTYPE_p_f_void__void);
@@ -4348,6 +4466,21 @@ SWIGINTERN PyObject *BtsCDRmanager_swigregister(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_py_setFunBtsProcessCallback(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:py_setFunBtsProcessCallback",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  py_setFunBtsProcessCallback(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_py_setFunBtsCdrparseEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
@@ -4399,11 +4532,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_SBtsChdFld", _wrap_new_SBtsChdFld, METH_VARARGS, NULL},
 	 { (char *)"delete_SBtsChdFld", _wrap_delete_SBtsChdFld, METH_VARARGS, NULL},
 	 { (char *)"SBtsChdFld_swigregister", SBtsChdFld_swigregister, METH_VARARGS, NULL},
+	 { (char *)"setFunBtsProcessCallback", _wrap_setFunBtsProcessCallback, METH_VARARGS, NULL},
 	 { (char *)"setFunBtsCdrparseEnd", _wrap_setFunBtsCdrparseEnd, METH_VARARGS, NULL},
 	 { (char *)"new_BtsCDRmanager", _wrap_new_BtsCDRmanager, METH_VARARGS, NULL},
 	 { (char *)"delete_BtsCDRmanager", _wrap_delete_BtsCDRmanager, METH_VARARGS, NULL},
 	 { (char *)"BtsCDRmanager_ParseBtsCDR", _wrap_BtsCDRmanager_ParseBtsCDR, METH_VARARGS, NULL},
 	 { (char *)"BtsCDRmanager_swigregister", BtsCDRmanager_swigregister, METH_VARARGS, NULL},
+	 { (char *)"py_setFunBtsProcessCallback", _wrap_py_setFunBtsProcessCallback, METH_VARARGS, NULL},
 	 { (char *)"py_setFunBtsCdrparseEnd", _wrap_py_setFunBtsCdrparseEnd, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -4420,6 +4555,7 @@ static swig_type_info _swigt__p_XU16 = {"_p_XU16", "XU16 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_XU32 = {"_p_XU32", "XU32 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_XU8 = {"_p_XU8", "XU8 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_f_p_char__void = {"_p_f_p_char__void", "void (*)(char *)|FunBtsProcessCallback", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_void__void = {"_p_f_void__void", "FunBtsCdrparseEnd|void (*)(void)", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -4432,6 +4568,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_XU32,
   &_swigt__p_XU8,
   &_swigt__p_char,
+  &_swigt__p_f_p_char__void,
   &_swigt__p_f_void__void,
 };
 
@@ -4444,6 +4581,7 @@ static swig_cast_info _swigc__p_XU16[] = {  {&_swigt__p_XU16, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_XU32[] = {  {&_swigt__p_XU32, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_XU8[] = {  {&_swigt__p_XU8, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_f_p_char__void[] = {  {&_swigt__p_f_p_char__void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_void__void[] = {  {&_swigt__p_f_void__void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -4456,6 +4594,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_XU32,
   _swigc__p_XU8,
   _swigc__p_char,
+  _swigc__p_f_p_char__void,
   _swigc__p_f_void__void,
 };
 
@@ -5148,6 +5287,7 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   PyDict_SetItemString(md,(char *)"cvar", SWIG_globals());
+  SWIG_addvarlink(SWIG_globals(),(char *)"funBtsProcessCallback",Swig_var_funBtsProcessCallback_get, Swig_var_funBtsProcessCallback_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"funBtsCdrparseEnd",Swig_var_funBtsCdrparseEnd_get, Swig_var_funBtsCdrparseEnd_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;

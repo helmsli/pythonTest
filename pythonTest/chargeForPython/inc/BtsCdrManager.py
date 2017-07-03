@@ -188,6 +188,10 @@ SBtsChdFld_swigregister = _BtsCDRManager.SBtsChdFld_swigregister
 SBtsChdFld_swigregister(SBtsChdFld)
 
 
+def setFunBtsProcessCallback(c):
+    return _BtsCDRManager.setFunBtsProcessCallback(c)
+setFunBtsProcessCallback = _BtsCDRManager.setFunBtsProcessCallback
+
 def setFunBtsCdrparseEnd(c):
     return _BtsCDRManager.setFunBtsCdrparseEnd(c)
 setFunBtsCdrparseEnd = _BtsCDRManager.setFunBtsCdrparseEnd
@@ -213,6 +217,10 @@ BtsCDRmanager_swigregister = _BtsCDRManager.BtsCDRmanager_swigregister
 BtsCDRmanager_swigregister(BtsCDRmanager)
 cvar = _BtsCDRManager.cvar
 
+
+def py_setFunBtsProcessCallback(PyFunc):
+    return _BtsCDRManager.py_setFunBtsProcessCallback(PyFunc)
+py_setFunBtsProcessCallback = _BtsCDRManager.py_setFunBtsProcessCallback
 
 def py_setFunBtsCdrparseEnd(PyFunc):
     return _BtsCDRManager.py_setFunBtsCdrparseEnd(PyFunc)

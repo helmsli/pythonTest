@@ -5,6 +5,12 @@
 #define  ARRAY_LENGTH_FOR_UNITE_BTS_RECORD 1024
 
 FunBtsCdrparseEnd funBtsCdrparseEnd = 0;
+FunBtsProcessCallback funBtsProcessCallback=0;
+void setFunBtsProcessCallback(FunBtsProcessCallback c)
+{
+	funBtsProcessCallback=c;
+}
+
 
 void setFunBtsCdrparseEnd(FunBtsCdrparseEnd c) {
   funBtsCdrparseEnd = c;
@@ -342,6 +348,7 @@ int BtsCDRmanager::ParseBtsCDR( char *FileName, char *sourceDir, char *desDir)
 
 	XS8 sCDR[512] = {0};
 	XS8 sFinalCDR[512] = {0};
+	char pyBtsRecord[1024]={0};
 	sprintf(sCDR, "%s%s",sourceDir, FileName);
 	SBtsHead   head;
 	SBtsChdFld sChdFld;		
@@ -443,6 +450,15 @@ int BtsCDRmanager::ParseBtsCDR( char *FileName, char *sourceDir, char *desDir)
 		//sFinalRec = UniteRecord(record);
 		sFinalRec = UniteRecord(record, arrayForUnite, arrayLen);
 		//bstRecodrList.push_back(record);
+		memset(pyBtsRecord,0,sizeof(pyBtsRecord));
+		strcpy(pyBtsRecord,sFinalRec.c_str());
+		if(funBtsProcessCallback){
+			(*funBtsProcessCallback)(pyBtsRecord);
+			 cout<< "parse process" <<endl;
+			//(*funBtsCdrparseEnd)();
+		}	
+		else
+			(*funBtsCdrparseEnd)();
 		if (funBtsCdrparseEnd) (*funBtsCdrparseEnd)();
 		fwrite(sFinalRec.c_str(), sFinalRec.length(), 1, wfp);
 	}
@@ -456,6 +472,7 @@ int BtsCDRmanager::ParseBtsCDR( char *FileName, char *sourceDir, char *desDir)
 		fclose(fp);
 		fp = 0;
 	}
+	if (funBtsCdrparseEnd) (*funBtsCdrparseEnd)();
 	return 0;
 }
 /*

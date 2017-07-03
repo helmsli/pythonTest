@@ -9,16 +9,32 @@ results=[]
 fileNameWchar =ctypes.c_wchar_p(cdr_fileName)
 
 def testCallback():
-	print("test abc")
-
+	print("test abcddfdggg")
+'''
+def funRecordCallback():
+	print("asdfasfdasfdasdfasd")
+	print("test funRecordCallback:")
+'''
+	
+	
+	
 def cdrManagerCallback(abc):
+	print("cdrManagerCallback")
 	print "t_callback_fn say : {0}".format(abc)
-	return 11
-btsCdrProcess = BtsCDRManager.BtsCDRmanager()
+	
+
+btsCdrProcess=BtsCDRManager.BtsCDRmanager()
+
 
 CMPFUNC = ctypes.CFUNCTYPE(ctypes.c_void_p) 
 _callback = CMPFUNC(testCallback)
 BtsCDRManager.py_setFunBtsCdrparseEnd(_callback)
+
+
+CMPFUNBtsRecordCallback = ctypes.CFUNCTYPE(None,ctypes.c_char_p) 
+funBtsRecordCallback1 = CMPFUNBtsRecordCallback(cdrManagerCallback)
+BtsCDRManager.py_setFunBtsProcessCallback(funBtsRecordCallback1)
+
 
 '''
 CMPFUNC = CFUNCTYPE(ctypes.c_int, ctypes.c_char_p) 
