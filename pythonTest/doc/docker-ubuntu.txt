@@ -1,0 +1,59 @@
+现在运行安装 Docker 的命令：
+sudo apt-get install -y docker.io 
+等待安装完毕，现在我们使用下面的命令启动 Docker：
+systemctl start docker 
+运行系统引导时启用 docker，命令：
+systemctl enable docker 
+你可能想核对一下 docker 版本：
+docker version 
+
+
+要创建一个新的容器，你应该选择一个基本 image 的操作系统，例如启动 Ubuntu 或者 CentOS 或其他系统。
+您可以搜索一个基本 image 使用 Docker 搜索命令：
+docker search ubuntu 
+现在我们现在 base image 到我们的服务中，使用命令：
+docker pull ubuntu 
+现在，您可以通过使用命令来查看所有已下载的images：
+docker images 
+Ubuntu 镜像从DockerHub/Docker Registry下载。下一步骤是创建从该镜像的容器。
+要创建容器，可以使用docker create 或 docker run 。其中(ubuntu:repository   14.04:tag)
+docker create ubuntu:14.04 
+docker create 命令会创建一个新的容器，但不会启动它。所以，现在你需要使用运行命令：
+此命令将创建并运行一个基于 Ubuntu14.04 镜像的容器，容器内并运行一个命令/bin/bash，您将在容器内自动运行命令。
+docker run -i -t ubuntu:14.04 /bin/bash 
+
+当你输入 Exit 命令退出容器时，容器也是停止运行，如果你想容器在后台运行需要在命令后面添加 -d 参数。
+docker run -i -t -d ubuntu:14.04 /bin/sh -c “while true; do echo hello world; sleep 1; done” 
+/bin/sh -c “while true; do echo hello world; sleep 1; done” this is bash script to echo “hello word” forever. 
+
+进入docker容器
+sudo docker exec -it 775c7c9ee1e1 /bin/bash  
+
+启动容器
+docker start contain_name
+
+--docker 拷贝文件
+$ docker ps
+
+CONTAINER ID      IMAGE    COMMAND      CREATED      STATUS      PORTS        NAMES
+
+d8e703d7e303  solidleon/ssh:latest      /usr/sbin/sshd -D                      cranky_pare
+
+$ docker inspect -f  '{{.Id}}' cranky_pare
+
+or
+
+$ docker inspect -f  '{{.Id}}' d8e703d7e303
+docker inspect --format="{{.Id}}" evil_swartz
+
+d8e703d7e3039a6df6d01bd7fb58d1882e592a85059eb16c4b83cf91847f88e5
+
+$ sudo cp file.txt /var/lib/docker/aufs/mnt/**d8e703d7e3039a6df6d01bd7fb58d1882e592a85059eb16c4b83cf91847f88e5
+
+
+--docker创建一个镜像
+最后我们提交这些修改并创建镜像：
+?
+1
+sudo dockercommit 4aa578389 buffoon/gcc
+       这里4aa578389是修改过的容器的ID，buffoon/gcc是目标镜像仓库和镜像名。我们也可以在commit时候使用一些参数来扩充更多信息。比如

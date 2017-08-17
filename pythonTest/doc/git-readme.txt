@@ -55,7 +55,12 @@ $ git tag -a v0.1.1 9fbc3d0
 $ git push origin v0.1.2 # 将v0.1.2标签提交到git服务器
 $ git push origin –tags # 将本地所有标签一次性提交到git服务器
 
- 
+git 强制用一个分支替换当前分支(用Master_Develop 的origin分支替换当前分支)
+git reset --hard origin/Master_Develop
+git 配置用户名和密码
+如果配置本地仓库不需要golbal
+$ git config --global user.name "wirelessqa"  
+$ git config --global user.email wirelessqa.me@gmail.com
 
 注意：如果想看之前某个标签状态下的文件，可以这样操作
 
