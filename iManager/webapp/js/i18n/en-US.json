@@ -1,0 +1,921 @@
+{
+		"PROJECT_TITLE":"Background System",
+		
+		"USER_NAME_IS_NULL":"Username incorrect",
+		"PASSWORD_IS_NULL":"Password incorrect",
+		"MENU_HOME":"Home",
+	    "MENU_USER_CENTER":"User Center",
+		"MENU_USER_INFO":"User Data",
+		"MENU_MODIFY_PWD":"Change Password",
+		"MENU_USER_MS":"User Management",
+		"MENU_ROLE_MS":"Role Management",	
+		"MENU_COMPANY_MS":"Company Management",
+		"MENU_DEMO_404":"404 Page",
+		"MENU_DEMO_500":"500 Page",
+		"MENU_PERSONAL_CENTER":"My Center",
+		"MENU-PERSONAL_USER_INFO":"User Data",
+		"MENU_PERSONAL_MODIFY_PWD":"Change Password",
+		"MENU_PERSONAL_COMPANY_MS":"Company Management",
+		"MENU_MY_OPERATOR":"My Operating Floor",
+		
+		"PERSONAL_SMALL_MODIFY":"Modify Account Data",
+		"PERSONAL_SMALL_MANAGER":"Operate on and manage you projects here",
+		
+		"MENU_MY_PROJECT_MS":"Project Management",
+		"PERSONAL_TITLE_PROJECT_APPLY":"Project Application",
+		"PERSONAL_TITLE_DATA_MONITOR":"Data Monitoring",
+		"PERSONAL_TITLE_PROJECT_END":"Close Project",
+		
+		"PERSONAL_TITLE_SUBMIT_INFO":"Submit Material",
+		"PERSONAL_TITLE_UPLOAD_REPORT":"Upload Monthly Report",
+		
+		"PERSONAL_TITLE_APPLY_INFO_CONTENT":"Click the button below and upload application material in accordance with the required format. Please upload before the required date.",
+		"PERSONAL_TITLE_UPLOAD_REPORT_CONTENT":"Click the button below and upload monthly report in accordance with the required format. Please upload before the required date.",
+		
+		"BTN_APPLY":"Start Applying",
+		"BTN_UPLOAD":"Start Uploading",
+		"BTN_VIEWS":"View Closings",
+
+		"MENU_UI":"UI Interface",
+		"MENU_UI_FORMGROUP":"Form",
+		"MENU_UI_ALERTS":"Alert",
+		"MENU_UI_BREADCRUMBS":"Breadcrumb",
+		"MENU_UI_BUTTONS":"Button",
+		"MENU_UI_BADGES":"Badges",
+		"MENU_UI_BLANK_PAGE":"Blank Page",
+		"MENU_UI_COLORS":"Color",
+		"MENU_UI_COLLAPSE":"Fold",
+		"MENU_UI_DIALOGS":"Dialog Box",
+		"MENU_UI_ICONS":"Small Icon",
+		"MENU_UI_FORM_ELEMENTS":"Form Elements",
+		"MENU_UI_TABLE_ELEMENTS":"Table Elements",
+		"MENU_UI_MEDIA_OBJECT":"Media Object",
+		"MENU_UI_MODAL":"Modal Box",
+		"MENU_UI_NOTIFICATIONS":"Notification",
+		"MENU_UI_PAGINATION":"Paging",
+		"MENU_UI_PRELOADER":"Load Animation",
+		"MENU_UI_PROGRESSBARS":"Progress Bar",
+		"MENU_UI_TABS":"Tab",
+		"MENU_UI_TOOLTIPS_POPOVERS":"Tool Tips",
+		"MENU_UI_THUMBNAILS":"Thumbnails",
+		"MENU_UI_OTHERS":"Other",
+		"MENU_CHART_MORRIS":"Chart",
+		
+		
+		"MENU_COOMARTS":"CooMarts",
+		"MENU_COOMARTS_NEWAPPLY":"Create Project Application",
+		"MENU_COOMARTS_MYAPPLY":"My Applied Project",
+		"MENU_COOMARTS_MYAPPLYCOMPLETED":"Completed Projects",
+		"MENU_COOMARTS_DEPARTMENTCREATE":"Post Project Requirements",
+		"MENU_COOMARTS_MYRELEASE":"My Post Project",
+		"MENU_COOMARTS_DEPARTMENTTASKNEED":"Post Task Requirements",
+		"MENU_COOMARTS_MYRELEASRTASK":"My Post Task",
+		"MENU_COOMARTS_DEPARTMENTRELEASE":"Project to be Applied",
+		"MENU_COOMARTS_THREELEADER_DECLARE":"My Application Project",
+		"MENU_COOMARTS_MYAGENCYTASK":"My to-do Task",
+		"MENU_COOMARTS_COMPLETED":"Completed Tasks",
+		"MENU_COOMARTS_QUESTION":"View Due Diligence",
+		"MENU_COOMARTS_ALLPROJECT":"View All Projects",
+		"MENU_COOMARTS_ALLPROJECT_MARCH":"Projects in Progress",
+		"MENU_COOMARTS_DATAMONITOR":"Data Monitoring",
+		"MENU_COOMARTS_DATASELF":"Periodic Data Monitoring",
+		
+		"MENU_CAMTALK":"CamTalk",
+		"MENU_CAMTALK_NEWAPPLY":"Create Project Application",
+		"MENU_CAMTALK_MYAPPLY":"My Applied Project",
+		"MENU_CAMTALK_MYAPPLYCOMPLETED":"Completed Projects",
+		"MENU_CAMTALK_DEPARTMENTCREATE":"Post Project Requirements",
+		"MENU_CAMTALK_MYRELEASE":"My Post Project",
+		"MENU_CAMTALK_DEPARTMENTTASKNEED":"Post Task Requirements",
+		"MENU_CAMTALK_MYRELEASRTASK":"My Post Task",
+		"MENU_CAMTALK_DEPARTMENTRELEASE":"Project to be Applied",
+		"MENU_CAMTALK_THREELEADER_DECLARE":"My Application Project",
+		"MENU_CAMTALK_MYAGENCYTASK":"My to-do Task",
+		"MENU_CAMTALK_COMPLETED":"Completed Tasks",
+		"MENU_CAMTALK_QUESTION":"View Due Diligence",
+		"MENU_CAMTALK_ALLPROJECT":"View All Projects",
+		"MENU_CAMTALK_ALLPROJECT_MARCH":"Projects in Progress",
+		"MENU_CAMTALK_DATAMONITOR":"Data Monitoring",
+		"MENU_CAMTALK_DATASELF":"Periodic Data Monitoring",
+		
+		
+		"MENU_LOTTERY":"Lottery",
+		"MENU_LOTTERY_NEWAPPLY":"Create Project Application",
+		"MENU_LOTTERY_MYAPPLY":"My Applied Project",
+		"MENU_LOTTERY_MYAPPLYCOMPLETED":"Completed Projects",
+		"MENU_LOTTERY_DEPARTMENTCREATE":"Post Project Requirements",
+		"MENU_LOTTERY_MYRELEASE":"My Post Project",
+		"MENU_LOTTERY_DEPARTMENTTASKNEED":"Post Task Requirements",
+		"MENU_LOTTERY_MYRELEASRTASK":"My Post Task",
+		"MENU_LOTTERY_DEPARTMENTRELEASE":"Project to be Applied",
+		"MENU_LOTTERY_THREELEADER_DECLARE":"My Application Project",
+		"MENU_LOTTERY_MYAGENCYTASK":"My to-do Task",
+		"MENU_LOTTERY_COMPLETED":"Completed Tasks",
+		"MENU_LOTTERY_QUESTION":"View Due Diligence",
+		"MENU_LOTTERY_ALLPROJECT":"View All Projects",
+		"MENU_LOTTERY_ALLPROJECT_MARCH":"Projects in Progress",
+		"MENU_LOTTERY_DATAMONITOR":"Data Monitoring",
+		"MENU_LOTTERY_DATASELF":"Periodic Data Monitoring",
+		
+		"addUser":"Add User",
+		"editBtn":"Edit",
+		"deleteBtn":"Delete",
+		"queryBtn":"Query",
+		"printBtn":"Print",
+		"exportBtn":"Export",
+		"updateUserInfo":"Edit User Data",
+		"updatePassword":"Change Password",
+		"queryUser":"Query User List",
+		"updateUser":"Edit user",
+		"disableUser":"Change User Status",
+		"deleteUser":"Delete User",
+		"resetPassword":"Reset Password",
+		"addRole":"Add Role",
+		"queryRole":"Query Role List",
+		"updateRole":"Change Role",
+		"assignRolePermission":"Assign Role Permission",
+		"addRoleUser":"Add User to Role",
+		"removeRoleUser":"Remove User from Role",
+		"deleteRole":"Delete Role",
+		"designatedExpert":"Designate Assessor",
+		"expertScoring":"Assessor Scoring",
+		"decisionCommittee":"Decision Committee Opinion",
+		"divisionManager":"Sector Manager Opinion",
+		"SYSTEM_TITLE":"Background Management System",
+		"THEMES_MANAGER":
+		{
+			"COMMENT":"/*以下为换肤名称*/",
+			"SKIN_DEFAULT":"Default",
+			"SKIN_BLUE":"Blue",
+			"SKIN_YELLOW":"Yellow"	
+		},
+		"LOGIN_ITEM":
+		{
+			"COMMENT":"/*以下为登录页内容*/",
+			"USERNAME":"Enter Username",
+			"PASSWORD":"Enter Password",
+			"LOGIN":"Log In",
+			"COPY_RIGHT":"Copyright © Beijing Xinwei Technology Group. Co., Ltd. 2017. All rights reserved.",
+			"EXIT":"exit"
+		},
+		"REVIEW_STASTIC":
+		{
+			 "COMMENT":"/*以下为认证审核菜单*/",
+		     "VERI_Review":"Verification Review",
+		     "PEND_REVIEW":"Pending Review",
+		     "APPROVED":"Approved",
+		     "REJECTED":"Rejected",
+		     "PROCESSED_QUERIES":"Processed Queries"
+		},
+		"PEND_REVIEW":
+		{
+			"COMMENT":"/*以下为待审核页面*/",
+			"TITLE":"Pending Review",
+			"NAME_ACCOUNT":"Real Name/Account",
+			"CHOOSE_TYPE":"Choose ID Type",
+			"IDCARD":"ID Card",
+			"PASSPORT":"Passport"
+		},
+		"BUTTON_NAME":
+		{
+			"COMMENT":"/*以下为按钮*/",
+		    "SEARCH":"Search",
+		    "RESET":"Reset",
+		    "EXPORT":"Export"
+		},
+		"TABLE_TITLE":
+		{
+			"COMMENT":"/*以下为表格*/",
+			"NUM":"No.",
+		    "SERIAL":"Serial No.",
+		    "ACCOUNT":"Account",
+		    "REAL_NAME":"Real Name",
+		    "ID_TYPE":"ID Type",
+		    "ID_NUM":"ID No.",
+		    "APPLICATION":"Application Date",
+		    "ACTION":"Action",
+		    "DETAILS":"Details",
+		    "NO_DATA":"No data available!",
+		    "BACK":">Back",
+		    "TIPS":"Double-click or View to review or view details"
+		},
+		"AUDIT_STATUS":
+		{
+			"COMMENT":"/*以下为审核流程*/",
+		  	"APPROVED":"Review approved!",
+		  	"FIRST_PIECE":"It's already the first piece",
+		  	"LAST_PIECE":"It's already the last piece",
+		  	"APPROVE_NEXT":"Approve and Next",
+		  	"CONFIRM_NEXT":"Confirm and Next",
+		  	"LAST":"Last",
+		  	"NEXT":"Next",
+		  	"REJECT":"reject",
+		  	"CANCEL":"Cancel",
+		  	"REVIEW_HISTORY":"Review History："
+		},
+		"NOPASS_REASON":
+		{
+			"COMMENT":"/*以下为不通过理由*/",
+			"REASON_REJECT":"Reasons for Rejection",
+			"FRONT_IMAGE_UN":"Front side image unclear",
+			"BACK_IMAGE_UN":"Back side image unclear",
+			"FRONT_ID_UN":"You holding your ID card (front side) not clear",
+			"BACK_ID_UN":"You holding your ID card (back side) not clear",
+			"STAMPS_UN":"Page with stamps unclear",
+			"INFO_MATCH_UN":"The input information does not match that in ID",
+			"ENTER_REASON":"Please enter reason"
+		},
+		"SEARCH_ITEM":
+		{
+			"COMMENT":"/*以下为搜索项*/",
+			"OPERATOR":"Select Operator"
+		},
+		"USER_MANAGE":
+		{
+			"COMMENT":"/*以下为用户中心模块*/",
+			"TITLE":"User Center",
+			"MANAGER_REGISTER":"Project Manager Registration Info",
+			"PERSONAL_DATA":
+			{
+				"COMMENT":"/*以下为个人资料模块*/",
+				"TITLE":"Personal Data",
+				"USER_DATA":"User Data",
+				"ACCOUNT":"Account",
+				"NAME":"Name",
+				"ACCOUNT_NAME":"Account/Name",
+				"GENDER":"Gender",
+				"MALE":"male",
+				"FEMALE":"female",
+				"ID_CARD":"ID Card",
+				"PASSPORT":"Passport",
+				"PHONE_NUM":"Phone No.",
+				"BIRTH_DATE":"Date of Birth",
+				"MAIL":"E-mail",
+				"ID_TYPE":"ID Type",
+				"ID_NUM":"ID No.",
+				"ADDRESS":"Address",
+				"ROLE":"Role",
+				"USER_STATUS":"User Status",
+				"TIPS":
+				{
+					"ENTER_PHONE":"Enter phone No.",
+					"ENTER_PHONE_TYPE":"Phone number can not be empty and it must be numeric"
+				}		
+			},
+			"CHANGE_PASSWORD":
+			{
+				"COMMENT":"/*以下为修改密码模块*/",
+				"TITLE":"Change Password",
+				"OLD_PASSWORD":"Old Password",
+				"NEW_PASSWORD":"New Password",
+				"CONFIRM_PASSWORD":"Confirm Password",
+				"RESET_PASSWORD":"Reset Password",
+				"TIPS":
+				{
+					"ACTION_SUCCESS":"Action succeeded!",
+					"CHANGED_PASSWORD":"Password changed successfully. Please memorize your new password and you can re-log in with new password",
+					"SUGGEST_CHANGED_PASSWORD":"We suggest you log in with new password now in case you forget your new password.",
+					"NOTES":"Notes: if you change password many times, please log in with the latest password.",
+					"OLD_PASSWORD_ERROR":"Old password incorrect",
+					"ENTER_OLD_PASSWORD":"Enter old password",
+					"REPEAT_PASSWORD_ERROR":"New passwords do not match",
+					"ENTER_NEW_PASSWORD":"Please re-enter password",
+					"NEW_PASSWORD_ERROR":"New password incorrect",
+					"ENTER_NEW_PASSWORD":"Please re-enter password",
+					"NEW_PASSWORD_ERROE":"New passwords do not match"
+				}
+			},
+			"USER_MANAGEMENT":
+			{
+				"COMMENT":"/*以下为用户管理子模块*/",
+				"TITLE":"User Management",
+				"USER_LIST":"User List",
+				"NAME":"Name",
+				"ACCOUNT":"Account",
+				"ROLE":"Role",
+				"SELECT_ROLE":"Select Role",
+				"MOBILE_PHONE":"Link to mobile phone",
+				"CREAT_TIME":"Creation Time",
+				"USAGE_STATUS":"Usage Status",
+				"REVIEVED_STATUS":"Review Status",
+				"ACTION":"Action",
+				"IN_USE":"In Use",
+				"INVALID":"Invalid",
+				"RESET_PASSWORD":"Reset Password",
+				"ADD_EDIT_USER":
+				{
+					"COMMENT":"/*以下为新增编辑用户模块*/",
+					"EDIT_USER":"Edit User Info",
+					"ADD_USER":"Add User Info",
+					"COMPANY":"Company",
+					"BASIC_INFO":"Basic Info",
+					"SELECT_ROLE":"Select Role",
+					"PASSWORD":"Password",
+					"CONFIRM_PASSWORD":"Confirm Password",
+					"MAIL":"E-mail",
+					"PREVIEW_PERMISSION":"Preview Permission"
+				},
+				"REVIEW_USER_INFO":{
+					"TITLE":"Review User Info",
+					"USER_INFO":"User Info",
+					"COMPANY_INFO":"Company Info"
+				},
+				"DELETE_USER":
+				{
+					"TITLE":"Delete User",
+					"CONFIRM_DELETE":"Are you sure to delete this user?"
+				},
+				"TIPS":
+				{
+					"MUST_SELECT_TIPS":"You must select at least one company",
+					"SELECT_COMPANY":"Select company",
+					"ENTER_NAME":"Enter name",
+					"LAST_SELECT_ROLE":"You must select at least one role",
+					"SELECT_ROLE":"Select role",
+					"PASSWORD_ERROR":"Password confirmation incorrect",
+					"ENTER_PASSWORD_NEXT":"Please re-enter password",
+					"MUST_ENTER_PHONE":"Phone No. can not be empty",
+					"ENTER_PHONE":"Enter phone No."
+				}
+			},
+			"ROLE_MANAGE":
+			{
+				"COMMENT":"/*以下为角色管理模块*/",
+				"TITLE":"Role Management",
+				"USER_NAME":"User Name",
+				"PHONE_NUM":"Phone No.",
+				"ROLE_LIST":
+				{
+					"COMMENT":"/*以下为角色列表模块*/",
+					"TITLE":"Role List",
+					"ADD_ROLE":"Add Role",
+					"ROLE_NAME":"Role Name",
+					"NOTES":"Notes",
+					"DESC_TIPS":"Description has exceeded 120 bytes.",
+					"ENTER":"",
+					"BYTE":"bytes have been entered",
+					"CONFIRM_DELETE":"Are you sure to delete this user?"
+				},
+				"ROLE_MANAGEMENT":
+				{
+					"COMMENT":"/*以下为角色用户关联模块*/",
+					"ADD_USER":"Add User",
+					"REMOVE_USER":"Remove User",
+					"ROLE_PERMISSION":"Role Permission",
+					"ADD_USER_ROLE":"Add User to Role",
+					"USER_NAME":"User Name",
+					"PHONE":"Phone No.",
+					"CHOOSE_DELETE_USER":"Please select users to be deleted first!",
+					"DELETE_USER":"Are you sure to delete this user?",
+					"ASSIGN_PERMISSION":"Role Permission",
+					"SAVE_PERMISSION":"Save",
+					"BACK":"Back"
+				}
+			},
+			"COMPANY_MANAGE":
+			{
+				"COMMENT":"/*以下为单位管理模块*/",
+				"TITLE":"Company Management",
+				"USER_NAME":"User Name",
+				"PHONE_NUM":"Phone No.",
+				"COMPANY_LIST":
+				{
+					"COMMENT":"/*以下为单位列表模块*/",
+					"TITLE":"Company List",
+					"COMPANY_NAME":"Company Name",
+					"COMPANY_TYPE":"Type of Company",
+					"ID_TYPE":"ID Type",
+					"ID_NUM":"ID No.",
+					"CONTACT":"Contact",
+					"CURRENT_STATUS":"Current Status",
+					"ACTION":"Action",
+					"REVIEVED":"Reviewed",
+					"NOT_REVIEVED":"Not Reviewed",
+					"REJECT":"Reject",
+					"EDIT":"Edit",
+					"DELETE":"Delete"
+				},
+				"ADD_EDIT_COMPANY":
+				{
+					"COMMENT":"/*以下为新增编辑单位模块*/",
+					"EDIT_COMPANY_INFO":"Edit Company Info",
+					"ADD_COMPANY_INFO":"Add Company Info",
+					"COMPANY_NAME":"Company Name",
+					"COMPANY_ADDRESS":"Company Address",
+					"COMPANY_TYPE":"Type of Company",
+					"REGISTE_ADDRESS":"Registration Address",
+					"CONTACT_ADDRESS":"Company Address",
+					"CONTACT_PHONE":"Contact No.",
+					"CONTACT_MAIL":"Contact E-mail",
+					"GREATER":"Creator",
+					"BASIC_INFO":"Basic Info"
+				},
+				"TIPS":
+				{
+					"ENTER_COMPANY_NAME":"Enter company name",
+					"ENTER_COMPANY_TYPE":"Enter type of company",
+					"ENTER_ID_TYPE":"Enter ID type",
+					"ENTER_ID":"Enter ID",
+					"ENTER_REGISTER_ADDRESS":"Enter registration address",
+					"ENTER_COMPANY_ADDRESS":"Enter company address",
+					"ENTER_CONTACT_NUM":"Enter contact No.",
+					"ENTER_CONTACT":"Enter contact",
+					"ENTER_COMTACT_MAIL":"Enter contact E-mail address",
+					"ENTER_CREATER":"Enter creator"
+				}
+			},
+			"BUTTON_NAME":
+			{
+				"COMMENT":"/*以下为用户中心按钮*/",
+				"EDIT_DATA":"Edit Data",
+				"SAVE":"Save",
+				"CONFIRM":"Confirm",
+				"CANCEL":"Cancel",
+				"SUBMIT":"Submit",
+				"CLOSE":"Close",
+				"QUERY":"Query",
+				"RESET":"Reset",
+				"ADD_USER":"Add User",
+				"EDIT_USER":"Edit User",
+				"ADD":"add",
+				"ADD_COMPANY":"Add Company",
+				"EDIT":"Edit",
+				"DELETE":"Delete",
+				"REJECT":"Reject",
+				"APPROVE":"Approve",
+				"SELECT_ALL":"Select All",
+				"SIGN_OUT":"Sign out"
+			},
+			"TIPS":
+			{
+				"NO_DATA":"No data available!",
+				"HOME":"Home",
+				"RELOGIN":"Re-Log In",
+				"NO_CHANGE_ADMIN":"Admin account can not be modified."
+			},
+			"STATUS":
+			{
+				"APPROVE":"Approve",
+				"NOT_REVIEWED":"Not Reviewed",
+				"REJECT":"Reject",
+				"INVALID":"Invalid",
+				"INUSE":"In Use"
+			}
+			
+		},
+		"COOMARTS_MANAGE":{
+			"COMMENT":"/*以下为CooMarts模块*/",
+			"COMMITTEE_CYCLE_MONITOR_DATA":"Periodic Data Monitoring from Decision Committee",
+			"PRO_PROCESS":"Project Progress Table",
+			"RELEASE_PRO_DEMAND":{
+					"COMMENT":"/*以下为发布项目模块*/",
+					"PRO_DEMAND":"Post Project Requirements",
+					"PRO_TYPE":"Project Type:",
+					"PRO_THEME":"Project Topic:",
+					"PRO_DESCRIPTION":"Project Description:",
+					"SPECIFY_MANAGER":"Designate Project Manager:",
+					"ATTACHMENT":"Attachment:",
+					"BUTTON_NAME":{
+						"COMMENT":"/*以下为按钮*/",
+						"SELECT":"Select",
+						"SELECT_DOCUMENT":"Select File",
+						"RELEASE":"Post",
+						"CANCLE":"Cancel"
+					}
+					
+			},
+			"CREATE_PRO_REQ":{
+				"COMMENT":"/*以下为创建项目申请模块*/",
+				"CREATE_PRO_REQ":"Create Project Application",
+				"PRO_INFO":"Project Basic Info",
+				"PRO_BUDGE":"Project Budget",
+				"PRO_PREPARATION":"Preparatory Conditions for Project"
+			},
+			"MY_APPLY_PRO":{
+				"COMMENT":"/*以下为我的申请项目模块*/",
+				"MY_APPLY_PRO":"My Applied Project",
+				"LINK":{
+					"VIEW":"View",
+					"MODIFY":"Modify",
+					"CHANGE":"Change",
+					"CHANGE_VIEW":"View Changes"
+				}
+			},
+			"COMPLETED_PRO":{
+				"COMMENT":"/*以下为已完成项目模块*/",
+				"COMPLETED_PRO":"Completed Projects"
+			},
+			"TO_DECLARE_PRO":{
+				"COMMENT":"/*以下为我发布的项目模块*/",
+				"TO_DECLARE_PRO":"Project to be Reported",
+				"DECLARE":"Apply",
+				"VIEW":"View",
+				"PRO_REQ_INFO":{
+				"COMMENT":"/*以下为项目需求信息模块*/",
+				"PRO_REQ_INFO":"Project Requirements Info",
+				"PRO_TYPE":"Project Type",
+				"PRO_THEME":"Project Topic",
+				"PRO_DECRIPTION":"Project Description",
+				"ASSIGNED_TO":"Designated to",
+				"ACCACHEMENT":"Attachment",
+				"ACCACHEMENT_DOWNLOAD":"Download Attachment",
+				"DECLARE":"Apply",
+				"SHUN_DOWN":"Close"
+
+				}
+				
+			},
+			"WAIT_TO_DECLARE":{
+			"COMMENT":"/*以下为待申报的项目模块*/",
+			"WAIT_TO_DECLARE":"Project to be Reported"
+			},
+			"RELEASE_MISSION_REQUIRE":{
+				"COMMENT":"/*以下为发布任务需求模块*/",
+				"RELEASE_MISSION_REQUIRE":"Post Task Requirements",
+				"PRO_TYPE":"Project Type:",
+				"PRO_THEME":"Project Topic:",
+				"PRO_DESCRIPTION":"Project Description:",
+				"SPECIFY_THREE_MANAGER":"Designate Manager for Tertiary Sector:",
+				"ATTACHMENT":"Attachment:"
+			},
+			"MY_DECLARE_PRO":{
+				"COMMENT":"/*以下为我申报的项目模块*/",
+				"MY_DECLARE_PRO":"My Applied Project"
+			},
+			"MY_DECLARE_TASK":{
+				"COMMENT":"/*以下为我发布的任务模块*/",
+				"WAIT_TO_DECLARE":"Project to be Reported"
+			},
+			"MY_TASK_AGENT":{
+				"COMMENT":"/*以下为我的待办任务模块*/",
+				"MY_TASK_AGENT":"My to-do Task"
+			},
+			"COMPLETED_TASK":{
+				"COMMENT":"/*以下为已完成的任务模块*/",
+				"COMPLETED_TASK":"Completed Projects"
+			},
+			"QUEST_LIST":{
+				"COMMENT":"/*以下为查看尽职调查模块*/",
+				"QUEST_LIST":"Due Diligence"
+			},
+			"ALL_PRO":{
+				"COMMENT":"/*以下为查看所有项目模块*/",
+				"ALL_PRO":"All Projects"
+			},
+			"ALL_ONGO_PRO":{
+				"COMMENT":"/*以下为查看所有进行中的项目模块*/",
+				"ALL_ONGO_PRO":"Projects in Progress"
+			},
+			"DATA_MONITOR":{
+				"COMMENT":"/*以下为数据监测模块*/"
+			},
+			"INCLUDE_CREATE_TEMP_A":{
+				"COMMENT":"/*以下为创建模板A模块*/",
+				"APPLY_BASE":{
+					"COMMENT":"/*以下为申请基本信息模块*/",
+					"PRO_NAME":"Project Name",
+					"PRO_MANAGER":"Project Leader",
+					"START_TIME":"Start Time",
+					"END_TIME":"End Time",
+					"CONTACT_NUMBER":"Contact No.",
+					"E_MAIL":"E-Mail",
+					"PRO_CYCLE":"Project Cycle",
+					"PRO_CATEGORY":"Project Type",
+					"PRO_PLAN_ATTAMENT":"Attachment of Project Plan",
+					"TIME":"Time",
+					"CONTENT":"Content",
+					"OUTPUT":"Output",
+					"OUTPUT_DOC":"Output Document"
+
+				}
+			
+			},
+			"PRO_DETAIL":{
+				"COMMENT":"/*以下为项目详情模块*/",
+				"PRO_DETAIL":"Project Details",
+				"CURRENT_PRO_INFO":"Current Project Info:",
+				"PRO_BASIC_INFO":"Project Basic Info:",
+				"PRO_FLOW_INFO":"Project Process Info:",
+				"PRO_PROCESS":"Handle Project:"
+			},
+			"CREATE_DEPARTMENT_RELEASE":{
+				"COMMENT":"/*以下为createDepartRelease.html模块*/",
+				"SPECIFY":"Designate",
+				"SELECTED":"Selected:"
+			},
+			"TD_LIST":{
+				"COMMENT":"/*以下为ColMarts中所有table的TD,基本带 ：号*/",
+				"PRO_NUMBER":"Project No.：",
+				"PRO_NAME":"Project Name：",
+				"APPLICATION_TIME":"Application Time",
+				"PRO_STATUS":"Project Status：",
+				"PRO_RESPONSIBLE":"Project Leader：",
+				"START_TIME":"Start Time：",
+				"END_TIME":"End Time：",
+				"CONTACT_NUMBER":"Contact No.：",
+				"E_MAIL":"E-Mail：",
+				"PRO_CYCLE":"Project Cycle：",
+				"PRO_CATEGORY":"Project Type：",
+				"PRO_PREPARATION":"Preparatory Conditions for Project：",
+				"OPERATE":"Action",
+				"NEXT_APPROVER":"Next Approver",
+				"DECLARATION_NUMBER":"Application No.",
+				"DECLARATION_TYPE":"Application Type",
+				"DECLARATION_THEME":"Application Topic",
+				"RELEASE_TIME":"Time to Post",
+				"DECLARATION_STATUS":"Application Status",
+				"DECLARATION_TIME":"Application Time",
+				"TASK_NUMBER":"Task No.",
+				"TASK_NAME":"Task Name",
+				"TASK_CREATE_TIME":"Time to Create Task",
+				"TASK_COMPLETE_TIME":"Time to Finish Task",
+				"PRO_MANAGER":"Project Manager",
+				"PRO_MANAGER_DEPARTMENT":"Sector for Project Manager",
+				"PRO_BUDGET":"Project Budget",
+				"CREATE_PERSON":"Creator",
+				"CREATE_TIME":"Creation Time"
+			},
+			"TH_LIST":{
+				"COMMENT":"/*以下为ColMarts中所有table的表头*/",
+				"PRO_NUMBER":"Project No.",
+				"PRO_NAME":"Project Name",
+				"APPLICATION_TIME":"Application Time",
+				"PRO_STATUS":"Project Status",
+				"OPERATE":"Action",
+				"NEXT_APPROVER":"Next Approver",
+				"DECLARATION_NUMBER":"Project No.",
+				"DECLARATION_TYPE":"Application Type",
+				"DECLARATION_THEME":"Application Topic",
+				"RELEASE_TIME":"Time to Post",
+				"DECLARATION_STATUS":"Application Status",
+				"DECLARATION_TIME":"Application Time",
+				"TASK_NUMBER":"Task No.",
+				"TASK_NAME":"Task Name",
+				"TASK_CREATE_TIME":"Time to Create Task",
+				"TASK_COMPLETE_TIME":"Time to Finish Task",
+				"PRO_MANAGER":"Manager",
+				"PRO_MANAGER_DEPARTMENT":"Sector for Project Manager",
+				"PRO_BUDGET":"Project Budget",
+				"CREATE_PERSON":"Creator",
+				"CREATE_TIME":"Creation Time",
+				"SUBMIT_TIME":"Submission Time",
+				"FILE_NAME":"File Name",
+				"NAME":"Name",
+				"AFFILIATED_DEP":"Sector",
+				"AFFILIATED_UNIT":"Company",
+				"SERIAL_NUMBER":"No.",
+				"TIME":"Time",
+				"EVENT_NAME":"Activity Name",
+				"ACTIVITIES":"Activity Content",
+				"OUTPUT":"Output",
+				"REVIEWS_NUMBER":"Review Times",
+				"CODE_READ_COUNT":"Code Walkthrough Times"	
+				
+			},
+			"TIPS":{
+				"COMMENT":"/*以下为ColMarts中所有输入框的提示信息*/",
+				"ENTER_PRO_TYPE":"Select Project Type",
+				"ENTER_PRO_THEME":"Enter Project Topic",
+				"ENTER_PRO_DECRIPTION":"Enter Project Description",
+				"ALL_PRO_MANAGE":"All Project Managers",
+				"SELECT_FILE_UPLOAD":"Select Files to be uploaded",
+				"ALL_THREE_MANAGER":"All Managers for Tertiary Sectors",
+				"ENTER":"Please enter",
+				"NO_QUERY_DATA":"No data can be found",
+				"NO_DATA":"No data available"
+			},
+			"BUTTON_NAME":{
+				"COMMENT":"/*以下ColMarts所以按钮，连接*/",
+				"DECLARE":"Apply",
+				"VIEW":"View",
+				"SELECT":"Select",
+				"SELECT_DOCUMENT":"Select File",
+				"RELEASE":"Post",
+				"CANCLE":"Cancel",
+				"SEARCH":"Search",
+				"EXPORT":"Export",
+				"MODIFY":"Modify",
+				"MODIFY_CHANGE":"Modify Changes",
+				"PROCESS":"Handle",
+				"PROCESS_CHANGE":"Change",
+				"QUESTION_LIST":"Due Diligence",
+				"CHANGE_APPROVAL":"Review Changes",
+				"SUBMIT_CYCLE_REP":"Submit Periodic Report",
+				"SUBMIT_INTERIM_REP":"Submit Interim Report",
+				"SUBMIT_FINAL_REP":"Submit Final Report",
+				"SUBMIT_CYCLE_MONITOR":"Submit Periodic Monitoring ",
+				"PREVIOUS":"Back",
+				"REFUSED_MODIFY_CHANGE":"Reject Modify Changes",
+				"NEXT":"Next",
+				"SUBMIT":"Submit",
+				"DOWMLOAD":"Download",
+				"RESET":"Reset",
+				"CONFIRM":"Confirm",
+				"BACK":"Back",
+				"CLOSE":"Close"
+			}
+			
+		},
+		"PERSONAL_CENTER":{
+			"COMMENT":"/*以下为个人中心模块*/",
+			"PERSONAL_DATA":
+			{
+				"COMMENT":"/*以下为个人资料模块*/",
+				"TITLE":"Personal Data",
+				"USER_DATA":"User Data",
+				"ACCOUNT":"Account",
+				"NAME":"Name",
+				"ACCOUNT_NAME":"Account/Name",
+				"GENDER":"Gender",
+				"MALE":"male",
+				"FEMALE":"female",
+				"ID_CARD":"ID Card",
+				"PASSPORT":"Passport",
+				"PHONE_NUM":"Phone No.",
+				"BIRTH_DATE":"Date of Birth",
+				"MAIL":"E-mail",
+				"ID_TYPE":"ID Type",
+				"ID_NUM":"ID No.",
+				"ADDRESS":"Address",
+				"ROLE":"Role",
+				"USER_STATUS":"User Status",
+				"TIPS":
+				{
+					"ENTER_PHONE":"Enter phone No.",
+					"ENTER_PHONE_TYPE":"Phone number can not be empty and it must be numeric"
+				}		
+			},
+			"CHANGE_PASSWORD":
+			{
+				"COMMENT":"/*以下为修改密码模块*/",
+				"TITLE":"Change Password",
+				"OLD_PASSWORD":"Old Password",
+				"NEW_PASSWORD":"New Password",
+				"CONFIRM_PASSWORD":"Confirm Password",
+				"RESET_PASSWORD":"Reset Password",
+				"SAVE":"Save",
+				"TIPS":
+				{
+					"ACTION_SUCCESS":"Action succeeded!",
+					"CHANGED_PASSWORD":"Password changed successfully. Please memorize your new password and you can re-log in with new password",
+					"SUGGEST_CHANGED_PASSWORD":"We suggest you log in with new password now in case you forget your new password.",
+					"NOTES":"Notes: if you change password many times, please log in with the latest password.",
+					"OLD_PASSWORD_ERROR":"Old password incorrect",
+					"ENTER_OLD_PASSWORD":"Enter old password",
+					"REPEAT_PASSWORD_ERROR":"New passwords do not match",
+					"ENTER_NEW_PASSWORD":"Please re-enter password",
+					"NEW_PASSWORD_ERROR":"New password incorrect",
+					"ENTER_NEW_PASSWORD":"Please re-enter password",
+					"NEW_PASSWORD_ERROE":"New passwords do not match"
+				}
+			},
+			"USER_MANAGEMENT":
+			{
+				"COMMENT":"/*以下为用户管理子模块*/",
+				"TITLE":"User Management",
+				"USER_LIST":"User List",
+				"USER_INFO":"User Info",
+				"NAME":"Name",
+				"ACCOUNT":"Account",
+				"ROLE":"Role",
+				"SELECT_ROLE":"Select Role",
+				"MOBILE_PHONE":"Link to mobile phone",
+				"CREAT_TIME":"Creation Time",
+				"USAGE_STATUS":"Usage Status",
+				"REVIEVED_STATUS":"Review Status",
+				"ACTION":"Action",
+				"IN_USE":"In Use",
+				"INVALID":"Invalid",
+				"RESET_PASSWORD":"Reset Password",
+				"ADD_EDIT_USER":
+				{
+					"COMMENT":"/*以下为新增编辑用户模块*/",
+					"EDIT_USER":"Edit User Info",
+					"ADD_USER":"Add User Info",
+					"COMPANY":"Company",
+					"BASIC_INFO":"Basic Info",
+					"SELECT_ROLE":"Select Role",
+					"PASSWORD":"Password",
+					"CONFIRM_PASSWORD":"Confirm Password",
+					"MAIL":"E-mail",
+					"PREVIEW_PERMISSION":"Preview Permission"
+				},
+				"REVIEW_USER_INFO":{
+					"TITLE":"Review User Info",
+					"USER_INFO":"User Info",
+					"COMPANY_INFO":"Company Info"
+				},
+				"DELETE_USER":
+				{
+					"TITLE":"Delete User",
+					"CONFIRM_DELETE":"Are you sure to delete this user?"
+				},
+				"TIPS":
+				{
+					"MUST_SELECT_TIPS":"You must select at least one company",
+					"SELECT_COMPANY":"Select company",
+					"ENTER_NAME":"Enter name",
+					"LAST_SELECT_ROLE":"You must select at least one role",
+					"SELECT_ROLE":"Select role",
+					"PASSWORD_ERROR":"Password confirmation incorrect",
+					"ENTER_PASSWORD_NEXT":"Please re-enter password",
+					"MUST_ENTER_PHONE":"Phone No. can not be empty",
+					"ENTER_PHONE":"Enter phone No."
+				}
+			},
+			"COMPANY_MANAGE":
+			{
+				"COMMENT":"/*以下为单位管理模块*/",
+				"TITLE":"Company Management",
+				"USER_NAME":"User Name",
+				"PHONE_NUM":"Phone No.",
+				"COMPANY_LIST":
+				{
+					"COMMENT":"/*以下为单位列表模块*/",
+					"TITLE":"Company List",
+					"COMPANY_NAME":"Company Name",
+					"COMPANY_TYPE":"Type of Company",
+					"ID_TYPE":"ID Type",
+					"ID_NUM":"ID No.",
+					"CONTACT":"Contact",
+					"CURRENT_STATUS":"Current Status",
+					"ACTION":"Action",
+					"REVIEVED":"Reviewed",
+					"NOT_REVIEVED":"Not Reviewed",
+					"REJECT":"Reject",
+					"EDIT":"Edit",
+					"DELETE":"Delete"
+				},
+				"ADD_EDIT_COMPANY":
+				{
+					"COMMENT":"/*以下为新增编辑单位模块*/",
+					"EDIT_COMPANY_INFO":"Edit Company Info",
+					"ADD_COMPANY_INFO":"Add Company Info",
+					"COMPANY_NAME":"Company Name",
+					"COMPANY_ADDRESS":"Company Address",
+					"COMPANY_TYPE":"Type of Company",
+					"REGISTE_ADDRESS":"Registration Address",
+					"CONTACT_ADDRESS":"Company Address",
+					"CONTACT_PHONE":"Contact No.",
+					"CONTACT_MAIL":"Contact E-mail",
+					"GREATER":"Creator",
+					"BASIC_INFO":"Basic Info"
+				},
+				"TIPS":
+				{
+					"ENTER_COMPANY_NAME":"Enter company name",
+					"ENTER_COMPANY_TYPE":"Enter type of company",
+					"ENTER_ID_TYPE":"Enter ID type",
+					"ENTER_ID":"Enter ID",
+					"ENTER_REGISTER_ADDRESS":"Enter registration address",
+					"ENTER_COMPANY_ADDRESS":"Enter company address",
+					"ENTER_CONTACT_NUM":"Enter contact No.",
+					"ENTER_CONTACT":"Enter contact",
+					"ENTER_COMTACT_MAIL":"Enter contact E-mail address",
+					"ENTER_CREATER":"Enter creator"
+				}
+			},
+			"BUTTON_NAME":
+			{
+				"COMMENT":"/*以下为用户中心按钮*/",
+				"EDIT_DATA":"Edit Data",
+				"SAVE":"Save",
+				"CONFIRM":"Confirm",
+				"CANCEL":"Cancel",
+				"SUBMIT":"Submit",
+				"CLOSE":"Close",
+				"QUERY":"Query",
+				"RESET":"Reset",
+				"ADD_USER":"Add User",
+				"EDIT_USER":"Edit User",
+				"ADD":"add",
+				"ADD_COMPANY":"Add Company",
+				"EDIT":"Edit",
+				"DELETE":"Delete",
+				"REJECT":"Reject",
+				"APPROVE":"Approve",
+				"SELECT_ALL":"Select All"
+			},
+			"TIPS":
+			{
+				"NO_DATA":"No data available!",
+				"HOME":"Home",
+				"RELOGIN":"Re-Log In",
+				"NO_CHANGE_ADMIN":"Admin account can not be modified."
+			},
+			"STATUS":
+			{
+				"APPROVE":"Approve",
+				"NOT_REVIEWED":"Not Reviewed",
+				"REJECT":"Reject",
+				"INVALID":"Invalid",
+				"INUSE":"In Use"
+			}
+			
+		}
+		
+		
+		
+		
+		
+}

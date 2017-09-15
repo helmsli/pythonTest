@@ -1,0 +1,364 @@
+<meta charset="UTF-8">
+<div class="col-lg-12 col-ms-12 col-sm-12 col-xs-12">
+	<div class="table-responsive min-height-500">
+		<table class="table table-striped table-bordered" id="table" data-toggle="table" data-show-header="false" data-classes="table">
+	        <thead>
+	            <tr>
+	                <th data-field="title1" data-align="right" tabindex="0">
+	                    <div class="th-inner ">Item title1</div>
+	                </th>
+	                <th data-field="name1" data-align="left" data-editable="false" tabindex="0">
+	                    <div class="th-inner ">Item name1</div>
+	                </th>
+	                <th data-field="title2" data-align="right" tabindex="0">
+	                    <div class="th-inner ">Item title2</div>
+	                </th>
+	                <th data-field="name2" data-align="left" data-editable="true" tabindex="0">
+	                    <div class="th-inner ">Item name2</div>
+	                </th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr data-index="0">
+	                <td style="text-align: right;">姓名</td>
+	                <td id="userName" data-editable="edit"></td>
+	                <td>角色</td>
+	                <td data-editableType="select" data-datename="02"></td>
+	            </tr>
+	            <tr data-index="1">
+	                <td style="text-align: right;">任务名称</td>
+	                <td id="taskName"data-editable="edit" colspan="3">
+	                </td>
+	            </tr>
+	            <tr data-index="2">
+	                <td style="text-align: right;">任务开始时间</td>
+	                <td data-editableType="datetimepicker" data-datename="startTime"></td>
+	                <td>任务结束时间</td>
+	                <td data-editableType="datetimepicker" data-type="time" data-datename="endTime"></td>
+	            </tr>
+	            <tr data-index="3">
+	                <td style="text-align: right;">任务周期</td>
+	                <td data-editableType="radio"  data-datename="01" data-name="project_period" colspan="3"></td>
+	            </tr>
+	            <tr data-index="4">
+	                <td style="text-align: right;">任务类别</td>
+	                <td data-editableType="checkbox" data-datename="01" colspan="3"></td>
+	            </tr>
+	            <tr data-index="5">
+	                <td style="text-align: right;">任务描述</td>
+	                <td id="taskDescribe" data-editable="edit" colspan="3">
+	                    <div style="height: 120px;" ></div>
+	                </td>
+	            </tr>
+	        </tbody>
+	    </table>
+	</div>
+</div>
+
+<script>
+	    /*初始化表格数据源*/
+	    var dataList={
+	        userName:"",
+	        role:"",
+	        taskName:"",
+	        startTime:"",
+	        endTime:"",
+	        taskPeriod:"",
+	        taskCategory:"",
+	        select:{},
+	        radio:{},
+	        checkbox:{}
+	    };
+	
+	    /*定义组件select、checkbox、radio数据模型*/
+	    var dataModel={
+	        selectArr:{
+	            "01":["开发","测试","产品"],
+	            "02":["sfdsafd","测试","产品"]
+	             },
+	        chooseArr:{
+	            "01": [{text:"1年",value:"1"},
+	                {text:"2年",value:"2"},
+	                {text:"3年",value:"3"}],
+	            "02": [{text:"5年",value:"1"},
+	                {text:"2年",value:"2"},
+	                {text:"3年",value:"3"}]
+	        }
+	    };
+	
+	    $(function () {
+	        /*初始化函数*/
+	        init(dataModel);
+	    });
+	
+	    function init(data) {
+	        /*组件初始化*/
+	        componentsInit(data);
+	    }
+	
+	    /*定义表格需加入的组件并初始化组件*/
+	    function componentsInit(data) {
+	        /*初始化组件select、radio、checkbox、datePicker*/
+	        initSelect(data.selectArr);
+	        initRadio(data.chooseArr);
+	        initCheckbox(data.chooseArr);
+	        initDatePicker('yyyy-MM-dd hh:mm:ss');
+	
+	        /*可编辑输入框*/
+	        editableToInput();
+	    }
+	
+	    function editableToInput() {
+	        /*可编辑输入框转换*/
+	        var editable=$("#table tr td[data-editable='edit']");
+	        editable.bind("click", dataEdit);
+	        editable.bind("blur", dataSave);
+	        /*下拉框数据切换绑定事件*/
+	        $(".dropdown-menu li a").bind("click",dataSelect);
+	    }
+	
+	    //下拉框数据切换
+	    function dataSelect(e) {
+	        var selected=$(e.currentTarget).text();
+	        $("#role").text(selected);
+	        dataList.role=selected;
+	    }
+	
+	    /**
+	     * 初始化select组件
+	     * @param selectArr：定义组件数据模型
+	     * */
+	    function initSelect(selectArr)
+	    {
+	        initCommon("select",selectArr,selectTemplate);
+	    }
+	
+	    /**
+	     * 初始化radio组件
+	     * @param chooseArr：定义组件数据模型
+	     * */
+	    function initRadio(chooseArr)
+	    {
+	        initCommon("radio",chooseArr,radioTemplate);
+	    }
+	
+	    /**
+	     * 初始化checkbox组件
+	     * @param chooseArr：定义组件数据模型
+	     * */
+	    function initCheckbox(chooseArr)
+	    {
+	        initCommon("checkbox",chooseArr,checkboxTemplate);
+	    }
+	
+	    /**
+	     * 初始化时间组件
+	     * @param format：定义时间格式
+	    * */
+	    function initDatePicker(format)
+	    {
+	        initCommon("datetimepicker","","",format);
+	    }
+	
+	    /**
+	     * 加载组件
+	     * @param dataType:自定义组件属性data-editableType
+	     *         arr:组件数据模型[]
+	     *         template:组件模板selectTemplate、radioTemplate、checkboxTemplate、dateTemplate
+	     *         format:日期格式
+	    * */
+	    function initCommon(dataType,arr,template,format)
+	    {
+	        $("#table tr td[data-editableType="+dataType+"]").each(function(){
+	            var _self=$(this);
+	            var datename=_self.attr("data-datename");
+	            _self.attr("id",datename);
+	            var _thisId=datename;
+	
+	            if(dataType=="datetimepicker")
+	            {
+	                _self.append(dateTemplate(datename));
+	                $('#'+_thisId).datetimepicker({
+	                    format: format
+	                });
+	            }else{
+	                var myData=arr[datename];
+	                var html=template(myData,datename);
+	                initModel(datename,myData,dataType);
+	                _self.append(html);
+	            }
+	        });
+	    }
+	
+	    /**
+	     * 初始化数据模型
+	     * @param dataType:组件类型名称select、checkbox、radio
+	     *         name:单个组件标识字段名称
+	     *         data:单个组件对应的数据模型[]
+	     * */
+	    function initModel(name,data,dataType)
+	    {
+	        dataList[dataType][name]=data;
+	    }
+	
+	    //可编辑输入框
+	    function dataEdit(e) {
+	        $(e.currentTarget).attr("contentEditable",true);
+	    }
+	
+	    //鼠标移出时存储对象
+	    function dataSave(e) {
+	        var id=e.currentTarget.id;
+	        dataList[id]=$("#"+id).text().replace(/\s/g, "");
+	    }
+	
+	    /*保存表格数据*/
+	    $("#save").click(function () {
+	
+	        getCheckedVal('select','select',dataList);
+	        getCheckedVal('checkbox','checkbox',dataList);
+	        getCheckedVal('radio','radio',dataList);
+	
+	        dataList.startTime=$('#startTime input').val();
+	        dataList.endTime=$('#endTime input').val();
+	        console.log(dataList);
+	        console.log(JSON.stringify(dataList));
+	        alert(JSON.stringify(dataList));
+	    });
+	
+	
+	    /**
+	    * 定义表格组件模板
+	    *selectTemplate：下拉选项模板
+	    *dateTemplate：日期模板
+	    *radioTemplate：单选框模板
+	    *checkboxTemplate：复选框模板
+	    * */
+	    /**
+	     * 下拉选项模板
+	     * @param arr:组件数据模型[]
+	     *        name：自定义组件属性data-editableType
+	     * return selectTemplate组件
+	     * */
+	    function selectTemplate(arr,name) {
+	        var selectList="";
+	        for(var i in arr){
+	            var selectLi= '<li><a href="#">'+arr[i]+'</a></li>';
+	            selectList += selectLi;
+	        }
+	        return '<div class="select-group">'+
+	                '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="'+name+'" id="role" data-error="No select" data-tip=" Please select the user type">'+
+	                '开发 <span class="caret"></span>'+
+	                '</button>'+
+	                '<ul  class="dropdown-menu" role="menu">'+selectList+
+	                '</ul>'+
+	                '</div>'
+	    }
+	
+	    /**
+	     * 日期模板
+	     * @param id:单个日期组件名称data-datename
+	     * return dateTemplate日期组件
+	     * */
+	    function dateTemplate(id) {
+	        return 	'<div id="'+id+'" class="input-append date">'+
+	                '<input  type="text" class="form-control" data-format="dd/MM/yyyy"/>'+
+	                '<span class="add-on">'+
+	                '<i data-time-icon="icon-time" data-date-icon="fa fa-calendar icon-calendar"> </i>'+
+	                '</span>'+
+	                '</div>';
+	    }
+	
+	    /**
+	     * 单选框模板
+	     * @param arr:组件数据模型[]
+	     *        name：自定义组件属性data-editableType
+	     * return radioList组件
+	     * */
+	    function radioTemplate(arr,name) {
+	        var radioList="";
+	        for(var i in arr){
+	            var radio='<div class="radio-inline">'+
+		                  '<input type="radio" class="with-gap radio-col-blue" id="'+i+'" name="'+name+'" value="'+arr[i].value+'">'+
+		                  '<label for="'+i+'">'+arr[i].text+'</label>'+
+		                  '</div>';
+	            radioList += radio;
+	        }
+	        return radioList;
+	    }
+	
+	    /**
+	    * 复选框模板
+	    * @param arr:组件数据模型[]
+	    *        name：自定义组件属性data-editableType
+	    * return checkboxList组件
+	    * */
+	    function checkboxTemplate(arr,name) {
+	        var checkboxList="";
+	        for(var i in arr){
+	            var checkbox='<div class="checkbox-inline">'+
+	                    '<input type="checkbox" class="filled-in chk-col-blue" id="#'+i+'" name="'+name+'" value="'+arr[i].value+'">'+
+	                    '<label for="#'+i+'">'+arr[i].text+'</label>'+
+	                    '</div>';
+	            checkboxList += checkbox;
+	        }
+	        return checkboxList;
+	    }
+	
+	    /**
+	     * 获取select、checkbox、radio选中项
+	     * @param dataName：自定义组件属性data-editableType
+	     *         type：组件类型名称select、checkbox、radio
+	     *         data：多组件下，select、checkbox、radio的所有数据模型
+	     * return data：{"01":["1","2"]}
+	     * **/
+	    function getCheckedVal(dataName,type,data)
+	    {
+	        //select ,radio,checkbox
+	        var myList=data[dataName];
+	        var checkedList={};
+	
+	        for(var key in  myList)
+	        {
+	            var checkedArr=[];
+	            if(type=="select")
+	            {
+	                $("#table td[data-editableType='"+dataName+"']").each(function(){
+	                    var _self=$(this);
+	                    var butText=_self.find("button");
+	                    var _selfVal=butText.text();
+	                    checkedArr.push(_selfVal);
+	                })
+	            }else{
+	                $("#table input[type='"+dataName+"'][name='"+key+"']").each(function(){
+	                    var _self=$(this);
+	                    var _selfVal=_self.val();
+	
+	                    if(type=="checkbox" || type=="radio")
+	                    {
+	                        var checkFlag=_self.prop("checked");
+	                        if(checkFlag)
+	                        {
+	                            checkedArr.push(_selfVal);
+	                        }
+	                    }
+	                })
+	            }
+	            checkedList[key]=checkedArr;
+	        }
+	        switch (type)
+	        {
+	            case "checkbox":
+	                data["checkboxed"]=checkedList;
+	                break;
+	            case "radio":
+	                data["radioed"]=checkedList;
+	                break;
+	            default:
+	                data["selected"]=checkedList;
+	        }
+	        return data;
+	    }
+	
+	
+	</script>

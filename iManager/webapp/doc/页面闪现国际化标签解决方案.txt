@@ -1,0 +1,17 @@
+
+一、页面中添加标签ng-hide="mainpage_flag"
+       例：<div id="page-wrapper" ng-hide="mainpage_flag"></div> //默认都放在此ID标签上。
+
+二、js的controller位置
+	$scope.mainpage_flag=true;   //设置初始状态：
+	$scope.$watch("translate",function(){  //监听translate属性变化
+		console.log("*******************");
+		setTimeout(function(){
+			$scope.mainpage_flag=false;
+    		 $scope.$applyAsync($scope.mainpage_flag);
+    		 clearLoader(); 
+		},100);
+     })
+     
+三、注意页面中的body是否有ng-controller="app",如果没有请添加。请确认页面是否有调用公用的home.js文件，如果没有调用，请一定要调用此js文件。
+       因为监控translate属性的js放在了公用的home.js文件里了，

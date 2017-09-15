@@ -1,0 +1,12 @@
+//example.h
+#include <iostream>
+using namespace std;
+class Example{
+public:
+void say_hello();
+};
+example.cpp#include "example.h"
+
+void Example::say_hello(){
+cout<<"hello"<<endl;
+}

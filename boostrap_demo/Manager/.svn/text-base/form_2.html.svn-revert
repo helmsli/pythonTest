@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>form</title>
+		
+		<!-- Bootstrap Css -->
+	   	<link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+		
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+		<script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	    
+	    <!--Global JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+		<script src="../js/home.js" type="text/javascript"></script>
+	    
+	    <!-- Custom Css -->
+	    <link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    
+		<!--Forms JS-->
+		<script src="../js/formValidata/formValid_Inf.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid_Rule.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid.js" type="text/javascript"></script>
+	
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="app">
+			<div ng-include="'include/header.html'"></div>
+			<div class="menus" ng-include="'include/leftMenu.html'" ></div>
+			<div id="page-wrapper">
+				<h1 class="page-header">表单  2</h1>
+                <!-- / .breadcrumb -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">自定义title</div>
+                        	<div class="panel-body">
+                        		<div class="row">
+                        			<div class="col-lg-12">
+                        				<form action="#" method="post" id="theForm" class="form-horizontal">
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">User Name</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<input type="text" class="form-control" name="userName" id="userName" data-error="UserName error" data-tip="Please enter the user name" />
+                        						</div>
+                        					</div>
+                        					<!-- / User Name -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">User Type</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<div class="select-group">
+														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+															Action <span class="caret"></span>
+														</button>
+														<ul class="dropdown-menu" role="menu">
+														    <li><a href="#">Action</a></li>
+														    <li><a href="#">Another action</a></li>
+														    <li><a href="#">Something else here</a></li>
+														    <li><a href="#">Separated link</a></li>
+														</ul>
+													</div>
+                        						</div>
+                        					</div>
+                        					<!-- / User Type -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Password</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<input type="text" class="form-control" id="pwd" data-error="password error" data-tip="Please enter your password" />
+                        						</div>
+                        					</div>
+                        					<!-- / Password -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">E-mail</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<input type="text" class="form-control" id="email" />
+                        						</div>
+                        					</div>
+                        					<!-- / E-mail -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Number</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<input type="text" class="form-control" id="myNum" data-error="Num error" data-tip="Please enter your num" />
+                        						</div>
+                        					</div>
+                        					<!-- / Number -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Checkbox</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<div class="checkbox">
+	                        							<label class="checkbox-inline">
+	                    									<input type="checkbox" class="regular-checkbox" id="sing" name="hobby" value="sing" data-error="未勾选" />
+	                    									<label for="sing"></label>
+	                    									sing
+		                                                </label>
+		                                                <label class="checkbox-inline">
+	                    									<input type="checkbox" class="regular-checkbox" id="dance" name="hobby" value="dance" data-error="未勾选" />
+	                    									<label for="dance"></label>
+	                    									dance
+		                                                </label>
+	                        						</div>
+	                        						<span class="input-tips" id="checkboxError">
+	                        							<span class="error-block">请勾选</span>
+	                        						</span>
+                        						</div>
+                        					</div>
+                        					<!-- / Checkbox -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Radio</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<div class="radio">
+	                        							<label class="radio-inline">
+	                    									<input type="radio"  class="regular-radio" name="radio" id="man" checked="checked" value="1" />
+	                    									<label for="man"></label>	
+	                    									Man
+		                                                </label>
+		                                                <label class="radio-inline">
+	                    									<input type="radio"  class="regular-radio" name="radio" id="woman" value="1" />
+	                    									<label for="woman"></label>	
+	                    									Woman
+		                                                </label>
+	                                          		</div>
+	                                        	</div>
+                        					</div>
+                        					<!-- / Radio --> 
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Upload</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<div class="file">
+	                        							<div class="file-preview">
+	                        								<div class="preview" id="showImg">Preview</div>
+	                        								<div class="preview">Preview</div>
+	                        							</div>
+	                        							<div class="file-group">
+	                    									<input type="text" name="fileName" id="fileName" class="form-control" />
+	                        								<input type="button" value="Upload" class="btn btn-primary"/>
+	                        								<input type="file" name="filefield" id="uploadFile" onchange="uploadFileShow('uploadFile','showImg'); document.getElementById('fileName').value=this.value" />
+	                        							</div>
+	                        							<!--<span class="input-tips" id="checkboxError">
+		                        							<span class="err-block">请勾选</span>
+		                        						</span>-->
+		                                          	</div>
+                        						</div>
+                        					</div>
+                        					<!-- / file -->
+                        					<div class="btn-group">
+                        						<hr />
+                        						<button type="button" class="btn btn-success" id="submitBtn" />Register</button>
+                        						<button type="button" class="btn btn-primary" />Cancel</button>
+                        					</div>
+                        					<!-- / button -->
+                        				</from>
+                        				<!-- / forms -->
+                        			</div>
+                        			<!-- / .col-lg-12 -->
+                        		</div>
+                        		<!-- / .row -->
+                        	</div>
+                        	<!-- / .panel-body -->
+                        </div>
+                        <!-- / .panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">
+                        		表单元素组合
+                        		<small>This box for the form elements of a style of the way, there is no check function</small>
+                        	</div>
+                        	<div class="panel-body">
+                        		<div class="row">
+                        			<div class="col-lg-12">
+                        				<div class="form-horizontal">
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Input group</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<div class="col-md-3 col-xs-4"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+                        							<div class="col-md-3 col-xs-4"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+                        							<div class="col-md-3 col-xs-4"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+                        						</div>
+                        					</div>
+                        					<!-- / User Name -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Select group</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<div class="col-md-3 col-xs-4">
+                        								<div class="select-group input-sm">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+																Action <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+															    <li><a href="#">Action</a></li>
+															    <li><a href="#">Another action</a></li>
+															    <li><a href="#">Something else here</a></li>
+															    <li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+                        							</div>
+                        							<div class="col-md-3 col-xs-4">
+                        								<div class="select-group input-sm">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+																Action <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+															    <li><a href="#">Action</a></li>
+															    <li><a href="#">Another action</a></li>
+															    <li><a href="#">Something else here</a></li>
+															    <li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+                        							</div>
+                        							<div class="col-md-3 col-xs-4">
+                        								<div class="select-group input-sm">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+																Action <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+															    <li><a href="#">Action</a></li>
+															    <li><a href="#">Another action</a></li>
+															    <li><a href="#">Something else here</a></li>
+															    <li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+                        							</div>
+                        						</div>
+                        					</div>
+                        					<!-- / User Name -->
+                        					<div class="form-group">
+                        						<label class="col-lg-3 col-md-3">Input group</label>
+                        						<div class="col-lg-9 col-md-9">
+                        							<div class="col-md-5 col-xs-6"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+                        							<div class="col-md-4 col-xs-6">
+                        								<div class="select-group input-sm">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+																Action <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+															    <li><a href="#">Action</a></li>
+															    <li><a href="#">Another action</a></li>
+															    <li><a href="#">Something else here</a></li>
+															    <li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+                        							</div>
+                        						</div>
+                        					</div>
+                        					<!-- / User Name -->
+                        					<hr />
+                        					<div class="col-lg-12 form-group-sm">
+                        						<div class="col-lg-4 col-xs-4 form-group">
+	                        						<label class="col-lg-3 col-md-3">Input group</label>
+	                        						<div class="col-lg-9 col-md-9"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+	                        					</div>
+	                        					<div class="col-lg-4 col-xs-4 form-group">
+	                        						<label class="col-lg-3 col-md-3">Input group</label>
+	                        						<div class="col-lg-9 col-md-9"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+	                        					</div>
+	                        					<div class="col-lg-4 col-xs-4 form-group">
+	                        						<label class="col-lg-3 col-md-3">Input group</label>
+	                        						<div class="col-lg-9 col-md-9"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+	                        					</div>
+	                        					<div class="col-lg-4 col-xs-4 form-group">
+	                        						<label class="col-lg-3 col-md-3">Select group</label>
+	                        						<div class="col-lg-9 col-md-9">
+	                        							<div class="select-group input-sm">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+																Action <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+															    <li><a href="#">Action</a></li>
+															    <li><a href="#">Another action</a></li>
+															    <li><a href="#">Something else here</a></li>
+															    <li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+	                        						</div>
+	                        					</div>
+	                        					<div class="col-lg-4 col-xs-4 form-group">
+	                        						<label class="col-lg-3 col-md-3">Select group</label>
+	                        						<div class="col-lg-9 col-md-9">
+	                        							<div class="select-group input-sm">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+																Action <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+															    <li><a href="#">Action</a></li>
+															    <li><a href="#">Another action</a></li>
+															    <li><a href="#">Something else here</a></li>
+															    <li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+	                        						</div>
+	                        					</div>
+	                        					<div class="col-lg-4 col-xs-4 form-group">
+	                        						<label class="col-lg-3 col-md-3">Select group</label>
+	                        						<div class="col-lg-9 col-md-9">
+	                        							<div class="select-group input-sm">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="userType" id="userType" data-error="No select" data-tip=" Please select the user type">
+																Action <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+															    <li><a href="#">Action</a></li>
+															    <li><a href="#">Another action</a></li>
+															    <li><a href="#">Something else here</a></li>
+															    <li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+	                        						</div>
+	                        					</div>
+	                        					<div class="col-lg-6 col-xs-6 form-group">
+	                        						<label class="col-lg-3 col-md-3">Input group</label>
+	                        						<div class="col-lg-9 col-md-9"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+	                        					</div>
+	                        					<div class="col-lg-6 col-xs-6 form-group">
+	                        						<label class="col-lg-3 col-md-3">Input group</label>
+	                        						<div class="col-lg-9 col-md-9"><input type="text" class="form-control input-sm" name="userName" placeholder="user name" /></div>
+	                        					</div>
+	                        					<div class="form-group">
+	                        						<label class="col-lg-3 col-md-3">Radio group</label>
+	                        						<div class="col-lg-9 col-md-9">
+	                        							<div class="btn-group input-sm">
+			                        						<div class="radio">
+			                        							<label class="radio-inline">
+			                    									<input type="radio"  class="regular-radio" name="radio" id="man" checked="checked" value="1" />
+			                    									<label for="man"></label>	
+			                    									Man
+				                                                </label>
+				                                                <label class="radio-inline">
+			                    									<input type="radio"  class="regular-radio" name="radio" id="woman" value="1" />
+			                    									<label for="woman"></label>	
+			                    									Woman
+				                                                </label>
+				                                          	</div>
+			                        					</div>
+	                        						</div>
+	                        					</div>
+                        					</div>
+                        					<!-- / User Name -->
+                        					<div class="btn-group">
+                        						<hr />
+                        						<button type="button" class="btn btn-success" />Register</button>
+                        						<button type="button" class="btn btn-primary" />Cancel</button>
+                        					</div>
+                        					<!-- / button -->
+                        				</div>
+                        				<!-- / .form-horizontal -->
+                        			</div>
+                        			<!-- / .col-lg-12 -->
+                        		</div>
+                        		<!-- / .row -->
+                        	</div>
+                        	<!-- / .panel-body -->
+                        </div>
+                        <!-- / .panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- / .row -->
+			</div>
+			<!-- / #page-wrapper -->
+		</div>
+		<!-- / #wrapper -->
+		<!--<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div ng-include="'template/addUser.html'" ></div>
+		</div>-->
+		<!-- / .modal -->
+	</body>	
+	<script src="../js/formValidata/getFormData.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,85 @@
+<meta charset="UTF-8">
+<!-- Bootstrap Css -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<a id="navbar-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#leftMenu_navbar"><i class="fa fa-bars"></i></a>
+	<a class="navbar-brand" href="Manager/demo/home/home.html">CooTel</a>
+	<ul class="nav navbar-nav navbar-left navbar-top-links" id="headerModal">
+	    <li><a href="Manager/demo/home/home.html">首页</a></li>
+	    <li><a href="Manager/demo/form/form.html">表单</a></li>
+	    <li><a href="Manager/demo/table/table.html">表格</a></li>
+	    <li><a href="Manager/demo/step/step.html">步骤</a></li>
+	    <li><a href="Manager/demo/tree/tree.html">菜单树</a></li>
+	    <li><a href="Manager/demo/ui/alerts.html">用户界面</a></li>
+	    <li><a href="Manager/demo/userCenter/userInfo.html">用户中心</a></li>
+    </ul>
+    <ul class="nav navbar-right navbar-top-links">
+        <li class="dropdown">
+            <a class="user-profile dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+            	<img src="../../../images/picture.jpg" class="img-circle" />
+            	<i class="fa fa-user"></i>
+            	<em class="user-name">张三丰</em>
+            	<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+            	<li><a href="Manager/demo/userCenter/userInfo.html" ><i class="fa fa-user fa-fw"></i>用户资料</a></li>
+            	<li><a href="Manager/demo/userCenter/userPassword_modify.html"><i class="fa fa-edit fa-fw"></i>修改密码</a></li>
+            	<li class="divider"></li>
+                <li><a href="Manager/demo/home/login.html"><i class="fa fa-sign-out fa-fw"></i>退出系统</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle skin-fa" data-toggle="dropdown" href="javascript:void(0);">
+            	<i class="fa fa-ellipsis-v"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user" id="skin">
+            	<li><span href="javascript:void(0);" id="default" onclick="mySkin.changeSkin('blue');"><i class="fa fa-stop fa-fw"></i>蓝色(默认)</span></li>
+            	<li><span href="javascript:void(0);" id="yellow" onclick="mySkin.changeSkin('yellow');"><i class="fa fa-stop fa-fw"></i>黄色</span></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<script>
+	$(function(){
+		setHead();
+		/*小屏幕时，点击菜单按钮，菜单底部添加遮罩层*/
+		$("#navbar-toggle").on("click",function(){
+			$(".overlay").fadeToggle();
+			/*if($(".overlay").length!=0){
+				if($(".overlay").css("display")=="none"){
+					$(".overlay").fadeIn();
+					
+				}else{
+					$(".overlay").fadeOut();
+				}
+			}*/
+		});
+		/*遮罩层点击时，消失*/
+		$(".overlay").on("click",function(){
+			$(".overlay").fadeOut();
+			//菜单面板折叠
+			$("#leftMenu_navbar").removeClass("in");
+		});
+	});
+	$(window).resize(function() {
+	    setHead();
+	});
+	function setHead()
+	{  
+		var headerType = config.leftMenuSkin;
+		var clientWidth = document.body.clientWidth+17;
+		if(clientWidth<992){
+			headerType = "";
+			console.log('小屏');
+		}else{
+			headerType = config.leftMenuSkin;
+			console.log('宽屏');
+		}
+        if(headerType=="head")
+        {	$("#headerModal").css({"cssText":"display:block!important"});
+        }else{
+        	$("#headerModal").css({"cssText":"display:none!important"})
+        }
+        
+	}
+	
+</script>

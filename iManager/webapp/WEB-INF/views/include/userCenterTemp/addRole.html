@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+<div class="modal-dialog" ng-controller="addRole">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel" translate="USER_MANAGE.ROLE_MANAGE.ROLE_LIST.ADD_ROLE"></h4>
+        </div>
+        <div class="modal-body">       	
+        	<form action="#" method="post" id="theForm" class="form-custom">
+				<div class="form-group">
+					<div><!-- 校验信息添加时候有错误，为了兼容校验信息显示位置的错误（见formValid.js第365行，表单校验的灵活性有待推敲），添加此div，呵呵哒~ -->
+						<label class="form-label" translate="USER_MANAGE.ROLE_MANAGE.ROLE_LIST.ROLE_NAME"></label>
+						<input type="text" class="form-control" id="roleName" ng-model="role.name" name="name" id="name" maxlength="20" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="form-label" translate="USER_MANAGE.ROLE_MANAGE.ROLE_LIST.NOTES"></label>
+					<textarea class="form-control" ng-model="role.disc"></textarea>
+					<label style="color:red" class="form-label" ng-show="tips">{{'USER_MANAGE.ROLE_MANAGE.ROLE_LIST.DESC_TIPS'|translate}}</label>
+					<label class="form-label" style="float:right;">{{'USER_MANAGE.ROLE_MANAGE.ROLE_LIST.ENTER'|translate}} {{role.disc.length}} {{'USER_MANAGE.ROLE_MANAGE.ROLE_LIST.BYTE'|translate}}</label>
+				</div>
+			</form>     	
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success  m-r-8" ng-click="editRoleInfo(role.id)" translate="USER_MANAGE.BUTTON_NAME.CONFIRM"></button>
+            <button type="button" class="btn btn-primary  m-l-8" data-dismiss="modal" translate="USER_MANAGE.BUTTON_NAME.CANCEL"></button>
+        </div>
+    </div>
+</div>

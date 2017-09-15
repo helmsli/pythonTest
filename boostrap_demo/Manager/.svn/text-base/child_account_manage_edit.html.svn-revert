@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Account Manager</title>
+		
+		<!-- Bootstrap Css -->
+	    <link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+		
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+		<script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	    
+	    <!-- Global JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+		<script src="../js/home.js" type="text/javascript"></script>
+	    
+	    <!-- Custom Css -->
+	    <link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/userCenter/userCenter.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    <!--Tree CSS-->
+		<link href="../js/tree/css/demo.css" type="text/css" rel="stylesheet">
+		<link href="../js/tree/css/zTreeStyle/zTreeStyle.css" type="text/css" rel="stylesheet">
+	    
+		<!--Tree Js-->
+		<script src="../js/tree/js/jquery.ztree.core-3.5.js" type="text/javascript"></script>
+		<script src="../js/template/leftMenu.js" type="text/javascript"></script>
+		<script src="../js/template/leftMenuData.js" type="text/javascript"></script>
+		<script src="../js/userCenter/tree_check.js"type="text/javascript"></script>
+		<!--Forms JS -->
+		<script src="../js/formValidata/formValid_Inf.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid_Rule.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid.js" type="text/javascript"></script>
+		<!--Pages JS--->
+		<script src="../js/userCenter/subAccount_2/userEdit.js" type="text/javascript"></script>
+        <!--权限树JSON模型-->
+		<script src="../js/template/permissionTree.js" type="text/javascript"></script>
+		 <!--用户数据模型-->
+        <script src="../js/template/user.js"  type="text/javascript"></script>
+	
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="app">
+			<div class="header" ng-include="'include/header.html'"></div>
+			<div class="menus" ng-include="'include/leftMenu.html'"></div>
+			<div id="page-wrapper">
+				<h1 class="page-header">子账号管理-2</h1>
+                <div class="row">
+                	<div class="col-lg-12">
+    					<div class="panel panel-default">
+                        	<div class="panel-heading">
+                        		新建员工
+                        		<div class="btn-group">
+									<div class="btn-group">
+										<button class="btn btn-success" onclick="userEdit.saveUserInfo()">保存</button>
+										<button class="btn btn-default" onclick="userEdit.cancelWin();">取消</button>
+									</div>
+								</div>
+                        	</div>
+                        	<div class="panel-body">
+                        		<div class="row">
+                        			<div class="col-lg-12">
+                        				<h5 class="page-header">基础信息</h5>
+                        				<div ng-include="'userCenter/userCenter_account2.html'"></div>
+                        			</div>
+                        			<!-- / .col-lg-12 -->
+                        			<div class="col-lg-12">
+                        				<hr />
+                        			</div>
+                        			<!-- / .col-lg-12 -->
+                        			<div class="col-lg-12">
+                        				<h5 class="page-header">子账号权限</h5>
+                        				<div class="role-checkall">
+											<div class="power_info" id="powerInfo"></div>
+											<!--<div class="power_checkAll">
+												<label class="checkbox-inline"><input type="checkbox" class="regular-checkbox" id="checkAll" onclick="treeList.getCheckAll('powerInfo')" /><label for="checkAll"></label>全选</label>
+											</div>-->
+										</div>
+										<!-- / .role-checkall -->
+										<script>
+											treeList.init('powerInfo',permissionTree);
+										</script>
+										<div class="dataTables_paginate hidden">
+                        					<ul class="pagination pagination_reset" id="pageNav" data-ng-init="showInFo()"></ul>
+                        				</div>
+                        			</div>
+                        			<!-- / .col-lg-12 -->
+                        		</div>
+                        		<!-- / .row -->
+					        </div>
+					        <!-- / .panel-body -->
+					    </div>
+					    <!-- / .panel -->
+                	</div>
+                	<!-- /.col-lg-12 -->
+                </div>
+                <!-- / .row -->
+			</div>
+			<!-- / #page-wrapper -->
+		</div>
+		<!-- / #wrapper -->
+		<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div ng-include="'template/addUser.html'" ></div>
+		</div>
+		<!-- / .modal -->
+	</body>
+</html>

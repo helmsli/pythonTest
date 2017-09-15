@@ -1,0 +1,251 @@
+<meta charset="UTF-8">
+<div id="leftMenu_navbar" class="sidebar navbar-collapse" role="navigation" ng-init="initLeft()">
+    <div class="sidebar-nav">
+        <ul class="nav" id="side-menu">
+        	<li>
+        		<a data-toggle="collapse" data-target="#home_manage">
+            		<i class="fa fa-home fa-fw"></i>
+            		首页
+            		<span class="fa fa-angle-down pull-right"></span>
+            	</a>
+        		<ul class="nav nav-second-level collapse" id="home_manage">
+        			<li><a href="Manager/demo/home/home.html">默认首页</a></li>
+                	<li><a href="Manager/demo/home/product_list.html">产品列表</a></li>
+                    <li><a href="Manager/demo/home/news_detail.html">新闻详情</a></li>
+                    <li><a href="Manager/demo/home/404_error.html">404错误页面</a></li>
+                    <li><a href="Manager/demo/home/500_error.html">500错误页面</a></li>
+                </ul>
+        	</li>
+           <li>
+            	<a data-toggle="collapse" data-target="#form_manage">
+            		<i class="fa fa-pencil-square-o fa-fw"></i>
+            		表单
+            		<span class="fa fa-angle-down pull-right"></span>
+            	</a>
+                <ul class="nav nav-second-level collapse" id="form_manage">
+                	<li><a href="Manager/demo/form/form.html">表单 1</a></li>
+                    <li><a href="Manager/demo/form/form_2.html">表单 2</a></li>
+                    <li><a href="Manager/demo/form/formSubmitDemo.html">Angular表单提交</a></li>
+                </ul>
+            </li>
+            <li>
+            	<a data-toggle="collapse" data-target="#table_manage">
+            		<i class="fa fa-table fa-fw"></i>
+            		表格
+            		<span class="fa fa-angle-down pull-right"></span>
+            	</a>
+                <ul class="nav nav-second-level collapse" id="table_manage">
+               		<li><a href="Manager/demo/table/table.html">表格 1</a></li>
+                    <li><a href="Manager/demo/table/table_2.html">表格 2</a></li>
+                    <li><a href="Manager/demo/table/table_edit.html">编辑表格</a></li>
+                    <li><a href="Manager/demo/table/table_rule.html">规则表格</a></li>
+                    <!--<li><a href="Manager/demo/table/dataTable.html">数据表格</a></li>-->
+                </ul>
+            </li>
+            <li>
+            	<a href="Manager/demo/tree/tree.html">
+	            	<i class="fa fa-sitemap fa-fw"></i>
+	            	菜单树
+            	</a>
+            </li>
+            <li>
+            	<a data-toggle="collapse" data-target="#step_manage">
+            		<i class="fa fa-files-o fa-fw"></i>
+            		步骤
+            		<span class="fa fa-angle-down pull-right"></span>
+            	</a>
+                <ul class="nav nav-second-level collapse" id="step_manage">
+                	<li><a href="Manager/demo/step/step.html">步骤 1</a></li>
+                    <li><a href="Manager/demo/step/step_2.html">步骤 2</a></li>
+                    <li><a href="Manager/demo/step/step_3.html">步骤 3</a></li>
+                    <li><a href="Manager/demo/step/step_4.html">步骤 4</a></li>
+                    <li><a href="Manager/demo/step/step_5.html">步骤 5</a></li>
+                </ul>
+            </li>
+            <li>
+            	<a data-toggle="collapse" data-target="#ul_manage">
+            		<i class="fa fa-user fa-fw"></i>
+            		用户界面
+            		<span class="fa fa-angle-down pull-right"></span>
+            	</a>
+            	<ul class="nav nav-second-level collapse" id="ul_manage">
+            		<li><a href="Manager/demo/ui/alerts.html">警告框</a></li>
+            		<li><a href="Manager/demo/ui/breadcrumbs.html">面包屑</a></li>
+                	<li><a href="Manager/demo/ui/buttons.html">按钮</a></li>
+                	<li><a href="Manager/demo/ui/badges.html">徽章</a></li>
+                	<li><a href="Manager/demo/ui/blank_page.html">空页</a></li>
+                	<li><a href="Manager/demo/ui/colors.html">颜色</a></li>
+                    <li><a href="Manager/demo/ui/collapse.html">折叠</a></li>
+                    <li><a href="Manager/demo/ui/dialogs.html">对话框</a></li>
+                    <li><a href="Manager/demo/ui/icons.html">小图标</a></li>
+                    <li><a href="Manager/demo/ui/form_elements.html">表单元素</a></li>
+                    <li><a href="Manager/demo/ui/form_group.html">表单组合</a></li>
+                    <li><a href="Manager/demo/ui/table_elements.html">表格元素</a></li>
+                    <li><a href="Manager/demo/ui/media_object.html">媒体对象</a></li>
+                    <li><a href="Manager/demo/ui/modal.html">模态框</a></li>
+                    <li><a href="Manager/demo/ui/notifications.html">通知</a></li>
+                    <li><a href="Manager/demo/ui/pagination.html">分页</a></li>
+                    <li><a href="Manager/demo/ui/preloader.html">加载动画</a></li>
+                    <li><a href="Manager/demo/ui/progressbars.html">进度条</a></li>
+                    <li><a href="Manager/demo/ui/tabs.html">选项卡</a></li>
+                    <li><a href="Manager/demo/ui/tooltips_popovers.html">工具提示</a></li>
+                    <li><a href="Manager/demo/ui/thumbnails.html">缩略图</a></li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="collapse" data-target="#system_manage">
+                	<i class="fa fa-user fa-fw"></i>
+                	用户中心
+                	<span class="fa fa-angle-down pull-right"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" id="system_manage">
+                	<li><a href="Manager/demo/userCenter/userInfo.html">用户资料</a></li>
+                	<li><a href="Manager/demo/userCenter/userPassword_modify.html">修改密码</a></li>
+                    <li><a href="Manager/demo/userCenter/roleManage.html">角色管理</a></li>
+                    <li><a href="Manager/demo/userCenter/child_account_manage_1.html">子账号管理 1</a></li>
+                    <li><a href="Manager/demo/userCenter/child_account_manage_2.html">子账号管理 2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+
+$(function(){
+	resetheaderType(false);
+	sliderCountroller();
+});
+
+$(window).resize(function() {
+    resetheaderType(true);
+});
+
+$("#side-menu").slimScroll({
+	height: '100%',
+	size: '4px',
+	opacity: .2
+});
+
+/**
+ * resetHeadType
+ * @parm resizeFlag :boolen
+ * 
+ * **/
+function resetheaderType (resizeFlag){
+	
+	var headerType = config.leftMenuSkin;
+	var clientWidth = document.body.clientWidth+17;
+	if(clientWidth<992){
+		headerType = "";
+	}else{
+		headerType = config.leftMenuSkin;
+	}
+	setHightShow(headerType,resizeFlag);
+}
+
+
+/**
+ * @sliderCountroller
+ * 
+ * **/
+
+function sliderCountroller()
+{
+	$('#side-menu').on('show.bs.collapse', function (currentDom) {
+		$('#side-menu ul').each(function(){
+			var id=$(this).attr("id");
+			if(id!=currentDom.target.id)
+			{
+				$(this).removeClass("in");
+			}
+		})
+	})
+}
+
+/**
+ * 左侧菜单高亮显示
+ * **/
+function setHightShow(headerType,resizeFlag)
+{   
+    var myUrl=location.href;
+    
+    
+    if (myUrl.indexOf('child_account_manage_edit.html')>0){
+    	myUrl = 'child_account_manage_2.html';
+    }
+    if (myUrl.indexOf("#")!=-1){
+    	myUrl = myUrl.substring(0,myUrl.indexOf("#"));
+    }
+    
+    
+    var lst=myUrl.lastIndexOf("/");
+    var newURL=myUrl.substring(lst+1,myUrl.length);
+    var urlList=document.getElementById("side-menu");
+   	var li=urlList.getElementsByTagName("li");
+   	for(var i=0;i<li.length; i++)
+   	{   
+   		var pul = li[i].parentNode;
+   		var parent=li[i].parentNode.parentNode;
+   		var nodeType = parent.nodeName;
+   		var a=li[i].getElementsByTagName("a");
+   		var myHref=(a[0]&&a[0].href)||"#";
+   		var lstI=myHref.lastIndexOf("#");
+   		if(lstI<0)
+   		{
+   			if(myHref.indexOf(newURL)>0)
+	   		{   
+	   			a[0].className="active";
+	   			if(nodeType.toLowerCase()=="li"){
+	   				if(!resizeFlag){
+		   				$("#"+pul.id).collapse('show');
+		   			}
+	   				if(headerType=="head")
+		        	{   
+		        	    $("#"+pul.id).parent("li").siblings("li").css("display","none");
+		        	}else{
+		        		 $("#"+pul.id).parent("li").siblings("li").css("display","block");
+		        	}
+	   			}
+	   			var liObj=a[0].parentNode;
+	   			var ulObj=liObj.parentNode;
+   				var divObj=ulObj.parentNode;
+
+	        	if(headerType=="head")
+	        	{   
+	        		setRemoveChild(divObj,ulObj,liObj,true);
+	        	}else{
+	        		setRemoveChild(divObj,ulObj,liObj,false);
+	        	}   			
+	   		}else{
+	   			a[0].className="";	
+	   			if(nodeType.toLowerCase()=="li"){
+	   				if(!resizeFlag){
+		   				$("#"+pul.id).collapse('hide');
+		   			}
+	   			}
+	   		}
+   		}
+   		
+   	}
+}
+
+
+function setRemoveChild(divObj,ulObj,liObj,flag)
+{
+	
+	if(divObj.nodeName=="DIV")
+	{
+		var li=ulObj.children;
+		for(var i=0;i<li.length;i++)
+		{
+			if(flag&& li[i]!=liObj)
+			{
+				li[i].style.display="none";
+				
+			}else if(!flag){
+				li[i].style.display="block";
+			}
+		}
+	}
+}
+</script>

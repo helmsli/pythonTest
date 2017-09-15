@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Role Manager</title>
+		
+		<!-- Bootstrap Css -->
+	    <link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+	    
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+	    <script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	    
+	    <!-- Global JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+	    
+	    <!-- Custom Css -->
+	    <link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/userCenter/userCenter.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    <!--Tree CSS-->
+		<link href="../js/tree/css/demo.css" type="text/css" rel="stylesheet">
+		<link href="../js/tree/css/zTreeStyle/zTreeStyle.css" type="text/css" rel="stylesheet">
+	    
+		<!--Tree Js-->
+		<script src="../js/tree/js/jquery.ztree.core-3.5.js" type="text/javascript"></script>
+		<script src="../js/template/leftMenu.js" type="text/javascript"></script>
+		<!--Forms JS -->
+		<script src="../js/formValidata/global.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid_Inf.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid_Rule.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid.js" type="text/javascript"></script>
+		<!--Pages JS--->
+        <script src="../js/userCenter/tree_check.js" type="text/javascript"></script>
+		<!--权限显示保存方法-->
+		<script src="../js/userCenter/roleManage/roleManage.js" type="text/javascript"></script>
+        <!--角色树JSON模型-->
+		<script src="../js/template/roleData.js" type="text/javascript"></script>
+		<!--权限树JSON模型-->
+		<script src="../js/template/permissionTree.js" type="text/javascript"></script>
+		<script src="../js/template/permission_save.js" type="text/javascript"></script>
+		<!-- page JS-->
+		<script src="../js/pages/pageNav.js" type="text/javascript"></script>
+		<script src="../js/userCenter/roleManage/listTemp.js" type="text/javascript"></script>
+		 
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="app">
+			<div class="header" ng-include="'include/header.html'"></div>
+			<div class="menus" ng-include="'include/leftMenu.html'"></div>
+			<div id="page-wrapper">
+				<h1 class="page-header">角色管理</h1>
+                <div class="row">
+                	<div class="col-lg-12">
+                		<div class="role-content">
+	                		<div class="tree-nav">
+	                			<div class="tree-title">角色列表<button type="button" class="btn btn-success fr" data-toggle="modal" data-target="#creatModal">Add</button></div>
+		                		<ul id="tree" class="ztree" style="padding:5px 10px;border:1px solid #ececec;" data-ng-init="initTree();"></ul>
+	                		</div>
+	                		<!-- / .tree-nav -->
+	                		<div class="tree-wrap">
+	                			<div class="row">
+	                				<div class="col-lg-12">
+	                					<div class="panel panel-default">
+				                        	<div class="panel-heading">
+				                        		角色权限
+				                        		<div class="btn-group">
+				                        			<button type="button" class="btn btn-success" onclick="roleManage.savePermission()" >保存权限</button>
+												</div>
+				                        	</div>
+				                        	<div class="panel-body">
+				                        		<div class="row">
+				                        			<div class="col-lg-12" ng-include="'userCenter/userCenter_power.html'" ></div>
+				                        			<!-- / .col-lg-12 -->
+				                        			<div class="col-lg-12 hidden">
+				                        				<div class="dataTables_paginate">
+				                        					<ul class="pagination pagination_reset" id="pageNav" data-ng-init="showInFo()"></ul>
+				                        				</div>
+				                        			</div>
+				                        			<!-- / .col-lg-12 -->
+				                        		</div>
+				                        		<!-- / .row -->
+									        </div>
+									        <!-- / .panel-body -->
+									    </div>
+									    <!-- / .panel -->
+	                				</div>
+	                				<!-- / .col-lg-12 -->
+	                			</div>
+	                			<!-- / .row -->
+	                		</div>
+	                		<!-- / .tree-wrap -->
+	                	</div>
+	                	<!-- / .role-content -->
+                	</div>
+                	<!-- /.col-lg-12 -->
+                </div>
+                <!-- / .row -->
+			</div>
+			<!-- / #page-wrapper -->
+			<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div ng-include="'userCenter/addRole.html'" ></div>
+			</div>
+			<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				        <div class="modal-body">
+				          	<p ></p>
+				        </div>
+				        <div class="modal-footer">
+				            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="roleManage.hideAlert('smallModal');">确定</button>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<!-- / .modal -->
+		</div>
+		<!-- / #wrapper -->
+	</body>
+</html>

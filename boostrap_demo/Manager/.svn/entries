@@ -1,0 +1,40 @@
+10
+
+dir
+657
+https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/manager_system/Manager
+https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6
+
+
+
+2016-11-25T22:23:42.875000Z
+657
+yangxiuguo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5e561d43-a492-f44f-bb4e-054c9ca34e46
+
+
+
+
+
+
+
+
+((conflict child_account_manage_edit.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/child_account_manage_edit.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/child_account_manage_edit.html none)) (conflict userCenter dir update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/userCenter none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/userCenter none)) (conflict 14 500_error.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/500_error.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/500_error.html none)) (conflict include dir update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/include none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/include none)) (conflict 14 404_error.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/404_error.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/404_error.html none)) (conflict dataTable.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/dataTable.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/dataTable.html none)) (conflict form_2.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/form_2.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/form_2.html none)) (conflict child_account_manage_1.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/child_account_manage_1.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/child_account_manage_1.html none)) (conflict table.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/table.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/table.html none)) (conflict home.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/home.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/home.html none)) (conflict child_account_manage_2.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/child_account_manage_2.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/child_account_manage_2.html none)) (conflict userInfo.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/userInfo.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/userInfo.html none)) (conflict modal.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/modal.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/modal.html none)) (conflict step_2.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/step_2.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/step_2.html none)) (conflict news_detail.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/news_detail.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/news_detail.html none)) (conflict tree.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/tree.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/tree.html none)) (conflict form.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/form.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/form.html none)) (conflict accountManage.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/accountManage.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/accountManage.html none)) (conflict login.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/login.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/login.html none)) (conflict step dir update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/step none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/step none)) (conflict table_2.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/table_2.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/table_2.html none)) (conflict template dir update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/template none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/template none)) (conflict userPassword_modify.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/userPassword_modify.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/userPassword_modify.html none)) (conflict roleManage.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/roleManage.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/roleManage.html none)) (conflict product_list.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/product_list.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/product_list.html none)) (conflict step.html file update deleted deleted (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 439 manager_system/Manager/step.html none) (version https://172.18.3.212/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 3 448 manager_system/Manager/step.html none)))
+
+demo
+dir
+

@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+<div class="modal-dialog" ng-controller="resetPwdCon">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel" translate="USER_MANAGE.CHANGE_PASSWORD.RESET_PASSWORD"></h4>
+        </div>
+        <div class="modal-body">       	
+        	<form action="#" method="post" id="resetPwdForm" class="form-custom">
+				<div class="form-group">
+					<label class="form-label"><span translate="USER_MANAGE.CHANGE_PASSWORD.NEW_PASSWORD"></span></label>
+					<input type="password" class="form-control" ng-model="user.newPassword" name="newPassword" id="newPassword"   data-error="{{'USER_MANAGE.CHANGE_PASSWORD.TIPS.NEW_PASSWORD_ERROR'|translate}}" data-tip="{{'USER_MANAGE.CHANGE_PASSWORD.TIPS.ENTER_NEW_PASSWORD'|translate}}" />
+				</div>
+				<!-- / User Name -->
+				<div class="form-group">
+					<label class="form-label"><span translate="USER_MANAGE.CHANGE_PASSWORD.CONFIRM_PASSWORD"></span></label>
+					<input type="password" class="form-control" ng-model="user.rePassword" name="rePassword" id="rePassword"   data-error="{{'USER_MANAGE.CHANGE_PASSWORD.TIPS.NEW_PASSWORD_ERROE'|translate}}" data-tip="{{'USER_MANAGE.CHANGE_PASSWORD.TIPS.ENTER_NEW_PASSWORD'|translate}}"  />
+				</div>
+			</form>     	
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" ng-click="toResetPwd();" data-permission="UserManage:resetpassword" translate="USER_MANAGE.BUTTON_NAME.SUBMIT"></button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" translate="USER_MANAGE.BUTTON_NAME.CLOSE"></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Account Manager</title>
+		
+		<!-- Bootstrap Css -->
+	    <link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+	    
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+	    <script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	    
+	    <!-- Global JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+	    
+	    <!-- Custom Css -->
+	    <link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/userCenter/userCenter.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    
+		<!--Forms JS -->
+		<script src="../js/formValidata/formValid_Inf.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid_Rule.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid.js" type="text/javascript"></script>
+		<!--用户信息模型-->
+		<script src="../js/template/userInfo.js" type="text/javascript"></script>	
+		<!--业务代码-->
+		<script src="../js/userCenter/userInfo/userInfo.js" type="text/javascript"></script>	
+		
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="app">
+			<div class="header" ng-include="'include/header.html'"></div>
+			<div class="menus" ng-include="'include/leftMenu.html'"></div>
+			<div id="page-wrapper">
+				<h1 class="page-header">用户资料</h1>
+                <div class="row">
+                	<div class="col-lg-12">
+						<div class="panel panel-default">
+                        	<div class="panel-heading">自定义title</div>
+                        	<div class="panel-body">
+                        		<div class="row">
+                        			<div class="col-lg-3">
+                        				<div class="user-info">
+                        					<div id="showImg">
+                        						<img src="{{userInfo.imgUrl==''?defaultImg:userInfo.imgUrl}}"  id="showImg" />
+                        					</div>
+                        					<input type="file" ng-show="edit" name="filefield" id="uploadFile"  onchange="angular.element(this).scope().uploadFile('uploadFile','showImg')" />
+                        				</div>
+                        			</div>
+                        			<div class="col-lg-9">
+                        				<div class="form-horizontal user-content">
+	                        				<div class="form-group">
+	                        					<label class="col-lg-2 col-xs-5">User name:</label>
+	                        					<div class="col-lg-10 col-xs-7">
+	                        						<span ng-hide="edit" >{{userInfo.name}}</span>
+	                        						<span ng-show="edit" ><input type="text" ng-model="userInfo.name" class="form-control" /></span>
+	                        					</div>
+	                        				</div>
+	                        				<div class="form-group">
+	                        					<label class="col-lg-2 col-xs-5">Sex:</label>
+	                        					<div class="col-lg-10 col-xs-7">
+	                        						<span ng-hide="edit" >{{userInfo.sex==0?'Man':'Woman'}}</span>
+	                        						<span ng-show="edit">
+	                        							<div class="radio">
+		                        							<label class="radio-inline">
+		                    									<input class="regular-radio" name="radio" id="man" ng-model="userInfo.sex" value="0" type="radio" >
+		                    									<label for="man"></label>	
+		                    									Man
+			                                                </label>
+			                                                <label class="radio-inline">
+		                    									<input class="regular-radio" name="radio" id="woman" ng-model="userInfo.sex" value="1" type="radio">
+		                    									<label for="woman"></label>	
+		                    									Woman
+			                                                </label>
+			                                          	</div>
+	                        						</span>
+	                        					</div>
+	                        				</div>
+	                        				<div class="form-group">
+	                        					<label class="col-lg-2 col-xs-5">Department:</label>
+	                        					<div class="col-lg-10 col-xs-7">
+	                        						<span ng-hide="edit">{{userInfo.depart}}</span>
+	                        						<span ng-show="edit"><input type="text" ng-model="userInfo.depart" class="form-control" /></span>
+	                        					</div>
+	                        				</div>
+	                        				<div class="form-group">
+	                        					<label class="col-lg-2 col-xs-5">Telphone:</label>
+	                        					<div class="col-lg-10 col-xs-7">
+	                        						<span ng-hide="edit">{{userInfo.telPhone}}</span>
+	                        						<span ng-show="edit"><input type="type" ng-model="userInfo.telPhone" class="form-control" /></span>
+	                        					</div>
+	                        				</div>
+	                        				<div class="form-group">
+	                        					<label class="col-lg-2 col-xs-5">Mobile phone:</label>
+	                        					<div class="col-lg-10 col-xs-7">
+	                        						<span ng-hide="edit">{{userInfo.mobile}}</span>
+	                        						<span ng-show="edit"><input type="type" ng-model="userInfo.mobile" class="form-control" /></span>
+	                        					</div>
+	                        				</div>
+	                        				<div class="form-group">
+	                        					<label class="col-lg-2 col-xs-5">E-mail:</label>
+	                        					<div class="col-lg-10 col-xs-7">
+	                        						<span ng-hide="edit">{{userInfo.email}}</span>
+	                        						<span ng-show="edit"><input type="type"ng-model="userInfo.email"  class="form-control" /></span>
+	                        					</div>
+	                        				</div>
+                        				</div>
+                        			</div>
+                        			<!-- / .col-lg-8 -->
+                        			<div class="col-lg-12 col-md-12 text-center">
+                        				<hr />
+                        				<span ng-hide="edit">
+                        					<button class="btn btn-success" ng-click="editUserInfo()">编辑资料</button>
+                        				</span>
+                        				<span ng-show="edit">
+                        					<button class="btn btn-success" ng-click="saveUserInfo()">保存</button>
+                        					<button class="btn btn-primary" ng-click="cancel()">取消</button>
+                        				</span>
+                        			</div>
+                        		</div>
+                        		<!-- / .row -->
+					        </div>
+					        <!-- / .panel-body -->
+					    </div>
+					    <!-- / .panel -->
+                	</div>
+                	<!-- /.col-lg-12 -->
+                </div>
+                <!-- / .row -->
+			</div>
+			<!-- / #page-wrapper -->
+		</div>
+		<!-- / #wrapper -->
+		<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div ng-include="'userCenter/userCenter_account.html'" ></div>
+		</div>
+		<!-- / .modal -->
+	</body>
+</html>

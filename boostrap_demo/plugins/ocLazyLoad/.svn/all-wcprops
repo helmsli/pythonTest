@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/!svn/ver/445/manager_system/plugins/ocLazyLoad
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/!svn/ver/445/manager_system/plugins/ocLazyLoad/.gitignore
+END
+.travis.yml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/!svn/ver/445/manager_system/plugins/ocLazyLoad/.travis.yml
+END
+.editorconfig
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/!svn/ver/445/manager_system/plugins/ocLazyLoad/.editorconfig
+END
+.npmignore
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/!svn/ver/445/manager_system/plugins/ocLazyLoad/.npmignore
+END
+ocLazyLoad.js
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/!svn/ver/445/manager_system/plugins/ocLazyLoad/ocLazyLoad.js
+END
+ocLazyLoad.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/!svn/ver/445/manager_system/plugins/ocLazyLoad/ocLazyLoad.min.js
+END

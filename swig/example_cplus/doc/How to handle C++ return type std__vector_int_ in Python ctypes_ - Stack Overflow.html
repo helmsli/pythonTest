@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>How to handle C++ return type std::vector&lt;int&gt; in Python ctypes? - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="https://stackoverflow.com/opensearch.xml">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:domain" content="stackoverflow.com">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How to handle C++ return type std::vector&lt;int&gt; in Python ctypes?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I cannot find how ctypes will bridge the gap between std::vector and Python; no where on the internet is the combination mentioned. Is this bad practice, does it not exist or am I missing something...">
+    <meta property="og:url" content="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes">
+    <link rel="canonical" href="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow.html">
+
+    
+    
+    <script type="text/javascript" async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/ados"></script><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/quant.js"></script><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/beacon.js"></script><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/analytics.js"></script><script type="text/javascript" async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/ados.js"></script><script src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/jquery.min.js"></script>
+    <script src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/stub.en.js"></script>
+    <link rel="stylesheet" type="text/css" href="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;How to handle C++ return type std::vector&lt;int&gt; in Python ctypes?&#39;" href="https://stackoverflow.com/feeds/question/16885344">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:13,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:16885344});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '16885344');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1497326194,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"1ee3336464bc12df90faa4517ede59a3","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"canSeeNewHeaderDesign":true,"ab":{"header_jobs_label":{"v":"a","g":6},"devstory_onboarding_exp":{"v":"subscribe_to_match_emails","g":2}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true,"forceHttpsImages":true},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"914b37e980bc","js/moderator.en.js":"3c90ddcfdaff","js/full-anon.en.js":"2081894ae065","js/full.en.js":"82d07b728ce8","js/wmd.en.js":"239d5f2776a2","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"9678f60e1dea","js/help.en.js":"118cb359bcc6","js/tageditor.en.js":"248fce004255","js/tageditornew.en.js":"c778c1be1e57","js/inline-tag-editing.en.js":"7581a98341e4","js/revisions.en.js":"2faaeaae2529","js/review.en.js":"3e4f00a48fcc","js/tagsuggestions.en.js":"ddb0e41afe26","js/post-validation.en.js":"16a020eeeb13","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"0376257c6e12","js/keyboard-shortcuts.en.js":"09bede0790bc","js/external-editor.en.js":"3e5baf662544","js/adops.en.js":"9a6a7812a212","js/external-editor.en.js":"3e5baf662544","js/snippet-javascript.en.js":"a2935e2a1a88","js/snippet-javascript-codemirror.en.js":"b37a777074ac"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    <noscript id="noscript-css">&lt;style type="text/css"&gt;body,.so-header{margin-top:1.9em}&lt;/style&gt;</noscript>
+<script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/full-anon.en.js"></script><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/snippet-javascript.en.js"></script><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/post-validation.en.js"></script><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/prettify-full.en.js"></script><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/external-editor.en.js"></script><script type="text/javascript" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/adFeedback.js"></script><link rel="stylesheet" href="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/adFeedback.css"><link rel="stylesheet" href="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/jobs-multi.min.css" type="text/css"></head>
+<body class="question-page new-topbar">
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+<header class="so-header js-so-header _fixed _scrolling">
+    <div class="-container">
+        <div class="-main">            
+            <a href="https://stackoverflow.com/" class="-logo js-gps-track " data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+
+                <span class="-img">Stack Overflow</span>
+            </a>
+
+            <nav class="navigation" role="navigation" aria-label="site navigation">
+                <ol class="-list">
+                        <li class="-item _current">
+        <a id="nav-questions" href="https://stackoverflow.com/questions" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">Questions</a>
+    </li>
+
+    <li class="-item">
+        <a id="nav-jobs" href="https://stackoverflow.com/jobs?med=site-ui&ref=jobs-tab" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">Explore Jobs</a>
+    </li>
+                        <li class="-item">
+        <a id="nav-docs" href="https://stackoverflow.com/documentation" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:7})">Documentation <small class="beta-badge">beta</small></a>
+    </li>
+                        <li class="-item">
+        <a id="nav-tags" href="https://stackoverflow.com/tags" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">Tags</a>
+    </li>
+
+                        <li class="-item">
+        <a id="nav-users" href="https://stackoverflow.com/users" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">Users</a>
+    </li>
+
+                </ol>
+            </nav>
+
+                <form id="search" action="https://stackoverflow.com/search" method="get" class="searchbar" autocomplete="off" role="search">
+                    <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    <input name="q" type="text" placeholder="Search..." value="" tabindex="1" autocomplete="off" maxlength="240" class="f-input js-search-field">
+                    <button type="submit" class="btn js-search-submit">
+                        <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    </button>
+                </form>
+
+        </div>
+        
+
+
+    
+
+<div class="-actions">
+    <nav class="secondary-nav">
+        <div class="-dialog-container js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="https://stackoverflow.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })">help</a>
+                    <a href="https://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+    <a href="https://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+    <a href="https://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f16885344%2fhow-to-handle-c-return-type-stdvectorint-in-python-ctypes" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+                <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="https://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+
+        </div>
+        <ol class="-list">
+
+
+    <li class="-item"><a href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#" class="-link js-help-button" title="Help Center and other resources">
+        <svg role="icon" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16.001A8 8 0 0 0 9 1zm.812 12.126c-.02.716-.55 1.157-1.238 1.137-.659-.02-1.177-.49-1.157-1.209.02-.715.566-1.17 1.225-1.15.691.021 1.194.507 1.17 1.222zm1.956-5.114c-.168.237-.546.542-1.02.912l-.527.361c-.257.197-.417.43-.502.695-.044.141-.076.507-.084.752-.004.048-.032.156-.181.156H7.883c-.165 0-.185-.096-.18-.144.023-.667.12-1.218.397-1.66.374-.594 1.426-1.221 1.426-1.221.161-.12.286-.25.382-.39.177-.24.321-.51.321-.8 0-.333-.08-.65-.293-.915-.249-.31-.518-.458-1.036-.458-.51 0-.808.257-1.021.594-.213.338-.177.735-.177 1.097H5.746c0-1.366.357-2.238 1.112-2.752.51-.35 1.162-.502 1.921-.502.996 0 1.788.184 2.487.715.647.49.988 1.181.988 2.113 0 .575-.2 1.057-.486 1.447z"></path></svg>
+    </a></li>
+                <li class="-item">
+        <a href="https://stackexchange.com/" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 168 Stack Exchange sites">
+            <svg role="icon" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M1 13a2 2 0 0 0 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zM15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 6h16v4H1V6z"></path></svg>
+        </a>
+    </li>
+
+
+        </ol>
+    </nav>
+        <div class="-ctas">
+                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f16885344%2fhow-to-handle-c-return-type-stdvectorint-in-python-ctypes" class="login-link btn-clear" rel="nofollow">Log In</a>
+                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=%2fusers%2fstory%2fcurrent&utm_source=stackoverflow.com&utm_medium=dev-story&utm_campaign=signup-redirect" class="login-link btn" rel="nofollow">Sign Up</a>
+
+        </div>
+</div>
+    </div>
+</header>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init(); });
+            StackExchange.scrollPadding.setPaddingTop(60, 10);     </script>
+
+    <div class="container">
+        
+
+
+        <div id="content" class="snippet-hidden">
+
+
+
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+
+<div id="herobox" class="alternate">
+    <div class="test"></div>
+        <div id="close">
+            <a title="click to minimize"><span>x</span> Dismiss</a>
+        </div>
+    <div class="content">
+        <b>Join the Stack Overflow Community</b>
+        <div class="separator"></div>
+        <div class="blurb">
+            Stack Overflow is a community of 7.3 million programmers, just like you, helping each other.
+                <br>
+Join them; it only takes a minute:                <br>
+        </div>
+        <a href="https://stackoverflow.com/users/signup?ssrc=hero&returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" id="tell-me-more" class="button">Sign up</a>
+    </div>
+</div>
+<script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;;
+        }
+        
+        $('#tell-me-more').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+        
+        $('#herobox #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+            });
+            
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $("#herobox").fadeOut("fast", function () {
+                        $("#herobox").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>            <script>
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("hero.show", { hero_type: "hero", location: 1 }, true);
+                        StackExchange.gps.track("hero.show_or_delay", { hero_type: "hero", location: 1, shown: true }, false);
+                    });
+            </script>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow.html" class="question-hyperlink">How to handle C++ return type std::vector&lt;int&gt; in Python ctypes?</a></h1>
+
+            
+<div class="aside-cta" role="navigation" aria-label="ask new question">
+    <a href="https://stackoverflow.com/questions/ask" class="btn-outlined">Ask Question</a>
+</div>
+		</div>
+			<div id="mainbar" role="main" aria-label="question and answers">
+
+			
+
+<div class="question" data-questionid="16885344" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1700644992",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1700644992"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16885344">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#">favorite</a>
+        <div class="favoritecount"><b>3</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I cannot find how ctypes will bridge the gap between <code>std::vector</code> and Python; no where on the internet is the combination mentioned. Is this bad practice, does it not exist or am I missing something?</p>
+
+<p><strong>C++</strong> :  xxx.cpp</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;fstream&gt;</span><span class="pln">
+</span><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;string&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">extern</span><span class="pln"> </span><span class="str">"C"</span><span class="pln"> std</span><span class="pun">::</span><span class="pln">vector</span><span class="str">&lt;int&gt;</span><span class="pln"> foo</span><span class="pun">(</span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> FILE_NAME</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">string</span><span class="pln"> line</span><span class="pun">;</span><span class="pln">
+    std</span><span class="pun">::</span><span class="pln">vector</span><span class="str">&lt;int&gt;</span><span class="pln"> result</span><span class="pun">;</span><span class="pln">
+    ifstream myfile</span><span class="pun">(</span><span class="pln">FILE_NAME</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">getline</span><span class="pun">(</span><span class="pln">myfile</span><span class="pun">,</span><span class="pln"> line</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      result</span><span class="pun">.</span><span class="pln">push_back</span><span class="pun">(</span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pun">(</span><span class="pln">result</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p><strong>Python:</strong>   xxx.py</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> ctypes
+xxx </span><span class="pun">=</span><span class="pln"> ctypes</span><span class="pun">.</span><span class="pln">CDLL</span><span class="pun">(</span><span class="str">"./libxxx.so"</span><span class="pun">)</span><span class="pln">
+xxx</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">.</span><span class="pln">argtypes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">??????</span><span class="pln">
+xxx</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> </span><span class="pun">??????</span></code></pre>
+    </div>
+    <div class="post-taglist">
+        <a href="https://stackoverflow.com/questions/tagged/c%2b%2b" class="post-tag js-gps-track" title="show questions tagged &#39;c++&#39;" rel="tag">c++</a> <a href="https://stackoverflow.com/questions/tagged/python" class="post-tag js-gps-track" title="show questions tagged &#39;python&#39;" rel="tag">python</a> <a href="https://stackoverflow.com/questions/tagged/ctypes" class="post-tag js-gps-track" title="show questions tagged &#39;ctypes&#39;" rel="tag">ctypes</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/q/16885344" title="short permalink to this question" class="short-link" id="link-post-16885344">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/16885344/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/16885344/revisions" title="show all edits to this post">edited <span title="2016-03-25 15:30:00Z" class="relativetime">Mar 25 '16 at 15:30</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1364752/morwenn"><div class="gravatar-wrapper-32"><img src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/DicPR.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1364752/morwenn">Morwenn</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 10,551" dir="ltr">10.6k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="51 silver badges"><span class="badge2"></span><span class="badgecount">51</span></span><span title="102 bronze badges"><span class="badge3"></span><span class="badgecount">102</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2013-06-02 17:25:30Z" class="relativetime">Jun 2 '13 at 17:25</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1575066/pascalvkooten"><div class="gravatar-wrapper-32"><img src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/hGOuL.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1575066/pascalvkooten">PascalvKooten</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">7,679</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="36 silver badges"><span class="badge2"></span><span class="badgecount">36</span></span><span title="87 bronze badges"><span class="badge3"></span><span class="badgecount">87</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16885344" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="8" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-24361960" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">related: <a href="http://stackoverflow.com/q/9084111/951890">stackoverflow.com/q/9084111/951890</a></span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/951890/vaughn-cato" title="45,068 reputation" class="comment-user">Vaughn Cato</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24361960_16885344"><span title="2013-06-02 17:27:16Z" class="relativetime-clean">Jun 2 '13 at 17:27</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24362003" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I just came from that page, it's related as much as a Python Numpy question is related to another Python Numpy question. The mentioned thread does not help in this case. Other suggestions?</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1575066/pascalvkooten" title="7,679 reputation" class="comment-user owner">PascalvKooten</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24362003_16885344"><span title="2013-06-02 17:29:49Z" class="relativetime-clean">Jun 2 '13 at 17:29</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24362031" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Note that it does mention std::vector, but in the sense of connecting it to a list in python. My understanding is that with ctypes, Python would be able to work with a ctypes-object?</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1575066/pascalvkooten" title="7,679 reputation" class="comment-user owner">PascalvKooten</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24362031_16885344"><span title="2013-06-02 17:31:16Z" class="relativetime-clean">Jun 2 '13 at 17:31</span></a></span>
+                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24362064" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It isn't so much that it's related to using std::vector as it is to using C++ in general.  C++ just isn't supported by ctypes in any meaningful way.  It is best to create C functions with C-style interfaces.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/951890/vaughn-cato" title="45,068 reputation" class="comment-user">Vaughn Cato</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24362064_16885344"><span title="2013-06-02 17:33:32Z" class="relativetime-clean">Jun 2 '13 at 17:33</span></a></span>
+                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24362140" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You could probably hack something together which works, but you'd be better off creating an array of <code>int</code> and returning a pointer to that instead.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/172176/aya" title="21,792 reputation" class="comment-user">Aya</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24362140_16885344"><span title="2013-06-02 17:38:35Z" class="relativetime-clean">Jun 2 '13 at 17:38</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16885344" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#" onclick="">show <b>8</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								3 Answers
+                                <span style="display:none;" itemprop="answerCount">3</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="16887004"></a>
+<div id="answer-16887004" class="answer accepted-answer" data-answerid="16887004" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16887004">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>The particular reason is that speed is important. I'm creating an
+  application that should be able to handle big data. On 200,000 rows
+  the missings have to be counted on 300 values (200k by 300 matrix). I
+  believe, but correct me if I'm wrong, that C++ will be significantly
+  faster.</p>
+</blockquote>
+
+<p>Well, if you're reading from a large file, your process is going to be mostly IO-bound, so the timings between Python and C probably won't be significantly different.</p>
+
+<p>The following code...</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">result </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> line </span><span class="kwd">in</span><span class="pln"> open</span><span class="pun">(</span><span class="str">'test.txt'</span><span class="pun">):</span><span class="pln">
+    result</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">line</span><span class="pun">.</span><span class="pln">count</span><span class="pun">(</span><span class="str">'NA'</span><span class="pun">))</span></code></pre>
+
+<p>...seems to run just as fast as anything I can hack together in C, although it's using some <a href="http://hg.python.org/cpython/file/687295c6c8f2/Objects/stringlib/fastsearch.h" rel="nofollow">optimized algorithm</a> I'm not really familiar with.</p>
+
+<p>It takes less than a second to process 200,000 lines, although I'd be interested to see if you can write a C function which is significantly faster.</p>
+
+<hr>
+
+<p><strong>Update</strong></p>
+
+<p>If you want to do it in C, and end up with a Python list, it's probably more efficient to use the <a href="http://docs.python.org/2/c-api/" rel="nofollow">Python/C API</a> to build the list yourself, rather than building a <code>std::vector</code> then converting to a Python list later on.</p>
+
+<p>An example which just returns a list of integers from 0 to 99...</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="com">// hack.c</span><span class="pln">
+
+</span><span class="com">#include</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">python2</span><span class="pun">.</span><span class="lit">7</span><span class="pun">/</span><span class="typ">Python</span><span class="pun">.</span><span class="pln">h</span><span class="pun">&gt;</span><span class="pln">
+
+</span><span class="typ">PyObject</span><span class="pun">*</span><span class="pln"> foo</span><span class="pun">(</span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> filename</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">PyObject</span><span class="pun">*</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="typ">PyList_New</span><span class="pun">(</span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> i</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">100</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">PyList_Append</span><span class="pun">(</span><span class="pln">result</span><span class="pun">,</span><span class="pln"> </span><span class="typ">PyInt_FromLong</span><span class="pun">(</span><span class="pln">i</span><span class="pun">));</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> result</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>Compiled with...</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">$ gcc </span><span class="pun">-</span><span class="pln">c hack</span><span class="pun">.</span><span class="pln">c </span><span class="pun">-</span><span class="pln">fPIC
+$ ld </span><span class="pun">-</span><span class="pln">o hack</span><span class="pun">.</span><span class="pln">so </span><span class="pun">-</span><span class="pln">shared hack</span><span class="pun">.</span><span class="pln">o </span><span class="pun">-</span><span class="pln">lpython2</span><span class="pun">.</span><span class="lit">7</span></code></pre>
+
+<p>Example of usage...</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> ctypes </span><span class="kwd">import</span><span class="pln"> </span><span class="pun">*</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> dll </span><span class="pun">=</span><span class="pln"> CDLL</span><span class="pun">(</span><span class="str">'./hack.so'</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> dll</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> py_object
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> dll</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">(</span><span class="str">'foo'</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">[</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">7</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln"> </span><span class="lit">9</span><span class="pun">,</span><span class="pln"> </span><span class="pun">...]</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/16887004" title="short permalink to this answer" class="short-link" id="link-post-16887004">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/16887004/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/16887004/revisions" title="show all edits to this post">edited <span title="2013-06-02 21:21:16Z" class="relativetime">Jun 2 '13 at 21:21</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-06-02 20:29:27Z" class="relativetime">Jun 2 '13 at 20:29</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/172176/aya"><div class="gravatar-wrapper-32"><img src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/53ea9ceaca555fc33de2069b747554e5" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/172176/aya">Aya</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 21,792" dir="ltr">21.8k</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="29 silver badges"><span class="badge2"></span><span class="badgecount">29</span></span><span title="39 bronze badges"><span class="badge3"></span><span class="badgecount">39</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16887004" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-24365056" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I kind of noticed this as well just now running similar code, it took around 8 seconds for Python to do it. However, I am still curious to the correct C++ way to do it.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1575066/pascalvkooten" title="7,679 reputation" class="comment-user owner">PascalvKooten</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24365056_16887004"><span title="2013-06-02 20:34:40Z" class="relativetime-clean">Jun 2 '13 at 20:34</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24365461" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Dualinity How do you want the result in Python? As a Python list?</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/172176/aya" title="21,792 reputation" class="comment-user">Aya</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24365461_16887004"><span title="2013-06-02 20:56:19Z" class="relativetime-clean">Jun 2 '13 at 20:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24365548" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The 1 second is amazing. I don't care if it won't be so helpful for others looking for a C++ answer, this is impressive. Makes me wonder when I would indeed need C++.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1575066/pascalvkooten" title="7,679 reputation" class="comment-user owner">PascalvKooten</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24365548_16887004"><span title="2013-06-02 21:00:32Z" class="relativetime-clean">Jun 2 '13 at 21:00</span></a></span>
+                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24365814" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Dualinity See updated answer for a C-based example. Should be trivial to use similar code in C++.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/172176/aya" title="21,792 reputation" class="comment-user">Aya</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#comment24365814_16887004"><span title="2013-06-02 21:16:16Z" class="relativetime-clean">Jun 2 '13 at 21:16</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16887004" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1002206105",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1002206105"></div>
+  
+<a name="16887455"></a>
+<div id="answer-16887455" class="answer" data-answerid="16887455" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16887455">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Whether or not this approach actually provides faster execution time, I'll explain a bit about how you could go about doing it. Basically, create a pointer to a C++ <code>vector</code> which can interface with Python through C functions. You can then wrap the C++ code in a Python class, hiding the implementation details of <code>ctypes</code>.</p>
+
+<p>I included what I thought would be helpful magic methods to include in the Python class. You can choose to remove them or add more to suit your needs. The destructor is important to keep though.</p>
+
+<h2>C++</h2>
+
+<pre class="lang-c prettyprint prettyprinted"><code><span class="com">// vector_python.cpp</span><span class="pln">
+</span><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;vector&gt;</span><span class="pln">
+</span><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;fstream&gt;</span><span class="pln">
+</span><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;string&gt;</span><span class="pln">
+
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">extern</span><span class="pln"> </span><span class="str">"C"</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> foo</span><span class="pun">(</span><span class="typ">vector</span><span class="str">&lt;int&gt;</span><span class="pun">*</span><span class="pln"> v</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> FILE_NAME</span><span class="pun">){</span><span class="pln">
+    string line</span><span class="pun">;</span><span class="pln">
+    ifstream myfile</span><span class="pun">(</span><span class="pln">FILE_NAME</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">getline</span><span class="pun">(</span><span class="pln">myfile</span><span class="pun">,</span><span class="pln"> line</span><span class="pun">))</span><span class="pln"> v</span><span class="pun">-&gt;</span><span class="pln">push_back</span><span class="pun">(</span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">extern</span><span class="pln"> </span><span class="str">"C"</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">vector</span><span class="str">&lt;int&gt;</span><span class="pun">*</span><span class="pln"> new_vector</span><span class="pun">(){</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">vector</span><span class="str">&lt;int&gt;</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">void</span><span class="pln"> delete_vector</span><span class="pun">(</span><span class="typ">vector</span><span class="str">&lt;int&gt;</span><span class="pun">*</span><span class="pln"> v</span><span class="pun">){</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"destructor called in C++ for "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> v </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+        </span><span class="kwd">delete</span><span class="pln"> v</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="typ">int</span><span class="pln"> vector_size</span><span class="pun">(</span><span class="typ">vector</span><span class="str">&lt;int&gt;</span><span class="pun">*</span><span class="pln"> v</span><span class="pun">){</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> v</span><span class="pun">-&gt;</span><span class="pln">size</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="typ">int</span><span class="pln"> vector_get</span><span class="pun">(</span><span class="typ">vector</span><span class="str">&lt;int&gt;</span><span class="pun">*</span><span class="pln"> v</span><span class="pun">,</span><span class="pln"> </span><span class="typ">int</span><span class="pln"> i</span><span class="pun">){</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> v</span><span class="pun">-&gt;</span><span class="pln">at</span><span class="pun">(</span><span class="pln">i</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">void</span><span class="pln"> vector_push_back</span><span class="pun">(</span><span class="typ">vector</span><span class="str">&lt;int&gt;</span><span class="pun">*</span><span class="pln"> v</span><span class="pun">,</span><span class="pln"> </span><span class="typ">int</span><span class="pln"> i</span><span class="pun">){</span><span class="pln">
+        v</span><span class="pun">-&gt;</span><span class="pln">push_back</span><span class="pun">(</span><span class="pln">i</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>Compile it as a shared library. On Mac OS X this might look like,</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">g</span><span class="pun">++</span><span class="pln"> </span><span class="pun">-</span><span class="pln">c </span><span class="pun">-</span><span class="pln">fPIC vector_python</span><span class="pun">.</span><span class="pln">cpp </span><span class="pun">-</span><span class="pln">o vector_python</span><span class="pun">.</span><span class="pln">o
+g</span><span class="pun">++</span><span class="pln"> </span><span class="pun">-</span><span class="pln">shared </span><span class="pun">-</span><span class="typ">Wl</span><span class="pun">,-</span><span class="pln">install_name</span><span class="pun">,</span><span class="pln">vector_python_lib</span><span class="pun">.</span><span class="pln">so </span><span class="pun">-</span><span class="pln">o vector_python_lib</span><span class="pun">.</span><span class="pln">so vector_python</span><span class="pun">.</span><span class="pln">o</span></code></pre>
+
+<h2>Python</h2>
+
+<pre class="default prettyprint prettyprinted"><code><span class="kwd">from</span><span class="pln"> ctypes </span><span class="kwd">import</span><span class="pln"> </span><span class="pun">*</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Vector</span><span class="pun">(</span><span class="kwd">object</span><span class="pun">):</span><span class="pln">
+    lib </span><span class="pun">=</span><span class="pln"> cdll</span><span class="pun">.</span><span class="typ">LoadLibrary</span><span class="pun">(</span><span class="str">'vector_python_lib.so'</span><span class="pun">)</span><span class="pln"> </span><span class="com"># class level loading lib</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">new_vector</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> c_void_p
+    lib</span><span class="pun">.</span><span class="pln">new_vector</span><span class="pun">.</span><span class="pln">argtypes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">delete_vector</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">delete_vector</span><span class="pun">.</span><span class="pln">argtypes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">c_void_p</span><span class="pun">]</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">vector_size</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> c_int
+    lib</span><span class="pun">.</span><span class="pln">vector_size</span><span class="pun">.</span><span class="pln">argtypes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">c_void_p</span><span class="pun">]</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">vector_get</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> c_int
+    lib</span><span class="pun">.</span><span class="pln">vector_get</span><span class="pun">.</span><span class="pln">argtypes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">c_void_p</span><span class="pun">,</span><span class="pln"> c_int</span><span class="pun">]</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">vector_push_back</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">vector_push_back</span><span class="pun">.</span><span class="pln">argtypes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">c_void_p</span><span class="pun">,</span><span class="pln"> c_int</span><span class="pun">]</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">.</span><span class="pln">restype </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln">
+    lib</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">.</span><span class="pln">argtypes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">c_void_p</span><span class="pun">]</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> __init__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">vector </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Vector</span><span class="pun">.</span><span class="pln">lib</span><span class="pun">.</span><span class="pln">new_vector</span><span class="pun">()</span><span class="pln">  </span><span class="com"># pointer to new vector</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> __del__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">):</span><span class="pln">  </span><span class="com"># when reference count hits 0 in Python,</span><span class="pln">
+        </span><span class="typ">Vector</span><span class="pun">.</span><span class="pln">lib</span><span class="pun">.</span><span class="pln">delete_vector</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">.</span><span class="pln">vector</span><span class="pun">)</span><span class="pln">  </span><span class="com"># call C++ vector destructor</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> __len__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Vector</span><span class="pun">.</span><span class="pln">lib</span><span class="pun">.</span><span class="pln">vector_size</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">.</span><span class="pln">vector</span><span class="pun">)</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> __getitem__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">):</span><span class="pln">  </span><span class="com"># access elements in vector at index</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> len</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">):</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Vector</span><span class="pun">.</span><span class="pln">lib</span><span class="pun">.</span><span class="pln">vector_get</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">.</span><span class="pln">vector</span><span class="pun">,</span><span class="pln"> c_int</span><span class="pun">(</span><span class="pln">i</span><span class="pun">))</span><span class="pln">
+        </span><span class="kwd">raise</span><span class="pln"> </span><span class="typ">IndexError</span><span class="pun">(</span><span class="str">'Vector index out of range'</span><span class="pun">)</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> __repr__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="str">'[{}]'</span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">', '</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">str</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">[</span><span class="pln">i</span><span class="pun">])</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">))))</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> push</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">):</span><span class="pln">  </span><span class="com"># push calls vector's push_back</span><span class="pln">
+        </span><span class="typ">Vector</span><span class="pun">.</span><span class="pln">lib</span><span class="pun">.</span><span class="pln">vector_push_back</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">.</span><span class="pln">vector</span><span class="pun">,</span><span class="pln"> c_int</span><span class="pun">(</span><span class="pln">i</span><span class="pun">))</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> foo</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">,</span><span class="pln"> filename</span><span class="pun">):</span><span class="pln">  </span><span class="com"># foo in Python calls foo in C++</span><span class="pln">
+        </span><span class="typ">Vector</span><span class="pun">.</span><span class="pln">lib</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">.</span><span class="pln">vector</span><span class="pun">,</span><span class="pln"> c_char_p</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">))</span></code></pre>
+
+<p>You can then test it out in the interpreter (<code>file.txt</code> just consists of three lines of jibberish).</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> vector </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">Vector</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Vector</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="lit">22</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="lit">88</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a
+</span><span class="pun">[</span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">88</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span><span class="pln">
+</span><span class="lit">88</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span><span class="pln">
+</span><span class="typ">Traceback</span><span class="pln"> </span><span class="pun">(</span><span class="pln">most recent call </span><span class="kwd">last</span><span class="pun">):</span><span class="pln">
+  </span><span class="typ">File</span><span class="pln"> </span><span class="str">"&lt;stdin&gt;"</span><span class="pun">,</span><span class="pln"> line </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> </span><span class="str">&lt;module&gt;</span><span class="pln">
+  </span><span class="typ">File</span><span class="pln"> </span><span class="str">"vector.py"</span><span class="pun">,</span><span class="pln"> line </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> __getitem__
+    </span><span class="kwd">raise</span><span class="pln"> </span><span class="typ">IndexError</span><span class="pun">(</span><span class="str">'Vector index out of range'</span><span class="pun">)</span><span class="pln">
+</span><span class="typ">IndexError</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Vector</span><span class="pln"> index </span><span class="kwd">out</span><span class="pln"> of range
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">.</span><span class="pln">foo</span><span class="pun">(</span><span class="str">'file.txt'</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a
+</span><span class="pun">[</span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">88</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> b </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Vector</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="pun">^</span><span class="pln">D
+destructor called </span><span class="kwd">in</span><span class="pln"> C</span><span class="pun">++</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> </span><span class="lit">0x1003884d0</span><span class="pln">
+destructor called </span><span class="kwd">in</span><span class="pln"> C</span><span class="pun">++</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> </span><span class="lit">0x10039df10</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/16887455" title="short permalink to this answer" class="short-link" id="link-post-16887455">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/16887455/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/16887455/revisions" title="show all edits to this post">edited <span title="2013-06-03 01:58:12Z" class="relativetime">Jun 3 '13 at 1:58</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-06-02 21:23:10Z" class="relativetime">Jun 2 '13 at 21:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/2147024/jared"><div class="gravatar-wrapper-32"><img src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/zemoS.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/2147024/jared">Jared</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 11,149" dir="ltr">11.1k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="30 silver badges"><span class="badge2"></span><span class="badgecount">30</span></span><span title="50 bronze badges"><span class="badge3"></span><span class="badgecount">50</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16887455" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16887455" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="16885449"></a>
+<div id="answer-16885449" class="answer" data-answerid="16885449" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16885449">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Basically, returning a C++ object from a dynamically loaded library is not a good idea. To use the C++ <code>vector</code> in Python code, you must teach Python to deal with C++ objects (and this includes binary representation of the objects which can change with new version of a C++ compiler or STL).</p>
+
+<p><code>ctypes</code> allows you to interact with a library using C types. Not C++.</p>
+
+<p>Maybe the problem is solvable via <code>boost::python</code>, but it looks more reliable to use plain C for the interaction.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/16885449" title="short permalink to this answer" class="short-link" id="link-post-16885449">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/16885449/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-06-02 17:36:43Z" class="relativetime">Jun 2 '13 at 17:36</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1062250/inspired"><div class="gravatar-wrapper-32"><img src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/8d7bed607125818c218b48621d4a37a2" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1062250/inspired">Inspired</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">9,691</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16885449" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16885449" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="https://stackoverflow.com/questions/16885344/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="16885344">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.com.kh/">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                StackExchange.prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="1ee3336464bc12df90faa4517ede59a3">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="https://stackoverflow.com/users/login?ssrc=question_page&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f16885344%2fhow-to-handle-c-return-type-stdvectorint-in-python-ctypes%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid">
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'https%3a%2f%2fstackoverflow.com%2fquestions%2f16885344%2fhow-to-handle-c-return-type-stdvectorint-in-python-ctypes%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        &lt;h3&gt;Post as a guest&lt;/h3&gt;
+    &lt;div class="form-item"&gt;
+        &lt;table&gt;
+        &lt;tr&gt;
+                    &lt;td class="vm"&gt;
+                &lt;div&gt;
+                    &lt;label for="display-name"&gt;Name&lt;/label&gt;
+                    &lt;input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105"&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label for="m-address"&gt;Email&lt;/label&gt;
+                    &lt;input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" /&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" name="privacy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" name="tos" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="https://stackoverflow.com/questions/tagged/c%2b%2b" class="post-tag" title="show questions tagged &#39;c++&#39;" rel="tag">c++</a> <a href="https://stackoverflow.com/questions/tagged/python" class="post-tag" title="show questions tagged &#39;python&#39;" rel="tag">python</a> <a href="https://stackoverflow.com/questions/tagged/ctypes" class="post-tag" title="show questions tagged &#39;ctypes&#39;" rel="tag">ctypes</a>  or <a href="https://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-06-02 17:25:30Z"><b>4 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+                                    <b>4,685 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes?lastactivity" class="lastactivity-link" title="2016-03-25 15:30:00Z">1 year, 2 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="https://stackoverflow.blog/2017/06/12/new-kids-block-understanding-developers-entering-workforce-today/?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="https://stackoverflow.blog/2017/06/12/new-kids-block-understanding-developers-entering-workforce-today/?cb=1" class="question-hyperlink">New Kids on the Block: Understanding Developers Entering the Workforce Today</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk630833981",[5,17,2221,1129,43]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk630833981"><div id="so_community_div" style="height: 250px; width: 220px;"><style type="text/css">
+    .ads {
+        margin-left: 60px;
+    }
+
+    .ad-container {
+        width: 300px;
+        height: 250px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+        .ad-container .ad {
+            height: 250px;
+        }
+
+        .ad-container .footer-container {
+            overflow: hidden;
+            height: 30px;
+            position: relative;
+            top: -30px;
+        }
+
+            .ad-container .footer-container .footer {
+                font-family: Arial,Helvetic,Sans-Serif;
+                font-size: 12px;
+                text-align: center;
+                padding-top: 9px;
+                background-color: #000;
+                color: #EFF;
+                opacity: 0.9;
+                filter: alpha(opacity=90);
+                top: 30px;
+                height: 30px;
+                position: relative;
+            }
+
+        .ad-container a:hover {
+            text-decoration: underline;
+        }
+
+    #adzerk2 {
+        height: 250px;
+    }
+</style>
+<script>
+    StackExchange.ready(function () {
+        $(".ad-container").hover(
+            function () {
+                $(".ad-container .footer-container .footer").stop(true, true).animate({ top: "0px" }, "fast");
+            },
+            function () {
+                $(".ad-container .footer-container .footer").animate({ top: "30px" }, "fast");
+            });
+    });
+    if (window._passthroughAdUrl) {
+        $('.ad-container a').each(function () { $(this).attr('href', window._passthroughAdUrl + (window._passthroughAdUrl.indexOf('?') == -1 ? '?' : '&') + 'url=' + encodeURIComponent($(this).attr('href'))); });
+    }
+</script>
+        <div class="ad-container">
+            <div class="ad">
+                <a href="http://meta.stackoverflow.com/ads/ct/349031?url=https%3a%2f%2fjulialang.org%2f&s=32821aea8771238e64b71001f5af9426566115cc9ac055b31c6897ba0dd4e2ac" rel="nofollow" target="_blank"><img src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/iPvFt.png" alt="Julia: the high-level, high-performance dynamic programming language for numerical computing" title="Julia: the high-level, high-performance dynamic programming language for numerical computing" width="300" height="250"></a>
+            </div>
+            <div class="footer-container">
+                <div class="footer">
+                    42 votes · <a href="http://meta.stackoverflow.com/questions/349017#349031" title="click to comment on this ad" target="_blank">comment</a> · <a href="http://meta.stackoverflow.com/ads/display/349017" target="_blank">stats</a>
+                </div>
+            </div>
+        </div></div><script type="text/javascript">window._a51AdUrl = "https://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NSwiYnQiOjAsImNtIjozNzM4NjIsImNoIjoxMTc4LCJjayI6e30sImNyIjoxMzc1MDY1LCJkaSI6IjE2M2Q2Y2E2YjZmMTRlNmJhODdjYTM2OTUyNGQxMGM4IiwiZG0iOjEsImZjIjoxNTM5MjY4LCJmbCI6MTE0NjE3NSwiaXAiOiIxMDMuNS4xMjQuMTM5Iiwia3ciOiJjKysscHl0aG9uLGN0eXBlcyIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS5raC8iLCJzYSI6IjMiLCJzYiI6ImktMDdhZGI4NDk5NGE5YjcyYTciLCJzcCI6MTIxMDEsInN0Ijo4Mjc3LCJ1ayI6InVlMS04ZjlmODljZTUxNjc0NGMyYjc5MmU5MDEyNjEyYzBlNiIsInpuIjo0NSwidHMiOjE0OTczMjYxOTU4ODAsImJmIjp0cnVlLCJwbiI6ImFkemVyazYzMDgzMzk4MSIsInVyIjpudWxsfQ&s=2-1-P3a4tgAH1JU7AFO0TBRIuf8";</script><script type="text/javascript" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/community"></script><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="https://stackoverflow.com/questions/16885344/how-to-handle-c-return-type-stdvectorint-in-python-ctypes#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/i.gif"></div>
+            <div id="hireme" class="tag-themed python tagged tex2jax_ignore clc-jobs-multi"><a class="top " href="https://stackoverflow.com/jobs" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=46o9HG0gsOmKh6p7qIc3E5PAgzNtHKW1jinSjX9Nsxk_-t0JOBHIwMXQs4GBocGekZGBaTbT5a9sbX853swWAIqnHDAuOWD53V7OnpGtoLIkIz9vNtP0SezbDnIcWcbPBJJf0HHa0lPZCi7PZ8x0eRcjAwOD-ElGBkYG9dCKiIneG2XVbgAA&amp;cr=10440&amp;ct=1&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%3Fmed=clc&amp;sig=F67lvbr4RasMjA"><span>Want a <span class="header-tag">python</span> job?</span></a><div class="middle"><ul class="jobs"><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Engineering Manager at Toptal. Click to learn more." href="https://stackoverflow.com/jobs/132588/engineering-manager-toptal" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=46o9HG0gsOmKh6p7qIc3E5PAgzNtHKW1jinSjX9Nsxk_-t0JOBHIwMXQs4GBocGekZGBaTbT5a9sbX853swWAIqnHDAuOWD53V7OnpGtoLIkIz9vNtP0SezbDnIcWcbPBJJf0HHa0lPZCi7PZ8x0eRcjAwOD-ElGBkYG9dCKiIneG2XVbgAA&amp;cr=265708&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F132588%2Fengineering-manager-toptal%3Fmed=clc&amp;sig=EAihOVMjMNieaw"><div class="title">Engineering Manager</div><div><span class="company">Toptal</span><span class="location">No office location</span></div><div class="opts"><span class="opt salary">$48k - $96k</span><span class="opt remote">Remote</span></div><span class="post-tag highlight">python</span><span class="post-tag">javascript</span></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=46o9HG0gsOmKh6p7qIc3E5PAgzNtHKW1jinSjX9Nsxk_-t0JOBHIwMXQs4GBocGekZGBaTbT5a9sbX853swWAIqnHDAuOWD53V7OnpGtoLIkIz9vNtP0SezbDnIcWcbPBJJf0HHa0lPZCi7PZ8x0eRcjAwOD-ElGBkYG9dCKiIneG2XVbgAA&amp;cr=265708&amp;ct=-1&amp;sig=QF5xEFAzz1QSrg" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Excellence in Web Application Development (Senior Frontend Engineer) at Sherpany. Click to learn more." href="https://stackoverflow.com/jobs/135910/excellence-in-web-application-development-senior-sherpany" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=46o9HG0gsOmKh6p7qIc3E5PAgzNtHKW1jinSjX9Nsxk_-t0JOBHIwMXQs4GBocGekZGBaTbT5a9sbX853swWAIqnHDAuOWD53V7OnpGtoLIkIz9vNtP0SezbDnIcWcbPBJJf0HHa0lPZCi7PZ8x0eRcjAwOD-ElGBkYG9dCKiIneG2XVbgAA&amp;cr=250692&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F135910%2Fexcellence-in-web-application-development-senior-sherpany%3Fmed=clc&amp;sig=5pZHph4KP0yuQg"><div class="title">Excellence in Web Application Development (Senior Frontend Engineer)</div><div><span class="company">Sherpany</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag highlight">python</span><span class="post-tag">css3</span></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=46o9HG0gsOmKh6p7qIc3E5PAgzNtHKW1jinSjX9Nsxk_-t0JOBHIwMXQs4GBocGekZGBaTbT5a9sbX853swWAIqnHDAuOWD53V7OnpGtoLIkIz9vNtP0SezbDnIcWcbPBJJf0HHa0lPZCi7PZ8x0eRcjAwOD-ElGBkYG9dCKiIneG2XVbgAA&amp;cr=250692&amp;ct=-1&amp;sig=wdBYzNdWLH3ckQ" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li></ul></div><img src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/impression.gif" class="impression" style="display: none;"></div>
+        <script>
+window.clc_request = 'Atn7NC8QstQIAAAAAGCmAQECAAAAAgAAAAATAAAAfGMrK3xweXRob258Y3R5cGVzfAAo5_ZxNBgy29gA';;(function(n){var u={log:window.console.log.bind(window.console,"[clc]"),error:window.console.error.bind(window.console,"[clc]")},f,e,t,r,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(f=n.allowed,!f)return;if(e=new RegExp(n.allowed),!e.test(location.hostname)){u.error("Invalid host: "+location.hostname);return}if(t=window,t.clc=t.clc||{},t.clc.init=t.clc.init||[],t.clc.init.push(function(n){return n.load()}),t.clc.options){for(r in t.clc.options)n[r]=t.clc.options[r];t.clc.options=n}else t.clc.options=n;i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}catch(o){u.error("[clc] Error in loader:",o)}}).call(null, {"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=436861d2e2c5","u":"https://clc.stackoverflow.com/markup.js","azw":true,"kt":2000,"tto":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"h":"clc.stackoverflow.com","autoload":true,"allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$"});        </script>
+			<div class="module" id="chat-feature">
+
+    <h4><a href="http://chat.stackoverflow.com/" id="h-chat-link" title="36 users active in 23 rooms the last 60 minutes">36 People Chatting</a></h4>
+    <div class="related" id="ad502-rooms"><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="JavaScript"><a href="http://chat.stackoverflow.com/rooms/17">JavaScript</a></span></h3><span title="2017-06-13 02:58:51Z" class="ad502-last-message">50 mins ago - <a href="http://chat.stackoverflow.com/users/203093">hsimah</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/1288130"><img height="23" width="23" title="Cauterite: 51 mins ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/df74c734257373f3725b527d3815d727"></a><a href="http://chat.stackoverflow.com/users/203093"><img height="23" width="23" title="hsimah: 54 mins ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/63c675da2f684ec9c8286a134f2eec87"></a><a href="http://chat.stackoverflow.com/users/1947276"><img height="23" width="23" title="little pootis: 55 mins ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/F8tJi.jpg"></a><a href="http://chat.stackoverflow.com/users/422252"><img height="23" width="23" title="William: 1 hour ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/FfDIa.gif"></a><a href="http://chat.stackoverflow.com/users/1514572"><img height="23" width="23" title="monners: 1 hour ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/8e44332313cc7335e98748739977ea5d"></a><a href="http://chat.stackoverflow.com/users/322395"><img height="23" width="23" title="Loktar: 2 hours ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/KwBES.png"></a><a href="http://chat.stackoverflow.com/users/6036932"><img height="23" width="23" title="derp: 2 hours ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/3OyFY.jpg"></a></div></div><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="Lounge&lt;C++&gt;"><a href="http://chat.stackoverflow.com/rooms/10">Lounge&lt;C++&gt;</a></span></h3><span title="2017-06-13 02:50:56Z" class="ad502-last-message">58 mins ago - <a href="http://chat.stackoverflow.com/users/2369847">Telkitty</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/2369847"><img height="23" width="23" title="Telkitty: 58 mins ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/P2Yey.jpg"></a><a href="http://chat.stackoverflow.com/users/4892076"><img height="23" width="23" title="jaggedSpire: 1 hour ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/s6vwT.png"></a><a href="http://chat.stackoverflow.com/users/343443"><img height="23" width="23" title="Abyx: 3 hours ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/2dcf7b64ff07a02fbd78c27f50ce9631"></a><a href="http://chat.stackoverflow.com/users/2851815"><img height="23" width="23" title="набиячлэвэли: 3 hours ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/tMbLc.png"></a><a href="http://chat.stackoverflow.com/users/1012936"><img height="23" width="23" title="milleniumbug: 3 hours ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/lVX7j.jpg"></a><a href="http://chat.stackoverflow.com/users/2414957"><img height="23" width="23" title="Mona Jalal: 3 hours ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/0MuAW.jpg"></a><a href="http://chat.stackoverflow.com/users/300797"><img height="23" width="23" title="thecoshman: 4 hours ago" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/328e4d651b4e1c7a97bd86f3d7c84073"></a></div></div></div>
+    <script>
+    // <!--
+        StackExchange.ready(
+        function () {
+            var options = {
+                chatUrl: 'http://chat.stackoverflow.com',
+                reloadUrl: '/api/recent-chat',
+                preloadData: {"activeUsers":36,"activeRooms":23,"rooms":[{"name":"JavaScript","id":17,"lastPost":1497322731,"posts":4033305,"users":[{"name":"Cauterite","id":1288130,"emailhash":"df74c734257373f3725b527d3815d727","lastPost":1497322678},{"name":"hsimah","id":203093,"emailhash":"63c675da2f684ec9c8286a134f2eec87","lastPost":1497322540},{"name":"little pootis","id":1947276,"emailhash":"!https://i.stack.imgur.com/F8tJi.jpg?s=128\u0026g=1","lastPost":1497322459},{"name":"William","id":422252,"emailhash":"!https://i.stack.imgur.com/FfDIa.gif?s=128\u0026g=1","lastPost":1497321150},{"name":"monners","id":1514572,"emailhash":"8e44332313cc7335e98748739977ea5d","lastPost":1497319812},{"name":"Loktar","id":322395,"emailhash":"!https://i.stack.imgur.com/KwBES.png?s=128\u0026g=1","lastPost":1497317570},{"name":"derp","id":6036932,"emailhash":"!https://i.stack.imgur.com/3OyFY.jpg?s=128\u0026g=1","lastPost":1497315681}],"messages":[{"date":1497322731,"user":"hsimah","userid":203093}],"singleImage":false,"tags":["ecmascript","ecmascript-6","hypescript","javascript","nodejs"]},{"name":"Lounge\u003cC++\u003e","id":10,"lastPost":1497322256,"posts":4915963,"users":[{"name":"Telkitty","id":2369847,"emailhash":"!https://i.stack.imgur.com/P2Yey.jpg?s=128\u0026g=1","lastPost":1497322256},{"name":"jaggedSpire","id":4892076,"emailhash":"!https://i.stack.imgur.com/s6vwT.png?s=128\u0026g=1","lastPost":1497321750},{"name":"Abyx","id":343443,"emailhash":"2dcf7b64ff07a02fbd78c27f50ce9631","lastPost":1497312461},{"name":"набиячлэвэли","id":2851815,"emailhash":"!https://i.stack.imgur.com/tMbLc.png?s=128\u0026g=1","lastPost":1497312253},{"name":"milleniumbug","id":1012936,"emailhash":"!https://i.stack.imgur.com/lVX7j.jpg?s=128\u0026g=1","lastPost":1497312226},{"name":"Mona Jalal","id":2414957,"emailhash":"!https://i.stack.imgur.com/0MuAW.jpg?s=128\u0026g=1","lastPost":1497312160},{"name":"thecoshman","id":300797,"emailhash":"328e4d651b4e1c7a97bd86f3d7c84073","lastPost":1497311333}],"messages":[{"date":1497322256,"user":"Telkitty","userid":2369847}],"singleImage":false,"tags":["c++","c++11","c++14","c++17","c++-faq"]}]} 
+            };
+
+            StackExchange.chatAd.init(options);
+        });
+    // -->
+    </script>
+
+</div>
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/2923272?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">210</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/2923272/how-to-convert-vector-to-array-in-c?noredirect=1&lq=1" class="question-hyperlink">How to convert vector to array in C++</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/9084111?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">9</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/9084111/is-wrapping-c-library-with-ctypes-a-bad-idea?noredirect=1&lq=1" class="question-hyperlink">Is wrapping C++ library with ctypes a bad idea?</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/16693178?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">7</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/16693178/c-vector-to-python-3-3?noredirect=1&lq=1" class="question-hyperlink">C++ vector to Python 3.3</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/38168197?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/38168197/ctypes-get-output-from-c-function-into-python-object?noredirect=1&lq=1" class="question-hyperlink">ctypes - get output from c++ function into python object</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/40220662?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/40220662/importing-c-function-with-vectors-as-arguments-in-python?noredirect=1&lq=1" class="question-hyperlink">Importing C++ function with vectors as arguments in Python</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/1615813?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">32</div></a><a href="https://stackoverflow.com/questions/1615813/how-to-use-c-classes-with-ctypes?rq=1" class="question-hyperlink">How to use C++ classes with ctypes?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/1942298?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">212</div></a><a href="https://stackoverflow.com/questions/1942298/wrapping-a-c-library-in-python-c-cython-or-ctypes?rq=1" class="question-hyperlink">Wrapping a C library in Python: C, Cython or ctypes?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/4858042?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="https://stackoverflow.com/questions/4858042/python-ctypes-getprocaddress-returns-error?rq=1" class="question-hyperlink">Python :: ctypes :: GetProcAddress() returns error</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/9371238?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">1020</div></a><a href="https://stackoverflow.com/questions/9371238/why-is-reading-lines-from-stdin-much-slower-in-c-than-python?rq=1" class="question-hyperlink">Why is reading lines from stdin much slower in C++ than Python?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/9703113?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">4</div></a><a href="https://stackoverflow.com/questions/9703113/ctypes-python-stdstring?rq=1" class="question-hyperlink">ctypes python std::string</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/12169091?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/12169091/using-extern-c-from-c-with-vector-for-ctypes?rq=1" class="question-hyperlink">Using “extern C” from C++ with vector for ctypes</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/12500069?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">3</div></a><a href="https://stackoverflow.com/questions/12500069/ctypes-how-to-pass-string-from-python-to-c-function-and-how-to-return-string?rq=1" class="question-hyperlink">ctypes how to pass string from python to c++ function, and how to return string from c++ function to python</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/15709994?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="https://stackoverflow.com/questions/15709994/how-to-return-char-from-c-and-fill-it-in-a-list-in-python-using-ctypes?rq=1" class="question-hyperlink">How to return char ** from C++ and fill it in a list in Python using ctypes?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/19113154?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/19113154/how-to-return-a-matrix-from-a-c-function-to-python-using-ctypes?rq=1" class="question-hyperlink">How to return a matrix from a C++ function to Python using ctypes</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/38168197?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">2</div></a><a href="https://stackoverflow.com/questions/38168197/ctypes-get-output-from-c-function-into-python-object?rq=1" class="question-hyperlink">ctypes - get output from c++ function into python object</a></div>
+                    </div>
+				</div>
+            
+
+<div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/393595/down-used-as-a-verb" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    "down" used as a verb?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="https://travel.stackexchange.com/questions/95034/how-to-use-purchased-train-tickets-for-london-heathrow-underground-to-norwich" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to use purchased train tickets for London Heathrow Underground to Norwich
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/374619/more-elegant-look-in-equation-for-longer-equations" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    More elegant look in \equation for longer equations?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/83317/what-natural-phenomena-could-make-an-island-unreachable" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What natural phenomena could make an island unreachable?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-law" title="Law Stack Exchange"></div><a href="https://law.stackexchange.com/questions/19550/kicked-out-of-doctors-office-for-refusing-to-allow-them-to-take-pictures-is-thi" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:617 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Kicked out of doctors office for refusing to allow them to take pictures. is this legal?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="https://mathoverflow.net/questions/272028/hilberts-alleged-proof-of-the-continuum-hypothesis-in-on-the-infinite" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Hilbert's alleged proof of the Continuum Hypothesis in "On the Infinite"
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/101237/as-a-player-i-am-approaching-a-situation-where-my-guy-syndrome-seems-inevitab" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    As a player, I am approaching a situation where "My Guy" syndrome seems inevitable and almost appropriate. What can I do to soften any problems?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/101448/are-there-other-modifiers-to-ac" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are there other modifiers to AC?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="https://movies.stackexchange.com/questions/74670/looking-for-clarification-of-jury-rulings-at-the-end-of-a-few-good-men" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Looking for clarification of jury rulings at the end of A Few Good Men
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="https://mathoverflow.net/questions/271608/17-camels-trick" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    17 camels trick
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="https://politics.stackexchange.com/questions/19887/what-does-coequal-sovereign-mean-in-this-context" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does “coequal sovereign” mean in this context?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/83385/from-scratch-measurement-units" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    From scratch measurement units
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-judaism" title="Mi Yodeya"></div><a href="https://judaism.stackexchange.com/questions/83299/praise-of-mishneh-torah-amongst-the-rishonim" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:248 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Praise of Mishneh Torah amongst the Rishonim
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/125823/how-many-carries-do-i-need-to-add-these-two-numbers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How many carries do I need to add these two numbers?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-writers" title="Writers Stack Exchange"></div><a href="https://writers.stackexchange.com/questions/28645/is-ice-fire-opposition-too-stereotypical" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is Ice/Fire opposition too stereotypical?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="https://superuser.com/questions/1217298/how-can-i-take-screenshots-of-the-windows-10-login-screen" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I take screenshots of the Windows 10 Login Screen?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-android" title="Android Enthusiasts Stack Exchange"></div><a href="https://android.stackexchange.com/questions/176501/why-do-phones-have-more-cores-than-computers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:139 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do phones have more cores than computers?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="https://physics.stackexchange.com/questions/338711/how-does-tear-here-work" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does 'Tear Here' work?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="https://mathematica.stackexchange.com/questions/148215/remove-element-by-key" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Remove element by Key
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/83455/underwater-acoustic-muffling-dampening-and-sonar-evasion-is-a-stealth-torpedo-p" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Underwater acoustic muffling/dampening and sonar evasion. Is a stealth torpedo possible?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="https://aviation.stackexchange.com/questions/38874/what-is-this-white-rectangle-painted-on-runway-23-at-kcrw" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is this white rectangle painted on runway 23 at KCRW?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="https://money.stackexchange.com/questions/80689/what-is-the-logic-behind-a-50-of-x-401k-contribution-match" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the logic behind a 50% of X% 401(k) contribution match?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="https://travel.stackexchange.com/questions/95009/what-do-the-additional-numbers-on-the-side-of-houses-in-rome-stand-for" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What do the additional numbers on the side of houses in Rome stand for?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/83199/what-would-be-the-possible-issues-with-an-iq-based-voting-system" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would be the possible issues with an IQ based voting system
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="https://stackoverflow.com/feeds/question/16885344" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/16885344/ivc/a682');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/16885344/ivc/a682" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+        </div>
+    </div><script async="" src="./How to handle C++ return type std__vector_int_ in Python ctypes_ - Stack Overflow_files/clc.min.js"></script>
+    <div id="footer" class="categories" role="contentinfo">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:1 })" href="https://stackoverflow.com/company/about">about us</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:2 })" href="https://stackoverflow.com/tour">tour</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:3 })" href="https://stackoverflow.com/help">help</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog/?blb=1">blog</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:5 })" href="https://chat.stackoverflow.com/">chat</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:6 })" href="https://data.stackexchange.com/">data</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:7 })" href="https://stackexchange.com/legal">legal</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:8 })" href="https://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:9 })" href="https://stackoverflow.com/company/work-here">work here</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:10 })" href="https://www.stackoverflowbusiness.com/advertise">advertising info</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:11 })" href="https://stackoverflow.com/jobs/directory/developer-jobs">developer jobs directory</a>
+
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:12 })" onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:13 })" href="https://stackoverflow.com/contact">contact us</a></b>
+                        <b><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:14 })" href="https://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="https://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="https://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="https://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="https://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="https://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="https://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="https://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="https://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                        <li><a href="https://softwareengineering.stackexchange.com/" title="professionals, academics, and students working within the systems development life cycle">Software Engineering</a></li>
+                        <li><a href="https://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="https://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="https://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="https://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="https://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="https://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                        <li><a href="https://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="https://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="https://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="https://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="https://mathematica.stackexchange.com/" title="users of Wolfram Mathematica">Mathematica</a></li>
+                        <li><a href="https://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="https://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                        <li><a href="https://crypto.stackexchange.com/" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://codereview.stackexchange.com/" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="https://magento.stackexchange.com/" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="https://dsp.stackexchange.com/" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="https://raspberrypi.stackexchange.com/" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="https://codegolf.stackexchange.com/" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="https://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="https://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="https://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="https://music.stackexchange.com/" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="https://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="https://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="https://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="https://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="https://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="https://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="https://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="https://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="https://ell.stackexchange.com/" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="https://japanese.stackexchange.com/" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="https://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="https://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="https://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="https://anime.stackexchange.com/" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="https://mechanics.stackexchange.com/" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="https://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="https://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="https://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="https://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="https://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="https://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="https://cs.stackexchange.com/" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                        <li><a href="https://philosophy.stackexchange.com/" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="https://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="https://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2017.6.12.26223
+            </div>
+                </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled
+            &lt;img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;
+        &lt;/div&gt;
+    </noscript>
+<script>var z=document.createElement("script");z.type="text/javascript",z.async=!0,z.src="https://static.adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script>
+var ados = ados || {};
+ados.run = ados.run || [];
+
+
+ados.run.push(function () {
+    setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+    ados_setKeywords('c%2b%2b,python,ctypes');; ados_load();
+});   
+
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-1');
+                ga('create', 'UA-5620270-59', {name: 'pageData', sampleRate: 5 });
+                ga('set', 'dimension2', '|c++|python|ctypes|');
+                ga('pageData.set', 'dimension2', '|c++|python|ctypes|');
+                ga('send', 'pageview');
+                ga('pageData.send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+</body></html>

@@ -16,7 +16,7 @@ git push origin master
     git push -u origin master
 
 如果在客户端创建一个项目，执行如下项目：
-   git clone https://github.com/Flowerowl/stumansys.git
+    git clone https://github.com/Flowerowl/stumansys.git
     git remote add origin https://github.com/helmsli/official-website.git
     git add official-website or   git add -A official-website
     git commit -m "official-website"    

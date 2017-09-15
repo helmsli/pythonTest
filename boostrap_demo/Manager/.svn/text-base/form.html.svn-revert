@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>form</title>
+		
+		<!-- Bootstrap Css -->
+	   	<link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+		
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+		<script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+		<script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    	
+    	<!--Custom JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+		<script src="../js/home.js" type="text/javascript"></script>
+	    
+	    <!-- Custom Css -->
+	    <link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    
+		<!--Forms JS-->
+		<script src="../js/formValidata/formValid_Inf.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid_Rule.js" type="text/javascript"></script>
+		<script src="../js/formValidata/formValid.js" type="text/javascript"></script>
+	
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="app">
+			<div ng-include="'include/header.html'"></div>
+			<div class="menus" ng-include="'include/leftMenu.html'"></div>
+			
+			<div id="page-wrapper">
+				<h1 class="page-header">表单 1</h1>
+                <!-- / .breadcrumb -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">自定义title</div>
+                        	<div class="panel-body">
+                        		<div class="row">
+                        			<div class="col-lg-12">
+                        				<form action="#" method="post" id="theForm" class="form-single">
+                        					<div class="form-group">
+                        						<label>User Name</label>
+                        						<input type="text" class="form-control" name="userName" id="userName" data-error="UserName error" data-tip="Please enter the user name" />
+                        					</div>
+                        					<!-- / User Name -->
+                        					<div class="form-group">
+                        						<label>User Type</label>
+												<div class="select-group">
+													<button type="button" class="btn btn-default dropdown-toggle" onclick="changeSelect(this);" data-toggle="dropdown" name="userType" id="userType" data-error="No select">
+														Action <span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu" role="menu" id="myUl">
+													    <li value=""><a href="#">Action</a></li>
+													    <li value="1"><a href="#">Another action</a></li>
+													    <li value="2"><a href="#">Something else here</a></li>
+													    <li value="3"><a href="#">Separated link</a></li>
+													</ul>
+												</div>
+                        					</div>
+                        					<!-- / User Type -->
+                        					<div class="form-group">
+                        						<label>Password</label>
+                        						<input type="text" class="form-control" id="pwd" data-error="password error" data-tip="Please enter your password" />
+                        					</div>
+                        					<!-- / Password -->
+                        					<!--<div class="form-group">
+                        						<label>E-mail</label>
+                        						<input type="text" class="form-control" id="email" />
+                        					</div>-->
+                        					<!-- / E-mail -->
+                        					<!--<div class="form-group">
+                        						<label>Number</label>
+                        						<input type="text" class="form-control" id="myNum" data-error="Num error" data-tip="Please enter your num" />
+                        					</div>-->
+                        					<!-- / Number -->
+                        					<div class="form-group">
+                        						<div class="checkbox">
+                        							<label class="checkbox-inline">
+                    									<input type="checkbox" class="regular-checkbox" id="sing" name="hobby" value="sing" data-error="未勾选" />
+                    									<label for="sing"></label>
+                    									sing
+	                                                </label>
+	                                                <label class="checkbox-inline">
+                    									<input type="checkbox" class="regular-checkbox" id="dance" name="hobby" value="dance" data-error="未勾选" />
+                    									<label for="dance"></label>
+                    									dance
+	                                                </label>
+	                                                <div class="checkbox-tips">
+	                        							<span class="input-tips" id="checkboxError">
+		                        							<p class="error-block">请勾选</p>
+		                        						</span>
+	                        						</div>
+                        						</div>
+                        					</div>
+                        					<!-- / Checkbox -->
+                        					<div class="form-group">
+                        						<div class="radio">
+                        							<label class="radio-inline">
+                    									<input type="radio"  class="regular-radio" name="radio" id="man" checked="checked" value="1" />
+                    									<label for="man"></label>	
+                    									Man
+	                                                </label>
+	                                                <label class="radio-inline">
+                    									<input type="radio"  class="regular-radio" name="radio" id="woman" value="1" />
+                    									<label for="woman"></label>	
+                    									Woman
+	                                                </label>
+	                                          	</div>
+                        					</div>
+                        					<!-- / Radio --> 
+                        					<div class="form-group">
+                        						<div class="file">
+                        							<div class="file-preview">
+                        								<div class="preview" id="showImg">Preview</div>
+                        								<div class="preview">Preview</div>
+                        							</div>
+                        							<div class="file-group">
+                    									<input type="text" name="fileName" id="fileName" class="form-control" />
+                        								<input type="button" value="Upload" class="btn btn-primary"/>
+                        								<input type="file" name="filefield" id="uploadFile" onchange="uploadFileShow('uploadFile','showImg'); document.getElementById('fileName').value=this.value" />
+                        							</div>
+	                                          	</div>
+                        					</div>
+                        					<!-- / file -->
+                        					<div class="btn-group">
+                        						<button type="button" class="btn btn-success" id="submitBtn" />Register</button>
+                        						<button type="button" class="btn btn-primary" />Cancel</button>
+                        					</div>
+                        					<!-- / button -->
+                        				</form>
+                        				<!-- / forms -->
+                        			</div>
+                        			<!-- / .col-lg-12 -->
+                        		</div>
+                        		<!-- / .row -->
+                        	</div>
+                        	<!-- / .panel-body -->
+                        </div>
+                        <!-- / .panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">
+                        		表单元素
+                        		<small>This box for the form elements of a style of the way, there is no check function</small>
+                        	</div>
+                        	<div class="panel-body">
+                        		<div class="row">
+                    				<form class="form-horizontal">
+                    					<div class="col-md-6 form-group">
+                    						<input type="text" class="form-control has-feedback-left" name="userName" id="userName" data-error="UserName error" data-tip="Please enter the user name" />
+                    						<span class="fa fa-user form-control-feedback fl" aria-hidden="true"></span>
+                    					</div>
+                    					<div class="col-md-6 form-group">
+                    						<input type="text" class="form-control has-feedback-right" name="userName" id="userName" data-error="UserName error" data-tip="Please enter the user name" />
+                    						<span class="fa fa-user form-control-feedback fr" aria-hidden="true"></span>
+                    					</div>
+                    					<div class="col-md-6 form-group">
+                    						<input type="text" class="form-control has-feedback-left" name="userName" id="userName" data-error="UserName error" data-tip="Please enter the user name" />
+                    						<span class="fa fa-envelope form-control-feedback fl" aria-hidden="true"></span>
+                    					</div>
+                    					<div class="col-md-6 form-group">
+                    						<input type="text" class="form-control has-feedback-right" name="userName" id="userName" data-error="UserName error" data-tip="Please enter the user name" />
+                    						<span class="fa fa-phone form-control-feedback fr" aria-hidden="true"></span>
+                    					</div>
+                    					<div class="col-md-12 form-group form-block">
+					                        <label class="control-label col-md-4 col-sm-4">Default Input</label>
+					                        <div class="col-md-8 col-sm-8">
+					                          <input class="form-control" placeholder="Default Input" type="text">
+					                        </div>
+					                    </div>
+					                    <div class="col-md-12 form-group form-block">
+					                        <label class="control-label col-md-4 col-sm-4">Disabled Input</label>
+					                        <div class="col-md-8 col-sm-8">
+					                          <input type="text" disabled="disabled" class="form-control" placeholder="Default Input">
+					                        </div>
+					                    </div>
+					                    <div class="col-md-12 form-group form-block">
+					                        <label class="control-label col-md-4 col-sm-4">Readonly Input</label>
+					                        <div class="col-md-8 col-sm-8">
+					                          <input type="text" readonly="readonly" class="form-control" placeholder="Default Input">
+					                        </div>
+					                    </div>
+					                    <div class="col-md-12 form-group form-block">
+					                        <label class="control-label col-md-4 col-sm-4">dd/MM/yyyy hh:mm:ss</label>
+					                        <div class="col-md-8 col-sm-8">
+												<div id="datetimepicker1" class="input-append date">
+											        <input type="text" class="form-control" data-format="dd/MM/yyyy hh:mm:ss"></input>
+											        <span class="add-on">
+											          <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-calendar"></i>
+											        </span>
+										      	</div>
+					                        </div>
+					                    </div>
+					                    <div class="col-md-12 form-group form-block">
+					                        <label class="control-label col-md-4 col-sm-4">dd/MM/yyyy hh:mm</label>
+					                        <div class="col-md-8 col-sm-8">
+												<div id="datetimepicker2" class="input-append date">
+											        <input type="text" class="form-control" data-format="dd/MM/yyyy hh:mm"></input>
+											        <span class="add-on">
+											          <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-calendar"></i>
+											        </span>
+										      	</div>
+					                        </div>
+					                    </div>
+					                    <div class="col-md-12 form-group form-block">
+					                        <label class="control-label col-md-4 col-sm-4">dd/MM/yyyy</label>
+					                        <div class="col-md-8 col-sm-8">
+												<div id="datetimepicker3" class="input-append date">
+											        <input type="text" class="form-control" data-format="dd/MM/yyyy"></input>
+											        <span class="add-on">
+											          <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-calendar"></i>
+											        </span>
+										      	</div>
+					                        </div>
+					                    </div>
+					                    <div class="col-lg-12">
+					                    	<hr />
+					                    </div>
+					                    <div class="col-md-6 col-md-offset-4">
+					                    	<button class="btn btn-primary">Cancel</button>
+					                    	<button class="btn btn-success">Sbmit</button>
+					                    </div>
+                    				</form>
+                    				<!-- / forms -->
+                        		</div>
+                        		<!-- / .row -->
+                        	</div>
+                        	<!-- / .panel-body -->
+                        </div>
+                        <!-- / .panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- / .row -->
+			</div>
+			<!-- / #page-wrapper -->
+		</div>
+		<!-- / #wrapper -->
+		<!--<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div ng-include="'template/addUser.html'" ></div>
+		</div>-->
+		<!-- / .modal -->
+	</body>	
+	<script src="../js/formValidata/getFormData.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	  	$(function() {
+		    $('#datetimepicker1').datetimepicker({
+		    	collapse: true
+		    });
+		    $('#datetimepicker2').datetimepicker({
+		    	collapse: true
+		    });
+		    $('#datetimepicker3').datetimepicker({
+		        collapse: true
+		    });
+		});
+	</script>
+</html>

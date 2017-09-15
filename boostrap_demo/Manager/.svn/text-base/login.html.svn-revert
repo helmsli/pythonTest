@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="App">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>后台管理系统</title>
+	    
+	    <!-- Bootstrap Css -->
+	    <link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+		
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+	    <script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	    
+	    <!--Global JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+	    <script src="../js/errcode/errcode.js" type="text/javascript"></script>
+	    <script src="../js/i18n/i18n_zh.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+		<script src="../js/home.js" type="text/javascript"></script>
+		<script src="../js/login.js" type="text/javascript"></script>
+	    
+	    <!-- Custom Css -->
+		<link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/login.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    
+		<!-- Inline CSS-->
+		<style>
+			#page-wrapper{
+				margin:0;
+				padding:0;
+				background-color: #fff!important;
+			}
+			.panel-default > .panel-body {
+				min-height: 200px;
+			}
+			/***
+			 * 以下样式 解决文字标题文本框不居中以及文本框宽度不能随文字长度自适应问题
+			 */
+			/*.login-head .navbar-brand{
+				position:absolute;
+				top:64px;
+				margin:0px auto;
+				padding-top:100px;
+				background:url("../../../images/login-welcome.png") top center no-repeat;
+			}
+			.container .navbar-brand {
+				position: relative;
+				float: none;
+				text-align: center;
+			}
+			.login-head .navbar-brand .navbar-content {
+				margin:0 auto;
+				display:inline-block; 
+				padding: 0px 20px;	
+				border:1px solid #fff;
+			}*/
+		</style>
+	</head>
+	<body>
+	    <div id="wrapper" ng-controller="app" >
+	    	<div id="page-wrapper">
+				<div class="login-head">
+					<div class="container">
+						<div class="row">
+							<div class="navbar-brand" style="">
+								<div class="navbar-content" >
+									<span>CooTel</span>
+									<p>话务统计后台管理系统</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- / header -->
+				<div class="login-main">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-8 col-md-7 col-xs-12 show">
+								<span class="main-img"></span>
+							</div>
+							<div class="col-lg-4 col-md-5 col-xs-12 show">
+								<div class="login-panel panel panel-default">
+				                    <div class="panel-heading">
+				                        <h3 class="panel-title">CooTel后台管理系统</h3>
+				                    </div>					                    
+				                    <div class="panel-body">
+				                        <form role="form" id="myLoginForm" ng-controller="loginCtrl">
+				                            <fieldset>
+				                                <div class="form-group">
+				                                    <input id="user_code" ng-blur="validate_user()" type="tel"  class="form-control" placeholder="请输入手机号" required="" />
+				                                    <i class="fa fa-user-custom"></i>
+				                                    <div id="user_error"></div>
+				                                </div>
+				                                <div class="form-group">
+				                                    <input id="user_password" ng-blur="validate_password()" type="password" class="form-control" placeholder="请输入密码" required="" />
+				                                    <i class="fa fa-lock-custom"></i>
+				                                    <div id="pass_error"></div>
+				                                </div>
+				                                <a class="btn btn-lg btn-primary btn-block" id="login" ng-click="loginIn()">Login</a>
+				                                <div id="myTest"></div>
+				                            </fieldset>
+				                        </form>
+				                    </div>
+				                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="login-foot">
+					<div class="container">
+						<p>Copyright @ 2016 信威通信科技股份有限公司 版权所有</p>
+					</div>
+				</div>
+	    	</div>
+			<!-- / #page-wrapper -->
+	    </div>
+	    <!-- / #wrapper -->
+	    <div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div ng-include="'template/addUser.html'" ></div>
+		</div>
+		<!-- / .modal -->
+	</body>
+</html>
+
+
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>step</title>
+		
+		<!-- Bootstrap CSS -->
+	    <link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>    
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+	    
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+	    <script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	    
+	    <!-- Global JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+		<script src="../js/home.js" type="text/javascript"></script>
+	    
+	    <!-- Custom CSS -->
+	    <link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    
+	    <script src="../js/reportExport.js" type="text/javascript"></script>
+    	
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="app">
+			<div class="header" ng-include="'include/header.html'"></div>
+			<div class="menus" ng-include="'include/leftMenu.html'" ></div>
+			<div id="page-wrapper" ng-controller="reportExportCtrl">
+				<h1 class="page-header">Step-1</h1>
+                <div class="row">
+                	<div class="col-lg-12">
+                		<div class="panel panel-default">
+                        	<div class="panel-heading">自定义title</div>
+                        	<div class="panel-body minheight">
+                        		<div class="row">
+                        			<div class="col-lg-12">
+                        				<form method="post" id="myForm"  class="form-inline definewidth m20" >
+									        <input type="hidden" name="id" value=""/>
+									        <div class="row export export-search hide">
+									        	<div class="col-lg-6 col-lg-offset-3">
+									        		<div class="form-group">
+											        	<select class="form-control">
+											        		<option>1</option>
+											        		<option>1</option>
+											        		<option>1</option>
+											        	</select>
+											        	<button class="btn btn-success">查询</button>
+											        </div>
+									        	</div>
+									        	<div class="col-lg-6 col-lg-offset-3">
+									        		<button class="btn btn-orange">导出</button>
+									        	</div>
+									        </div>
+									        <!-- / .export-search -->
+									        <div class="row export export-step show">
+									        	<div class="col-lg-12">
+									        		<ul id="stepLi">
+									        			<li ng-click="chooseTypeStep(0)">类型</li>
+									        			<li ng-click="chooseTypeStep(1)">选择模板</li>
+									        			<li ng-click="chooseTypeStep(2)">选择时间</li>
+									        			<li class="current" ng-click="chooseTypeStep(3)">设备</li>
+									        			<li ng-click="chooseTypeStep(4)">统计指标</li>
+									        			<li ng-click="chooseTypeStep(5)">汇总</li>
+									        		</ul>
+									        	</div>
+									        </div>
+									        <!-- / .export-step -->
+									        <div id="stepTemplate">
+									        	<!-- / .export-search -->
+										        <div class="row export export-type hide" ng-include="'step/step1.html'"></div>
+										        <!-- / .export-stype -->
+										        <div class="row export export-template hide"  ng-include="'step/step2.html'"></div>
+										        <!-- / .export-template -->
+										        <div class="row export export-time hide" ng-include="'step/step3.html'"></div>
+										        <!-- / .export-time -->
+										        <div class="row export export-device show" ng-include="'step/step4.html'"></div>
+										        <!-- / .export-device -->
+										        <div class="row export export-indication hide" ng-include="'step/step5.html'"></div>
+										        <!-- / .export-indication -->
+										        <div class="row export export-summary hide" ng-include="'step/step6.html'"></div>
+										        <!-- / .export-summary -->
+										        <div class="col-lg-12 text-right">
+										        	<hr />
+									        		<button class="btn btn-orange" ng-click="chooseStepType();"  ng-show="stepParam.previous">上一步</button>
+									        		<button class="btn btn-success" ng-click="chooseStepType(0)" ng-show="stepParam.next">下一步</button>
+									        	</div>
+									        </div>
+									        <!-- / #stepTemplate -->
+									    </form>
+                        			</div>
+                        			<!-- / .col-lg-12 -->
+                        		</div>
+                        		<!-- / .row -->
+					        </div>
+					        <!-- / .panel-body -->
+					    </div>
+					    <!-- / .panel -->
+                	</div>
+                	<!-- /.col-lg-12 -->
+                </div>
+                <!-- / .row -->
+			</div>
+			<!-- / #page-wrapper -->
+		</div>
+		<!-- / #wrapper -->
+		<!--<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div ng-include="'template/addUser.html'" ></div>
+		</div>-->
+		<!-- / .modal -->
+	</body>
+</html>

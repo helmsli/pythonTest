@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="App">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Manager system</title>
+		<!-- Plugin Css -->
+    	<link href="../../../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="../../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    	<link href="../../../plugins/material-design-preloader/md-preloader.css" rel="stylesheet" />
+    	<link href="../../../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    	<link href="../../../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    	<link href="../../../plugins/node-waves/waves.min.css" rel="stylesheet" />
+   	 	<link href="../../../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    	<link href="../../../plugins/animate-css/animate.css" rel="stylesheet" />
+    	
+	    <!-- Custom Css -->
+    	<link href="../../../css/custom.css" rel="stylesheet">
+	    <link href="../../../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+		<style>
+	    	.m-l-10 {
+	    		margin-left: 10px!important;
+	    	}
+	    	.ds-cell-control{
+	    		position: relative;
+	    	}
+	    	.ds-tips{
+	    		position: absolute;
+	    		right: 0;
+	    		bottom: -20px;
+	    		left: 0;
+	    		font-size: 12px;
+	    		color: #f00;
+	    	}
+	    </style>
+	</head>
+	<body ng-controller="app">
+		<div class="page-loader-wrapper">
+		    <div class="loader">
+		        <div class="md-preloader pl-size-md">
+		            <svg viewbox="0 0 75 75">
+		                <circle cx="37.5" cy="37.5" r="33.5" class="pl-red" stroke-width="4" />
+		            </svg>
+		        </div>
+		        <p>加载中，请稍后...</p>
+		    </div>
+		</div>
+		<div class="overlay"></div>
+		<!-- Page Loader -->
+		<div id="wrapper">
+			<div class="header" ng-include="'../../include/header.html'"></div>
+			<div class="menus" ng-include="'../../include/leftMenu.html'"></div>
+			<div id="page-wrapper">
+				<div class="panel">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							表单组合
+                            <small>默认必须<code>.form-control</code>类</small>
+						</h2>
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<i class="fa fa-ellipsis-v"></i>
+							</a>
+							<ul class="dropdown-menu pull-right" role="menu">
+							    <li><a href="javascript:void(0);">编辑</a></li>
+							    <li><a href="javascript:void(0);">查看详细</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal">
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>姓名:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-l-0">
+                                    <div class="ds-table">
+                                        <div class="ds-cell-control">
+                                            <input type="text" class="form-control" placeholder="请输入账户名称">
+                                            <p class="ds-tips">账户名由为字母、数字下划线组成</p>
+                                        </div>
+                                        <div class="ds-cell-addon p-l-5 col-red">*</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-15">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>性别:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-t-7 p-l-0">
+                                    <span class="radio-inline">
+		                        		<input name="group5" type="radio" id="radio_35" checked="checked" class="with-gap radio-col-blue">
+		                            	<label for="radio_35">男士</label>
+		                        	</span>
+		                        	<span class="radio-inline">
+		                        		<input name="group5" type="radio" id="radio_36" class="with-gap radio-col-blue">
+		                            	<label for="radio_36">女士</label>
+		                        	</span>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>国家:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-l-0">
+                                	<div class="ds-table">
+                                        <div class="ds-cell-control">
+                                            <input type="text" class="form-control tab-select-left" placeholder="请选择国家" />
+											<div class="tab-select-group">
+												<select class="form-control show-tick">
+													<option value="0">USA</option>
+													<option value="1">CHN</option>
+												</select>
+											</div>
+                                        </div>
+                                        <div class="ds-cell-addon p-l-5 col-red">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>证件:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-l-0">
+                                	<div class="ds-table">
+                                        <div class="ds-cell-control">
+                                            <select class="form-control show-tick">
+			                                    <option value="0">身份证</option>
+			                                    <option value="1">护照</option>
+			                                    <option value="2">驾驶证</option>
+			                                </select>
+                                        </div>
+                                        <div class="ds-cell-addon p-l-5 col-red">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>附件1:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-l-0">
+                                	<div class="ds-table">
+										<div class="ds-cell-control">
+											<div class="file-group">
+	        									<input type="text" name="fileName" id="fileName" class="form-control" placeholder="选择文件...">
+	            								<input type="button" value="选择文件" class="btn btn-primary">
+	            								<input type="file" name="filefield" id="uploadFile" onchange="document.getElementById('fileName').value=this.value">
+	            							</div>
+										</div>
+										<div class="ds-cell-addon col-red p-l-5">*</div>
+									</div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>附件2:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-l-0">
+                                	<div class="ds-table">
+										<div class="ds-cell-control">
+											<div class="file-group">
+	        									<input type="text" name="fileName3" id="fileName3" class="form-control" placeholder="选择文件...">
+	            								<input type="button" value="浏览" class="btn btn-primary">
+	            								<input type="file" name="filefield3" id="uploadFile3" onchange="document.getElementById('fileName3').value=this.value">
+	            							</div>
+										</div>
+										<div class="ds-cell-addon p-l-15"><button type="button" class="btn btn-primary waves-effect" style="padding:7px 12px;">上传</button></div>
+										<div class="ds-cell-addon col-red p-l-5">*</div>
+									</div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>价格:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-l-0">
+                                	<div class="ds-table">
+										<div class="ds-cell-control">
+											<div class="ds-input-group">
+												<input type="text" class="form-control input-group-control">
+												<span class="ds-cell-addon"><input type="text" class="form-control" value=".00"></span>
+											</div>
+										</div>
+										<div class="ds-cell-addon col-red p-l-5">*</div>
+									</div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-r-0 form-control-label">
+                                    <label>金额:</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-9 p-l-0">
+                                	<div class="ds-table">
+										<div class="ds-cell-control">
+											<div class="ds-input-group">
+												<span class="ds-cell-addon"><input type="text" class="form-control" value="$"></span>
+												<input type="text" class="form-control input-group-control">
+											</div>
+										</div>
+										<div class="ds-cell-addon col-red p-l-5">*</div>
+									</div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix p-b-25">
+                                <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+                                	<div class="checkbox-inline">
+                                		<input type="checkbox" class="filled-in" id="cheIn">
+                                    	<label for="cheIn">记住我</label>
+                                	</div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+                                    <button type="button" class="btn btn-primary waves-effect">登录</button>
+                                </div>
+                            </div>
+                            <!-- / -->
+                        </form>
+					</div>
+				</div>
+				<!-- / .panel -->
+			</div>
+			<!-- / #page-wrapper -->
+		</div>
+		<!-- / #wrapper -->
+	</body>
+	<!-- Plugin Js -->
+    <script src="../../../plugins/jquery/jquery-2.2.4.min.js"></script>
+    <script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../plugins/angular/angular.min.js"></script>
+    <script src="../../../plugins/ocLazyLoad/ocLazyLoad.min.js"></script>
+    <script src="../../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="../../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="../../../plugins/bootstrap-notify/bootstrap-notify.js"></script>
+    <script src="../../../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../../plugins/node-waves/waves.js"></script>
+    <script src="../../../plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../../js/ui/dialogs.js"></script>
+    <script src="../../../js/ui/modals.js"></script>
+    <script src="../../../js/ui/notifications.js"></script>
+    <script src="../../../js/ui/tooltips-popovers.js"></script>
+    <script src="../../../js/ui/load_resize.js"></script>
+     <script src="../../../plugins/angular/angular-translate.min.js"> </script>
+	<script src="../../../plugins/angular/angular-translate-loader-static-files.min.js"> </script>
+    <!-- Custom JS -->
+    <script src="../../../js/server/server.js" type="text/javascript"></script>
+	<script src="../../../js/cookie.js" type="text/javascript"></script>
+	<script src="../../../js/skin.js" type="text/javascript"></script>
+	<script src="../../../js/config/config_skin.js" type="text/javascript"></script>
+	<script src="../../../js/App.js" type="text/javascript"></script>
+	
+	<!-- Home JS-->
+	<script src="../../../js/home.js" type="text/javascript"></script>
+	
+	<script>
+		
+	/**
+	 * 上传文件显示测试示例
+	 * ***/
+
+	
+	function uploadImage(fileId,showId)
+	{
+		var fileObj=document.getElementById(fileId);
+	   	
+	    // 注意这里
+	    // fileObj.files[0];
+	    var fileName=fileObj.files[0].name;
+	    var fileType=fileObj.files[0].type;
+	    console.log(fileObj.files[0]);
+	     var src = window.URL.createObjectURL(fileObj.files[0]);
+	     var showBox=document.getElementById(showId);
+	     showBox.innerHTML="";
+		 var img = document.createElement('img');
+	    img.src = src;
+	    img.className = "img-thumbnail";
+	    showBox.appendChild(img);
+	    //显示删除按钮
+	    var imgDeleteBtn = document.getElementById(fileId+"_delete");
+	    imgDeleteBtn.setAttribute("class","ds-block img-deleted show ");
+	}
+	/***
+	 * 删除图片
+	 */
+	function deleteImg(fileId,showId){
+		//<i class="fa fa-plus"></i>
+		//清除input file框中的值
+		var fileObj=document.getElementById(fileId);
+		fileObj.value = '';
+		//剔除img标签
+		var showObj = document.getElementById(showId);
+	   	showObj.innerHTML = '<i class="fa fa-plus"></i>';
+	    	//隐藏删除按钮
+	   	 var imgDeleteBtn = document.getElementById(fileId+"_delete");
+	    imgDeleteBtn.setAttribute("class","ds-block img-deleted hide ");
+	}
+	</script>
+</html>

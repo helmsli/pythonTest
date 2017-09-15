@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>home</title>
+		
+		<!-- Bootstrap Css -->
+		<link href="../css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/bootstrap/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<link href="../js/pnotify/dist/pnotify.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.buttons.css" type="text/css" rel="stylesheet">
+	    <link href="../js/pnotify/dist/pnotify.nonblock.css" type="text/css" rel="stylesheet">
+		
+	    <!-- Bootstrap JS -->
+	    <script src="../js/bootstrap/jquery.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/angular.min.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap/ocLazyLoad.min.js" type="text/javascript"></script>
+	    <script src="../js/modal/modal.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.buttons.js" type="text/javascript"></script>
+	    <script src="../js/pnotify/dist/pnotify.nonblock.js" type="text/javascript"></script>
+	    <script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	    
+	    <!-- Global JS -->
+	    <script src="../js/server/server.js" type="text/javascript"></script>
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/skin.js" type="text/javascript"></script>
+		<script src="../js/config/config_skin.js" type="text/javascript"></script>
+		<script src="../js/App.js" type="text/javascript"></script>
+		<script src="../js/winHeight.js" type="text/javascript"></script>
+	    
+	    <!-- Custom Css -->
+	    <link href="../css/startmin.css" type="text/css" rel="stylesheet"/>
+	    <link href="../css/themes/default/skin.css" rel="stylesheet" type="text/css" title="default"/>
+	    
+	    <!-- Home JS-->
+	    <script src="../js/home.js" type="text/javascript"></script>
+	    
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="app">
+			
+			<div class="header" ng-include="'include/header.html'"></div>
+			<div class="menus" ng-include="'include/leftMenu.html'"></div>
+			
+			<div id="page-wrapper">
+				<h1 class="page-header">Dashboard</h1>
+                <div class="row home clearfix">
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                    	<a href="javascript:;">
+                    		<div class="info-box panel-red hover-expand-effect">
+                        		<div class="icon"><i class="fa fa-inbox fa-3x"></i></div>
+                        		<div class="content">
+                        			<div class="sub-title">New Mails</div>
+                        			<div class="number">26</div>
+                        		</div>
+                        	</div>
+	                    </a>
+                    </div>
+                    <!-- / .col-lg-3 -->
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                    	<a href="javascript:;">
+                    		<div class="info-box panel-yellow hover-expand-effect">
+                        		<div class="icon"><i class="fa fa-comments fa-3x"></i></div>
+                        		<div class="content">
+                        			<div class="sub-title">New Message</div>
+                        			<div class="number">12</div>
+                        		</div>
+                        	</div>
+                        </a>
+                    </div>
+                    <!-- / .col-lg-3 -->
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                    	<a href="javascript:;">
+                    		<div class="info-box panel-green hover-expand-effect">
+                        		<div class="icon"><i class="fa fa-tags fa-3x"></i></div>
+                        		<div class="content">
+                        			<div class="sub-title">Product View</div>
+                        			<div class="number">124</div>
+                        		</div>
+                        	</div>
+                       </a>
+                    </div>
+                    <!-- / .col-lg-3 -->
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                    	<a href="javascript:;">
+                    		<div class="info-box panel-primary hover-expand-effect">
+                        		<div class="icon"><i class="fa fa-share-alt fa-3x"></i></div>
+                        		<div class="content">
+                        			<div class="sub-title">Share</div>
+                        			<div class="number">13</div>
+                        		</div>
+                        	</div>
+	                    </a>
+                    </div>
+                    <!-- / .col-lg-3 -->
+                </div>
+                <!-- /.row -->
+        		<div class="row home">
+        			<div class="col-lg-6">
+        				<div class="row">
+        					<div class="col-md-6">
+        						<div class="thumbnail no-margin-bottom">
+		                            <img src="../images/picjumbo.com_IMG_3241.jpg" class="img-responsive">
+		                            <div class="caption">
+		                                <h3>Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+		                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+		                                <p><button type="button" class="btn btn-primary">Button</button> <button type="button" class="btn btn-default">Button</button></p>
+		                            </div>
+		                        </div>
+        					</div>
+        					<div class="col-md-6">
+        						<div class="thumbnail no-margin-bottom">
+		                            <img src="../images/picjumbo.com_IMG_4566.jpg" class="img-responsive">
+		                            <div class="caption">
+		                                <h3>Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+		                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+		                                <p><button type="button" class="btn btn-primary">Button</button> <button type="button" class="btn btn-default">Button</button></p>
+		                            </div>
+		                        </div>
+        					</div>
+        				</div>
+        			</div>
+        			<!-- / .col-lg-6 -->
+        			<div class="col-lg-6">
+    					<div class="panel panel-default">
+                        	<div class="panel-heading">
+                        		Last Message
+                        		<div class="btn-group">
+									<a href="javascript:void(0);"class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-ellipsis-v"></i>
+									</a>
+									<ul class="dropdown-menu" role="menu">
+									    <li><a href="form.html">发布信息</a></li>
+									    <li><a href="table.html">查看更多</a></li>
+									</ul>
+								</div>
+                        	</div>
+                        	<div class="panel-body">
+                        		<ul class="message-list">
+                                    <li>
+                                    	<a href="news_detail.html">
+                                            <img src="../images/picjumbo.com_IMG_3241.jpg" class="profile-img pull-left">
+                                            <div class="message-block">
+                                                <div><span class="username">Tui2Tone</span> <span class="message-datetime">2 hour ago</span>
+                                                </div>
+                                                <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a href="news_detail.html">
+                                            <img src="../images/picjumbo.com_IMG_3241.jpg" class="profile-img pull-left">
+                                            <div class="message-block">
+                                                <div><span class="username">Tui2Tone</span> <span class="message-datetime">2 hour ago</span>
+                                                </div>
+                                                <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a href="news_detail.html">
+                                            <img src="../images/picjumbo.com_IMG_3241.jpg" class="profile-img pull-left">
+                                            <div class="message-block">
+                                                <div><span class="username">Tui2Tone</span> <span class="message-datetime">2 hour ago</span>
+                                                </div>
+                                                <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a href="news_detail.html">
+                                            <img src="../images/picjumbo.com_IMG_3241.jpg" class="profile-img pull-left">
+                                            <div class="message-block">
+                                                <div><span class="username">Tui2Tone</span> <span class="message-datetime">2 hour ago</span>
+                                                </div>
+                                                <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="text-center load-more">
+                                    	<a href="javascript:;" id="message-load-more">
+                                        	<i class="fa fa-refresh"></i> load more..
+                                        </a>
+                                    </li>
+                                </ul>
+					        </div>
+					        <!-- / .panel-body -->
+					    </div>
+					    <!-- / .panel -->
+        			</div>
+        			<!-- / .col-lg-6 -->
+        		</div>
+        		<!-- / row -->
+			</div>
+			<!-- / #page-wrapper -->
+			<!--<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div ng-include="'template/addUser.html'" ></div>
+			</div>-->
+			<!-- / .modal -->
+		</div>
+		<!-- / #wrapper -->
+	</body>
+</html>
