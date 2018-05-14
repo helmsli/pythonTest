@@ -108,22 +108,66 @@ def queryAllFreeCourse(baseUrl,keywords,isFree):
 def getGBK(chineseString):
 	gbk_a = chineseString.decode('utf-8').encode('gbk')
 	return (gbk_a.decode('gbk'))
-
-
+def queryTeacherInfo(baseUrl,teacherUserId):
+	website = '%s/userOrderDb/teacher/%s/queryOneOrder' % (baseUrl,teacherUserId)
+	log.debug('query Free course:' + website)
+	searchRequest={'category':'teacher','userId':teacherUserId,'orderId':teacherUserId,'createTime':'2017-12-30 00:00:00'}
+	log.debug(searchRequest)
+	r = requests.post(url=website,json=searchRequest)   #带参数的GET请求
+	log.debug(r.text)
+	r.encoding = 'utf-8' #这里添加一行
+	response = json_loads_byteified(r.text)
+	#response=r.text
+	print(r.text)	
+	log.debug(r.text)
+	return response
+def queryRecommTeacherInfo(baseUrl):
+	website = '%s/userOrderDb/Recommteacher/000000/queryUserOrder' % (baseUrl)
+	log.debug('query Free course:' + website)
+	searchRequest={'category':'teacher','userId':'000000','orderId':teacherUserId,'createTime':'2017-12-30 00:00:00'}
+	log.debug(searchRequest)
+	r = requests.post(url=website,json=searchRequest)   #带参数的GET请求
+	log.debug(r.text)
+	r.encoding = 'utf-8' #这里添加一行
+	response = json_loads_byteified(r.text)
+	#response=r.text
+	print(r.text)	
+	log.debug(r.text)
+	return response
+def publishRecommTeacher(baseUrl,teacherInfo):
+	website = '%s/userOrderDb/Recommteacher/000000/configUserOrder' % (baseUrl)
+	log.debug('query Free course:' + website)
+	userOrder={'category':'Recommteacher','userId':'000000','orderId':teacherInfo['userId'],'createTime':'2017-12-30 00:00:00'}
+	userOrder['createTime']='2017-12-30 00:00:00'
+	userOrder['orderData']=json.dumps(teacherInfo,ensure_ascii=False,indent=2)
+	log.debug(userOrder)
+	r = requests.post(url=website,json=userOrder)   #带参数的GET请求
+	log.debug(r.text)
+	r.encoding = 'utf-8' #这里添加一行
+	response = json_loads_byteified(r.text)
+	print(r.text)	
+	log.debug(r.text)
+	return response
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 
 	#创建日志记录对象
-log = Logger('courseSearch.log');
+log = Logger('publishRecommTeacher.log');
 log.debug(("start program ********************************************"));
 
 
 serverUrl = 'http://www.chunzeacademy.com:8080'
-isFree=0
-r=queryAllFreeCourse(serverUrl,'产品',isFree);
-print('finished query all Free course:%d' %isFree)
+teacherIdList=['110000000']
+for teacherId in teacherIdList:
+	r=queryTeacherInfo(serverUrl,'110000000')
+	if r['retCode']==0:
+		repsonseInfo=json.loads(r['responseInfo'])
+		teacharInfo=json.loads(repsonseInfo['orderData'])
+		pr=publishRecommTeacher(serverUrl,teacharInfo)
+		log.debug(pr)
+	else:
+		log.debug('query teacherInfo error:'+teacherId)
+	
+	print('finished query teacher')
 
-isFree=2
-r=queryAllFreeCourse(serverUrl,'产品',isFree);
-print('finished query all Free course:%d' %isFree)

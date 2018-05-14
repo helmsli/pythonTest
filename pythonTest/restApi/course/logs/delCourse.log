@@ -1,0 +1,17 @@
+[2018-05-11 16:30:32,957] - deleteCourseSearch.py [Line:170] - [DEBUG]-[thread:22984]-[process:1168] - start program ********************************************
+[2018-05-11 16:30:32,959] - deleteCourseSearch.py [Line:126] - [DEBUG]-[thread:22984]-[process:1168] - del search course:http://www.chunzeacademy.com:8080/courseSearch/deleteCourse
+[2018-05-11 16:30:32,960] - deleteCourseSearch.py [Line:128] - [DEBUG]-[thread:22984]-[process:1168] - {'courseId': '1234578'}
+[2018-05-11 16:30:33,982] - deleteCourseSearch.py [Line:130] - [DEBUG]-[thread:22984]-[process:1168] - {"retCode":0,"retMsg":null,"responseInfo":null}
+[2018-05-11 16:30:33,989] - deleteCourseSearch.py [Line:135] - [DEBUG]-[thread:22984]-[process:1168] - {"retCode":0,"retMsg":null,"responseInfo":null}
+[2018-05-11 16:30:33,990] - deleteCourseSearch.py [Line:178] - [DEBUG]-[thread:22984]-[process:1168] - query teacherInfo success:1234578
+[2018-05-11 16:31:15,572] - deleteCourseSearch.py [Line:170] - [DEBUG]-[thread:8096]-[process:788] - start program ********************************************
+[2018-05-11 16:31:15,572] - deleteCourseSearch.py [Line:126] - [DEBUG]-[thread:8096]-[process:788] - del search course:http://www.chunzeacademy.com:8080/courseSearch/deleteCourse
+[2018-05-11 16:31:15,572] - deleteCourseSearch.py [Line:128] - [DEBUG]-[thread:8096]-[process:788] - {'courseId': '1234578'}
+[2018-05-11 16:31:15,716] - deleteCourseSearch.py [Line:130] - [DEBUG]-[thread:8096]-[process:788] - {"retCode":0,"retMsg":null,"responseInfo":null}
+[2018-05-11 16:31:15,720] - deleteCourseSearch.py [Line:135] - [DEBUG]-[thread:8096]-[process:788] - {"retCode":0,"retMsg":null,"responseInfo":null}
+[2018-05-11 16:31:15,720] - deleteCourseSearch.py [Line:178] - [DEBUG]-[thread:8096]-[process:788] - del teacherInfo success:1234578
+[2018-05-11 16:31:15,721] - deleteCourseSearch.py [Line:126] - [DEBUG]-[thread:8096]-[process:788] - del search course:http://www.chunzeacademy.com:8080/courseSearch/deleteCourse
+[2018-05-11 16:31:15,723] - deleteCourseSearch.py [Line:128] - [DEBUG]-[thread:8096]-[process:788] - {'courseId': '5001000001'}
+[2018-05-11 16:31:15,792] - deleteCourseSearch.py [Line:130] - [DEBUG]-[thread:8096]-[process:788] - {"retCode":0,"retMsg":null,"responseInfo":null}
+[2018-05-11 16:31:15,799] - deleteCourseSearch.py [Line:135] - [DEBUG]-[thread:8096]-[process:788] - {"retCode":0,"retMsg":null,"responseInfo":null}
+[2018-05-11 16:31:15,802] - deleteCourseSearch.py [Line:178] - [DEBUG]-[thread:8096]-[process:788] - del teacherInfo success:5001000001
