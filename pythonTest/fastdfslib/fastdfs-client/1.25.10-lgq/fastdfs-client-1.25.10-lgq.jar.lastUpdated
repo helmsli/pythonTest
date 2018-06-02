@@ -1,0 +1,6 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat Jun 02 10:54:22 CST 2018
+https\://repo.spring.io/libs-snapshot/.error=
+http\://172.18.3.212\:8081/nexus/content/repositories/thirdparty/.error=
+https\://repo.spring.io/libs-snapshot/.lastUpdated=1527908062252
+http\://172.18.3.212\:8081/nexus/content/repositories/thirdparty/.lastUpdated=1527908020716

@@ -68,7 +68,9 @@ $ git config --global user.email wirelessqa.me@gmail.com
 
 2.git  checkout v0.21   此时会指向打v0.21标签时的代码状态，（但现在处于一个空的分支上）
 
-
+git 放弃本地修改 强制更新
+git fetch --all
+git reset --hard origin/master
 
 
 分支合并：
